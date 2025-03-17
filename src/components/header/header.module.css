@@ -1,0 +1,10 @@
+.header {
+  background-color: #009844;
+  padding: 10px;
+}
+
+.hana {
+  object-fit: cover;
+  height: 40px;
+  margin: auto;
+}

@@ -1,0 +1,17 @@
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.imageIcon {
+  object-fit: cover;
+  margin: 2px;
+  width: 23px;
+}
+
+.button {
+  margin: 1px;
+  border: solid;
+}
