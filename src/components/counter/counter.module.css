@@ -7,11 +7,6 @@
 
 .imageIcon {
   object-fit: cover;
-  margin: 2px;
-  width: 23px;
-}
-
-.button {
-  margin: 1px;
-  border: solid;
+  margin: 3px;
+  width: 27px;
 }

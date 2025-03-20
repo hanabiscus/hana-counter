@@ -2,7 +2,8 @@
 
 import { counterProps } from "@/const/types";
 import UseCounter from "@/hooks/UseCounter";
-import { TextField, Box } from "@mui/material";
+import { TextField, Box, ThemeProvider } from "@mui/material";
+import { counterBoxTheme, counterIconTheme } from "@/const/types";
 
 import styles from "./counter.module.css";
 
@@ -24,16 +25,14 @@ const Counter = (props: counterProps) => {
         size="small"
         sx={{ maxWidth: props.textFieldWidth }}
       />
-      <Box
-        onClick={props.incrementFlag ? increment : decrement}
-        sx={{
-          borderRadius: "5px",
-          border: "1px solid #333333",
-          m: 0.3,
-        }}
-      >
-        <img src={props.imagePath} className={styles.imageIcon} />
-      </Box>
+      <ThemeProvider theme={counterBoxTheme}>
+        <Box
+          onClick={props.incrementFlag ? increment : decrement}
+          sx={counterIconTheme}
+        >
+          <img src={props.imagePath} className={styles.imageIcon} />
+        </Box>
+      </ThemeProvider>
     </div>
   );
 };

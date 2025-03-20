@@ -1,10 +1,10 @@
 export const COOKIES_AGE = 60 * 60 * 24;
 
-export const CARD_MARGIN = 1;
-export const CARD_BACKGROUND = "#C0C0C0";
+export const CARD_MARGIN = 1.5;
+export const CARD_BACKGROUND = "#BFC5CA";
 
-export const USUALLY_COUNTER_FIELD_SIZE = 65;
-export const BIGBONUS_COUNTER_FIELD_SIZE = 45;
+export const USUALLY_COUNTER_FIELD_SIZE = 75;
+export const BONUS_COUNTER_FIELD_SIZE = 55;
 
 export const BELL_COUNTER = "bellCounter";
 
@@ -19,6 +19,21 @@ export const RED_SIDE_COUNTER = "redSideCounter";
 export const GREEN_SIDE_COUNTER = "greenSideCounter";
 export const YELLOW_SIDE_COUNTER = "yellowSideCounter";
 export const BLUE_SIDE_COUNTER = "blueSideCounter";
+
+export const counterBoxTheme = {
+  palette: {
+    primary: {
+      main: "#758492",
+    },
+  },
+};
+
+export const counterIconTheme = {
+  borderRadius: "5px",
+  border: "1px solid #333333",
+  m: 1,
+  bgcolor: "primary.main",
+};
 
 export type hooksCounterProps = {
   counterKind: string;
