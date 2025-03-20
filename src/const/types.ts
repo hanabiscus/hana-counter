@@ -43,23 +43,37 @@ export type counterProps = {
 };
 
 export type usuallyCounterProps = {
-  counterNumber: number;
   incrementFlag: boolean;
+  bellCounterNumber: number;
 };
 
 export type bigbonusCounterProps = {
+  incrementFlag: boolean;
   watermelonCounterNumber: number;
   redFeatherCounterNumber: number;
   greenFeatherCounterNumber: number;
   yellowFeatherCounterNumber: number;
   blueFeatherCounterNumber: number;
-  incrementFlag: boolean;
 };
 
 export type regularbonusCounterProps = {
+  incrementFlag: boolean;
   redSideCounterNumber: number;
   greenSideCounterNumber: number;
   yellowSideCounterNumber: number;
   blueSideCounterNumber: number;
+};
+
+export type hanaCounterProps = {
   incrementFlag: boolean;
+  bellCounterNumber: number;
+  watermelonCounterNumber: number;
+  redFeatherCounterNumber: number;
+  greenFeatherCounterNumber: number;
+  yellowFeatherCounterNumber: number;
+  blueFeatherCounterNumber: number;
+  redSideCounterNumber: number;
+  greenSideCounterNumber: number;
+  yellowSideCounterNumber: number;
+  blueSideCounterNumber: number;
 };

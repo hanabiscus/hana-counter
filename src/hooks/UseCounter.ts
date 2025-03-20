@@ -1,22 +1,11 @@
 "use client";
 
 import { hooksCounterProps, hooksReturnCounterProps } from "@/const/types";
-import {
-  getCookiesCounterNumber,
-  setCookiesCounterNumber,
-} from "@/server/cookie/coookies";
-import { useState, useEffect } from "react";
+import { setCookiesCounterNumber } from "@/server/cookie/coookies";
+import { useState } from "react";
 
 const UseCounter = (props: hooksCounterProps): hooksReturnCounterProps => {
   const [counterNumber, setCount] = useState(props.counterNumber);
-
-  useEffect(() => {
-    const fetchCookies = async () => {
-      const counterNumber = await getCookiesCounterNumber(props.counterKind);
-      setCount(counterNumber);
-    };
-    fetchCookies();
-  }, []);
 
   const increment = async () => {
     await setCookiesCounterNumber(props.counterKind, counterNumber + 1);

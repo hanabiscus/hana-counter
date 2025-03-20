@@ -16,7 +16,7 @@ const UsuallyCounter = (props: usuallyCounterProps) => {
       <Card sx={{ margin: CARD_MARGIN, background: CARD_BACKGROUND }}>
         <Counter
           counterKind={BELL_COUNTER}
-          counterNumber={props.counterNumber}
+          counterNumber={props.bellCounterNumber}
           incrementFlag={props.incrementFlag}
           imagePath="bell.svg"
           textFieldWidth={USUALLY_COUNTER_FIELD_SIZE}

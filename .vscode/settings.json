@@ -1,5 +1,11 @@
 {
-  "cSpell.words": ["BIGBONUS", "coookies", "hana", "regularbonus"],
+  "cSpell.words": [
+    "BIGBONUS",
+    "coookies",
+    "hana",
+    "regularbonus",
+    "turbopack"
+  ],
 
   "files.exclude": {
     "**/.git": true,
