@@ -1,19 +1,34 @@
+"use client";
+
 import { hanaCounterProps } from "@/const/types";
 import BigbonusCounter from "../counter/bigbonus-counter/BIgbonusCounter";
 import UsuallyCounter from "../counter/usually-counter/UsuallyCounter";
 import RegularBonusCounter from "../counter/regularbonus-counter/RegularbonusCounter";
 import CounterModeSwitch from "../counter-manager/CounterModeSwitch";
+import { useState } from "react";
+
+import styles from "./hana-counter.module.css";
+import CounterModeIndicator from "../counter-manager/CounterModeIndicator";
 
 const HanaCounter = (props: hanaCounterProps) => {
+  const [decrementFlag, setDecrementFlag] = useState(false);
+
+  const handleModeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDecrementFlag(event.target.checked);
+  };
+
   return (
     <>
-      <CounterModeSwitch />
+      <div className={styles.counterManager}>
+        <CounterModeSwitch onChange={handleModeChange} />
+      </div>
+
       <UsuallyCounter
-        decrementFlag={props.decrementFlag}
+        decrementFlag={decrementFlag}
         bellCounterNumber={props.bellCounterNumber}
       />
       <BigbonusCounter
-        decrementFlag={props.decrementFlag}
+        decrementFlag={decrementFlag}
         watermelonCounterNumber={props.watermelonCounterNumber}
         redFeatherCounterNumber={props.redFeatherCounterNumber}
         greenFeatherCounterNumber={props.greenFeatherCounterNumber}
@@ -21,12 +36,13 @@ const HanaCounter = (props: hanaCounterProps) => {
         blueFeatherCounterNumber={props.blueFeatherCounterNumber}
       />
       <RegularBonusCounter
-        decrementFlag={props.decrementFlag}
+        decrementFlag={decrementFlag}
         redSideCounterNumber={props.redSideCounterNumber}
         greenSideCounterNumber={props.greenSideCounterNumber}
         yellowSideCounterNumber={props.yellowSideCounterNumber}
         blueSideCounterNumber={props.blueSideCounterNumber}
       />
+      <CounterModeIndicator decrementFlag={decrementFlag} />
     </>
   );
 };

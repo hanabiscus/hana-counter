@@ -28,6 +28,34 @@ export const counterBoxTheme = {
   },
 };
 
+export const incrementModeIndicatorBoxTheme = {
+  palette: {
+    primary: {
+      main: "#009844",
+    },
+  },
+};
+
+export const decrementModeIndicatorBoxTheme = {
+  palette: {
+    primary: {
+      main: "#009844",
+    },
+  },
+};
+
+export const incrementModeIndicatorTheme = {
+  borderRadius: "5px",
+  border: "1px solid #009844",
+  bgcolor: "primary.main",
+};
+
+export const decrementModeIndicatorTheme = {
+  borderRadius: "5px",
+  border: "1px solid #009844",
+  bgcolor: "primary.main",
+};
+
 export const counterIconTheme = {
   borderRadius: "5px",
   border: "1px solid #DCDCDC",
@@ -49,10 +77,6 @@ export type hooksReturnCounterProps = [
     setCounterNumber: (counterNumber: number) => void;
   }
 ];
-
-export type CounterModeManagerProps = {
-  decrementFlag: boolean;
-};
 
 export type counterProps = {
   counterKind: string;
@@ -85,7 +109,6 @@ export type regularbonusCounterProps = {
 };
 
 export type hanaCounterProps = {
-  decrementFlag: boolean;
   bellCounterNumber: number;
   watermelonCounterNumber: number;
   redFeatherCounterNumber: number;
@@ -96,4 +119,8 @@ export type hanaCounterProps = {
   greenSideCounterNumber: number;
   yellowSideCounterNumber: number;
   blueSideCounterNumber: number;
+};
+
+export type counterModeIndicatorProps = {
+  decrementFlag: boolean;
 };
