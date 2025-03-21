@@ -27,7 +27,7 @@ const Counter = (props: counterProps) => {
       />
       <ThemeProvider theme={counterBoxTheme}>
         <Box
-          onClick={props.incrementFlag ? increment : decrement}
+          onClick={props.decrementFlag ? decrement : increment}
           sx={counterIconTheme}
         >
           <img src={props.imagePath} className={styles.imageIcon} />

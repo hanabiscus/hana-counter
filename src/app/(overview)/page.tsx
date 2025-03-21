@@ -6,7 +6,7 @@ const Home = async () => {
 
   return (
     <HanaCounter
-      incrementFlag={true}
+      decrementFlag={false}
       bellCounterNumber={Number(allCookies.bellCounterNumber)}
       watermelonCounterNumber={Number(allCookies.watermelonCounterNumber)}
       redFeatherCounterNumber={Number(allCookies.greenFeatherCounterNumber)}

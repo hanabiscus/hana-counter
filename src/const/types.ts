@@ -23,15 +23,16 @@ export const BLUE_SIDE_COUNTER = "blueSideCounter";
 export const counterBoxTheme = {
   palette: {
     primary: {
-      main: "#758492",
+      main: "#DCDCDC",
     },
   },
 };
 
 export const counterIconTheme = {
   borderRadius: "5px",
-  border: "1px solid #333333",
-  m: 1,
+  border: "1px solid #DCDCDC",
+  mx: 2,
+  my: 0.7,
   bgcolor: "primary.main",
 };
 
@@ -49,21 +50,25 @@ export type hooksReturnCounterProps = [
   }
 ];
 
+export type CounterModeManagerProps = {
+  decrementFlag: boolean;
+};
+
 export type counterProps = {
   counterKind: string;
   counterNumber: number;
-  incrementFlag: boolean;
+  decrementFlag: boolean;
   imagePath: string;
   textFieldWidth: number;
 };
 
 export type usuallyCounterProps = {
-  incrementFlag: boolean;
+  decrementFlag: boolean;
   bellCounterNumber: number;
 };
 
 export type bigbonusCounterProps = {
-  incrementFlag: boolean;
+  decrementFlag: boolean;
   watermelonCounterNumber: number;
   redFeatherCounterNumber: number;
   greenFeatherCounterNumber: number;
@@ -72,7 +77,7 @@ export type bigbonusCounterProps = {
 };
 
 export type regularbonusCounterProps = {
-  incrementFlag: boolean;
+  decrementFlag: boolean;
   redSideCounterNumber: number;
   greenSideCounterNumber: number;
   yellowSideCounterNumber: number;
@@ -80,7 +85,7 @@ export type regularbonusCounterProps = {
 };
 
 export type hanaCounterProps = {
-  incrementFlag: boolean;
+  decrementFlag: boolean;
   bellCounterNumber: number;
   watermelonCounterNumber: number;
   redFeatherCounterNumber: number;

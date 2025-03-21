@@ -20,7 +20,7 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
             <Counter
               counterKind={RED_SIDE_COUNTER}
               counterNumber={props.redSideCounterNumber}
-              incrementFlag={props.incrementFlag}
+              decrementFlag={props.decrementFlag}
               imagePath="red.svg"
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
@@ -29,7 +29,7 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
             <Counter
               counterKind={GREEN_SIDE_COUNTER}
               counterNumber={props.greenSideCounterNumber}
-              incrementFlag={props.incrementFlag}
+              decrementFlag={props.decrementFlag}
               imagePath="green.svg"
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
@@ -40,7 +40,7 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
             <Counter
               counterKind={YELLOW_SIDE_COUNTER}
               counterNumber={props.yellowSideCounterNumber}
-              incrementFlag={props.incrementFlag}
+              decrementFlag={props.decrementFlag}
               imagePath="yellow.svg"
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
@@ -49,7 +49,7 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
             <Counter
               counterKind={BLUE_SIDE_COUNTER}
               counterNumber={props.blueSideCounterNumber}
-              incrementFlag={props.incrementFlag}
+              decrementFlag={props.decrementFlag}
               imagePath="blue.svg"
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />

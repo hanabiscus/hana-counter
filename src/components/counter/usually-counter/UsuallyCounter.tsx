@@ -15,7 +15,7 @@ const UsuallyCounter = (props: usuallyCounterProps) => {
         <Counter
           counterKind={BELL_COUNTER}
           counterNumber={props.bellCounterNumber}
-          incrementFlag={props.incrementFlag}
+          decrementFlag={props.decrementFlag}
           imagePath="bell.svg"
           textFieldWidth={USUALLY_COUNTER_FIELD_SIZE}
         />

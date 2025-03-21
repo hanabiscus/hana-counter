@@ -19,7 +19,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
         <Counter
           counterKind={WATERMELON_COUNTER}
           counterNumber={props.watermelonCounterNumber}
-          incrementFlag={props.incrementFlag}
+          decrementFlag={props.decrementFlag}
           imagePath="waterMelon.svg"
           textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
         />
@@ -28,7 +28,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
             <Counter
               counterKind={RED_FEATHER_COUNTER}
               counterNumber={props.redFeatherCounterNumber}
-              incrementFlag={props.incrementFlag}
+              decrementFlag={props.decrementFlag}
               imagePath="red.svg"
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
@@ -37,7 +37,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
             <Counter
               counterKind={GREEN_FEATHER_COUNTER}
               counterNumber={props.greenFeatherCounterNumber}
-              incrementFlag={props.incrementFlag}
+              decrementFlag={props.decrementFlag}
               imagePath="green.svg"
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
@@ -48,7 +48,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
             <Counter
               counterKind={YELLOW_FEATHER_COUNTER}
               counterNumber={props.yellowFeatherCounterNumber}
-              incrementFlag={props.incrementFlag}
+              decrementFlag={props.decrementFlag}
               imagePath="yellow.svg"
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
@@ -57,7 +57,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
             <Counter
               counterKind={BLUE_FEATHER_COUNTER}
               counterNumber={props.blueFeatherCounterNumber}
-              incrementFlag={props.incrementFlag}
+              decrementFlag={props.decrementFlag}
               imagePath="blue.svg"
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
