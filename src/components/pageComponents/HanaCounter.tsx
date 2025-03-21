@@ -1,5 +1,3 @@
-"use client";
-
 import { hanaCounterProps } from "@/const/types";
 import BigbonusCounter from "../counter/bigbonus-counter/BIgbonusCounter";
 import UsuallyCounter from "../counter/usually-counter/UsuallyCounter";

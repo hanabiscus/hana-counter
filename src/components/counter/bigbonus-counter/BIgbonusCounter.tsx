@@ -1,5 +1,3 @@
-"use client";
-
 import {
   BONUS_COUNTER_FIELD_SIZE,
   BLUE_FEATHER_COUNTER,

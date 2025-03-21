@@ -1,5 +1,3 @@
-"use client";
-
 import {
   USUALLY_COUNTER_FIELD_SIZE,
   CARD_BACKGROUND,
