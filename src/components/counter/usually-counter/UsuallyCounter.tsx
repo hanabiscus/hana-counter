@@ -1,12 +1,12 @@
-import {
-  USUALLY_COUNTER_FIELD_SIZE,
-  CARD_BACKGROUND,
-  CARD_MARGIN,
-  BELL_COUNTER,
-  usuallyCounterProps,
-} from "@/const/types";
 import { Card } from "@mui/material";
 import Counter from "../Counter";
+import { usuallyCounterProps } from "@/const/types";
+import {
+  BELL_COUNTER,
+  CARD_BACKGROUND,
+  CARD_MARGIN,
+  USUALLY_COUNTER_FIELD_SIZE,
+} from "@/const/constants";
 
 const UsuallyCounter = (props: usuallyCounterProps) => {
   return (

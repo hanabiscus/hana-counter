@@ -1,15 +1,15 @@
+import { Card } from "@mui/material";
+import Counter from "../Counter";
+import { regularbonusCounterProps } from "@/const/types";
 import {
-  BONUS_COUNTER_FIELD_SIZE,
   BLUE_SIDE_COUNTER,
+  BONUS_COUNTER_FIELD_SIZE,
   CARD_BACKGROUND,
   CARD_MARGIN,
   GREEN_SIDE_COUNTER,
   RED_SIDE_COUNTER,
-  regularbonusCounterProps,
   YELLOW_SIDE_COUNTER,
-} from "@/const/types";
-import { Card } from "@mui/material";
-import Counter from "../Counter";
+} from "@/const/constants";
 
 const RegularBonusCounter = (props: regularbonusCounterProps) => {
   return (

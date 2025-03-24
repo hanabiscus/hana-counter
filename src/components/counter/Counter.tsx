@@ -3,7 +3,7 @@
 import { counterProps } from "@/const/types";
 import UseCounter from "@/hooks/UseCounter";
 import { TextField, Box, ThemeProvider } from "@mui/material";
-import { counterBoxTheme, counterIconTheme } from "@/const/types";
+import { counterBoxTheme, counterIconTheme } from "@/const/constants";
 
 import styles from "./counter.module.css";
 

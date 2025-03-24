@@ -13,7 +13,7 @@ import {
   WATERMELON_COUNTER,
   YELLOW_FEATHER_COUNTER,
   YELLOW_SIDE_COUNTER,
-} from "@/const/types";
+} from "@/const/constants";
 
 const setCookiesCounterNumber = async (
   counterKind: string,

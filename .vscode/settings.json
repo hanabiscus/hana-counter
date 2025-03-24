@@ -4,6 +4,7 @@
     "BIGBONUS",
     "coookies",
     "hana",
+    "Noto",
     "regularbonus",
     "turbopack"
   ],
@@ -15,6 +16,14 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
-    "**/node_modules": true
+    "**/node_modules": true,
+    ".next": true,
+    ".amplify": true,
+    "next-env.d.ts": true,
+    "package-lock.json": true,
+    "postcss.config.mjs": true,
+    "tailwind.config.ts": true,
+    "tsconfig.json": true,
+    ".gitignore": true
   }
 }

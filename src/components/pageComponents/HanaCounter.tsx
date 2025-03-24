@@ -22,7 +22,6 @@ const HanaCounter = (props: hanaCounterProps) => {
       <div className={styles.counterManager}>
         <CounterModeSwitch onChange={handleModeChange} />
       </div>
-
       <UsuallyCounter
         decrementFlag={decrementFlag}
         bellCounterNumber={props.bellCounterNumber}
