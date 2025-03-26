@@ -19,7 +19,9 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
           <div className="basis-1/2">
             <Counter
               counterKind={RED_SIDE_COUNTER}
-              counterNumber={props.redSideCounterNumber}
+              counterNumber={
+                props.regularbonusCounterNumbers.redSideCounterNumber
+              }
               decrementFlag={props.decrementFlag}
               imagePath="red.svg"
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
@@ -28,7 +30,9 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
           <div className="basis-1/2">
             <Counter
               counterKind={GREEN_SIDE_COUNTER}
-              counterNumber={props.greenSideCounterNumber}
+              counterNumber={
+                props.regularbonusCounterNumbers.greenSideCounterNumber
+              }
               decrementFlag={props.decrementFlag}
               imagePath="green.svg"
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
@@ -39,7 +43,9 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
           <div className="basis-1/2">
             <Counter
               counterKind={YELLOW_SIDE_COUNTER}
-              counterNumber={props.yellowSideCounterNumber}
+              counterNumber={
+                props.regularbonusCounterNumbers.yellowSideCounterNumber
+              }
               decrementFlag={props.decrementFlag}
               imagePath="yellow.svg"
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
@@ -48,7 +54,9 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
           <div className="basis-1/2">
             <Counter
               counterKind={BLUE_SIDE_COUNTER}
-              counterNumber={props.blueSideCounterNumber}
+              counterNumber={
+                props.regularbonusCounterNumbers.blueSideCounterNumber
+              }
               decrementFlag={props.decrementFlag}
               imagePath="blue.svg"
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}

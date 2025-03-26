@@ -20,39 +20,48 @@ export type counterProps = {
   textFieldWidth: number;
 };
 
+export type usuallyCounterNumber = {
+  bellCounterNumber: number;
+};
+
+export type bigbonusCounterNumbers = {
+  watermelonCounterNumber: number;
+  redFeatherCounterNumber: number;
+  greenFeatherCounterNumber: number;
+  yellowFeatherCounterNumber: number;
+  blueFeatherCounterNumber: number;
+};
+
+export type regularbonusCounterNumbers = {
+  redSideCounterNumber: number;
+  greenSideCounterNumber: number;
+  yellowSideCounterNumber: number;
+  blueSideCounterNumber: number;
+};
+
+export type allCounterNumbers = {
+  usuallyCounterNumber: usuallyCounterNumber;
+  bigbonusCounterNumbers: bigbonusCounterNumbers;
+  regularbonusCounterNumbers: regularbonusCounterNumbers;
+};
+
 export type usuallyCounterProps = {
   decrementFlag: boolean;
-  bellCounterNumber: number;
+  usuallyCounterNumber: usuallyCounterNumber;
 };
 
 export type bigbonusCounterProps = {
   decrementFlag: boolean;
-  watermelonCounterNumber: number;
-  redFeatherCounterNumber: number;
-  greenFeatherCounterNumber: number;
-  yellowFeatherCounterNumber: number;
-  blueFeatherCounterNumber: number;
+  bigbonusCounterNumbers: bigbonusCounterNumbers;
 };
 
 export type regularbonusCounterProps = {
   decrementFlag: boolean;
-  redSideCounterNumber: number;
-  greenSideCounterNumber: number;
-  yellowSideCounterNumber: number;
-  blueSideCounterNumber: number;
+  regularbonusCounterNumbers: regularbonusCounterNumbers;
 };
 
 export type hanaCounterProps = {
-  bellCounterNumber: number;
-  watermelonCounterNumber: number;
-  redFeatherCounterNumber: number;
-  greenFeatherCounterNumber: number;
-  yellowFeatherCounterNumber: number;
-  blueFeatherCounterNumber: number;
-  redSideCounterNumber: number;
-  greenSideCounterNumber: number;
-  yellowSideCounterNumber: number;
-  blueSideCounterNumber: number;
+  allCounterNumbers: allCounterNumbers;
 };
 
 export type counterModeIndicatorProps = {

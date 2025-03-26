@@ -19,9 +19,9 @@ const UseCounter = (props: hooksCounterProps): hooksReturnCounterProps => {
     }
   };
 
-  const setCounterNumber = (counterNumber: number) => {
+  const setCounterNumber = async (counterNumber: number) => {
+    await setCookiesCounterNumber(props.counterKind, counterNumber);
     setCount(counterNumber);
-    setCookiesCounterNumber(props.counterKind, counterNumber);
   };
 
   return [counterNumber, { increment, decrement, setCounterNumber }];
