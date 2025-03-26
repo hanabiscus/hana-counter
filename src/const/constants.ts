@@ -3,6 +3,9 @@ export const COOKIES_AGE = 60 * 60 * 24;
 export const CARD_MARGIN = 1;
 export const CARD_BACKGROUND = "#BFC5CA";
 
+export const HEADER_ICON_SIZE = 40;
+export const COUNTER_ICON_SIZE = 30;
+
 export const USUALLY_COUNTER_FIELD_SIZE = 75;
 export const BONUS_COUNTER_FIELD_SIZE = 55;
 

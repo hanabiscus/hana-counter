@@ -1,9 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { counterProps } from "@/const/types";
 import UseCounter from "@/hooks/UseCounter";
 import { TextField, Box, ThemeProvider } from "@mui/material";
-import { counterBoxTheme, counterIconTheme } from "@/const/constants";
+import {
+  COUNTER_ICON_SIZE,
+  counterBoxTheme,
+  counterIconTheme,
+} from "@/const/constants";
 
 import styles from "./counter.module.css";
 
@@ -19,7 +24,7 @@ const Counter = (props: counterProps) => {
       <TextField
         type="number"
         value={counterNumber}
-        onChange={(event: { target: { value: any } }) =>
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
           setCounterNumber(Number(event.target.value))
         }
         size="small"
@@ -30,7 +35,14 @@ const Counter = (props: counterProps) => {
           onClick={props.decrementFlag ? decrement : increment}
           sx={counterIconTheme}
         >
-          <img src={props.imagePath} className={styles.imageIcon} />
+          <div className={styles.imageIcon}>
+            <Image
+              src={props.imagePath}
+              alt="counterIcon"
+              width={COUNTER_ICON_SIZE}
+              height={COUNTER_ICON_SIZE}
+            />
+          </div>
         </Box>
       </ThemeProvider>
     </div>

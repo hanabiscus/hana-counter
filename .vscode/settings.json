@@ -24,6 +24,8 @@
     "postcss.config.mjs": true,
     "tailwind.config.ts": true,
     "tsconfig.json": true,
-    ".gitignore": true
+    ".gitignore": true,
+    ".eslintrc.json": true,
+    "next.config.ts": true
   }
 }
