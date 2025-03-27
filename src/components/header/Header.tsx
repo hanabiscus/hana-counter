@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <header className="bg-[#009844] p-2.5">
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 content-start">
         <button className="w-10" onClick={superHeaderMenuMutator}>
           {isSuperHeaderMenuOpen ? (
             <KeyboardArrowUpRoundedIcon fontSize="large" />
@@ -29,7 +29,7 @@ const Header = () => {
           )}
         </button>
         <Link title="logo" href={HOME_PAGE_PATH}>
-          <div className="place-items-center">
+          <div className="flex justify-center">
             <Image
               src={HANA_IMAGE_PATH}
               alt={"headerIcon"}
