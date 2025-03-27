@@ -3,13 +3,18 @@ import Counter from "../Counter";
 import { bigbonusCounterProps } from "@/const/types";
 import {
   BLUE_FEATHER_COUNTER,
+  BLUE_IMAGE_PATH,
   BONUS_COUNTER_FIELD_SIZE,
   CARD_BACKGROUND,
   CARD_MARGIN,
   GREEN_FEATHER_COUNTER,
+  GREEN_IMAGE_PATH,
   RED_FEATHER_COUNTER,
+  RED_IMAGE_PATH,
   WATERMELON_COUNTER,
+  WATERMELON_IMAGE_PATH,
   YELLOW_FEATHER_COUNTER,
+  YELLOW_IMAGE_PATH,
 } from "@/const/constants";
 
 const BigbonusCounter = (props: bigbonusCounterProps) => {
@@ -20,7 +25,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
           counterKind={WATERMELON_COUNTER}
           counterNumber={props.bigbonusCounterNumbers.watermelonCounterNumber}
           decrementFlag={props.decrementFlag}
-          imagePath="waterMelon.svg"
+          imagePath={WATERMELON_IMAGE_PATH}
           textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
         />
         <div className="flex">
@@ -31,7 +36,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
                 props.bigbonusCounterNumbers.redFeatherCounterNumber
               }
               decrementFlag={props.decrementFlag}
-              imagePath="red.svg"
+              imagePath={RED_IMAGE_PATH}
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
           </div>
@@ -42,7 +47,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
                 props.bigbonusCounterNumbers.greenFeatherCounterNumber
               }
               decrementFlag={props.decrementFlag}
-              imagePath="green.svg"
+              imagePath={GREEN_IMAGE_PATH}
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
           </div>
@@ -55,7 +60,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
                 props.bigbonusCounterNumbers.yellowFeatherCounterNumber
               }
               decrementFlag={props.decrementFlag}
-              imagePath="yellow.svg"
+              imagePath={YELLOW_IMAGE_PATH}
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
           </div>
@@ -66,7 +71,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
                 props.bigbonusCounterNumbers.blueFeatherCounterNumber
               }
               decrementFlag={props.decrementFlag}
-              imagePath="blue.svg"
+              imagePath={BLUE_IMAGE_PATH}
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
           </div>

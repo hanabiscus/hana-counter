@@ -2,12 +2,16 @@ import { Card } from "@mui/material";
 import Counter from "../Counter";
 import { regularbonusCounterProps } from "@/const/types";
 import {
+  BLUE_IMAGE_PATH,
   BLUE_SIDE_COUNTER,
   BONUS_COUNTER_FIELD_SIZE,
   CARD_BACKGROUND,
   CARD_MARGIN,
+  GREEN_IMAGE_PATH,
   GREEN_SIDE_COUNTER,
+  RED_IMAGE_PATH,
   RED_SIDE_COUNTER,
+  YELLOW_IMAGE_PATH,
   YELLOW_SIDE_COUNTER,
 } from "@/const/constants";
 
@@ -23,7 +27,7 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
                 props.regularbonusCounterNumbers.redSideCounterNumber
               }
               decrementFlag={props.decrementFlag}
-              imagePath="red.svg"
+              imagePath={RED_IMAGE_PATH}
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
           </div>
@@ -34,7 +38,7 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
                 props.regularbonusCounterNumbers.greenSideCounterNumber
               }
               decrementFlag={props.decrementFlag}
-              imagePath="green.svg"
+              imagePath={GREEN_IMAGE_PATH}
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
           </div>
@@ -47,7 +51,7 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
                 props.regularbonusCounterNumbers.yellowSideCounterNumber
               }
               decrementFlag={props.decrementFlag}
-              imagePath="yellow.svg"
+              imagePath={YELLOW_IMAGE_PATH}
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
           </div>
@@ -58,7 +62,7 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
                 props.regularbonusCounterNumbers.blueSideCounterNumber
               }
               decrementFlag={props.decrementFlag}
-              imagePath="blue.svg"
+              imagePath={BLUE_IMAGE_PATH}
               textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
             />
           </div>

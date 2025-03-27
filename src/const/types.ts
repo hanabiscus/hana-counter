@@ -1,3 +1,12 @@
+import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { SvgIconTypeMap } from "@mui/material/SvgIcon/SvgIcon";
+
+export type navigationItemProps = {
+  Icon: OverridableComponent<SvgIconTypeMap> & { muiName: string };
+  href: string;
+  name: string;
+};
+
 export type hooksCounterProps = {
   counterKind: string;
   counterNumber: number;
@@ -9,7 +18,7 @@ export type hooksReturnCounterProps = [
     increment: () => void;
     decrement: () => void;
     setCounterNumber: (counterNumber: number) => void;
-  }
+  },
 ];
 
 export type counterProps = {

@@ -11,10 +11,3 @@ body {
   color: var(--foreground);
   background: var(--background);
 }
-
-.loading {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}

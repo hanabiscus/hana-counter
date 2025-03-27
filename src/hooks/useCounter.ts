@@ -4,7 +4,7 @@ import { hooksCounterProps, hooksReturnCounterProps } from "@/const/types";
 import { setCookiesCounterNumber } from "@/server/cookie/coookies";
 import { useState } from "react";
 
-const UseCounter = (props: hooksCounterProps): hooksReturnCounterProps => {
+const useCounter = (props: hooksCounterProps): hooksReturnCounterProps => {
   const [counterNumber, setCount] = useState(props.counterNumber);
 
   const increment = async () => {
@@ -27,4 +27,4 @@ const UseCounter = (props: hooksCounterProps): hooksReturnCounterProps => {
   return [counterNumber, { increment, decrement, setCounterNumber }];
 };
 
-export default UseCounter;
+export default useCounter;

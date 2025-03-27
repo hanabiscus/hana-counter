@@ -3,6 +3,7 @@ import Counter from "../Counter";
 import { usuallyCounterProps } from "@/const/types";
 import {
   BELL_COUNTER,
+  BELL_IMAGE_PATH,
   CARD_BACKGROUND,
   CARD_MARGIN,
   USUALLY_COUNTER_FIELD_SIZE,
@@ -16,7 +17,7 @@ const UsuallyCounter = (props: usuallyCounterProps) => {
           counterKind={BELL_COUNTER}
           counterNumber={props.usuallyCounterNumber.bellCounterNumber}
           decrementFlag={props.decrementFlag}
-          imagePath="bell.svg"
+          imagePath={BELL_IMAGE_PATH}
           textFieldWidth={USUALLY_COUNTER_FIELD_SIZE}
         />
       </Card>

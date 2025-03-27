@@ -1,26 +1,30 @@
-import ConfigureAmplifyClientSide from "@/components/ConfigureAmplifyClientSide";
 import type { Metadata } from "next";
 import { fontNotoSansJp } from "@/utils/font";
+import SuperHeaderMenu from "@/components/super-header-menu/SuperHeaderMenu";
 import Header from "@/components/header/Header";
+import ConfigureAmplifyClientSide from "@/components/ConfigureAmplifyClientSide";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "hana-counter",
+  title: "はなカウンター | hana-counter",
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang="ja">
       <body className={`${fontNotoSansJp.variable}`}>
-        <ConfigureAmplifyClientSide />
+        <SuperHeaderMenu />
         <Header />
+        <ConfigureAmplifyClientSide />
         <main>{children}</main>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { counterProps } from "@/const/types";
-import UseCounter from "@/hooks/UseCounter";
+import useCounter from "@/hooks/useCounter";
 import { TextField, Box, ThemeProvider } from "@mui/material";
 import {
   COUNTER_ICON_SIZE,
@@ -10,17 +10,15 @@ import {
   counterIconTheme,
 } from "@/const/constants";
 
-import styles from "./counter.module.css";
-
 const Counter = (props: counterProps) => {
   const [counterNumber, { increment, decrement, setCounterNumber }] =
-    UseCounter({
+    useCounter({
       counterKind: props.counterKind,
       counterNumber: props.counterNumber,
     });
 
   return (
-    <div className={styles.counter}>
+    <div className="m-1 flex items-center justify-center">
       <TextField
         type="number"
         value={counterNumber}
@@ -35,7 +33,7 @@ const Counter = (props: counterProps) => {
           onClick={props.decrementFlag ? decrement : increment}
           sx={counterIconTheme}
         >
-          <div className={styles.imageIcon}>
+          <div className="m-1">
             <Image
               src={props.imagePath}
               alt="counterIcon"

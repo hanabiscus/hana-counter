@@ -1,3 +1,14 @@
+export const HANA_IMAGE_PATH = "/hana.svg";
+export const BELL_IMAGE_PATH = "/bell.svg";
+export const WATERMELON_IMAGE_PATH = "/waterMelon.svg";
+export const RED_IMAGE_PATH = "/red.svg";
+export const GREEN_IMAGE_PATH = "/green.svg";
+export const YELLOW_IMAGE_PATH = "/yellow.svg";
+export const BLUE_IMAGE_PATH = "/blue.svg";
+
+export const HOME_PAGE_PATH = "/";
+export const BALANCE_PAGE_PATH = "/balance";
+
 export const COOKIES_AGE = 60 * 60 * 24;
 
 export const CARD_MARGIN = 1;
@@ -48,18 +59,18 @@ export const decrementModeIndicatorBoxTheme = {
 };
 
 export const incrementModeIndicatorTheme = {
-  borderRadius: "5px",
+  borderRadius: "20px",
   border: "1px solid #009844",
-  mx: 10,
-  py: 0.75,
+  mx: 18,
+  py: 0.5,
   bgcolor: "primary.main",
 };
 
 export const decrementModeIndicatorTheme = {
-  borderRadius: "5px",
+  borderRadius: "20px",
   border: "1px solid #F44336",
-  mx: 10,
-  py: 0.75,
+  mx: 18,
+  py: 0.5,
   bgcolor: "primary.main",
 };
 

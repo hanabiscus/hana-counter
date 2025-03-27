@@ -21,7 +21,7 @@ const IncrementModeIndicator = () => {
   return (
     <ThemeProvider theme={incrementModeIndicatorBoxTheme}>
       <Box sx={incrementModeIndicatorTheme}>
-        <div className="flex justify-center">+ increment mode +</div>
+        <div className="text-xl flex justify-center">{"+ +"}</div>
       </Box>
     </ThemeProvider>
   );
@@ -31,7 +31,7 @@ const DecrementModeIndicator = () => {
   return (
     <ThemeProvider theme={decrementModeIndicatorBoxTheme}>
       <Box sx={decrementModeIndicatorTheme}>
-        <div className="flex justify-center">- decrement mode -</div>
+        <div className="text-xl flex justify-center">{"- -"}</div>
       </Box>
     </ThemeProvider>
   );
