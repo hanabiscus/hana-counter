@@ -12,7 +12,7 @@ outputs.auth.oauth.domain = outputs.custom.domain;
 Amplify.configure(outputs, { ssr: true });
 
 I18n.putVocabulariesForLanguage("ja", {
-  "Sign In with Google": "サインイン",
+  "Sign In with Google": "ログイン",
 });
 
 const AuthButton = () => {
@@ -20,7 +20,7 @@ const AuthButton = () => {
     <div className="w-15">
       <Authenticator socialProviders={["google"]} hideSignUp>
         {({ signOut }) => (
-          <>
+          <div className="p-[5px]">
             <ThemeProvider theme={authButtonBoxTheme}>
               <Box onClick={signOut} sx={authButtonTheme}>
                 <div className="text-[#333333] flex justify-center">
@@ -28,7 +28,7 @@ const AuthButton = () => {
                 </div>
               </Box>
             </ThemeProvider>
-          </>
+          </div>
         )}
       </Authenticator>
     </div>
