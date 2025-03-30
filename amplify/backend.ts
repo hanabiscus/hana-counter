@@ -3,7 +3,7 @@ import { auth } from "./auth/resource";
 
 const backend = defineBackend({ auth });
 
-const domainName = "https://auth.hana-counter.net";
+const domainName = "auth.hana-counter.net";
 
 backend.addOutput({
   custom: {
