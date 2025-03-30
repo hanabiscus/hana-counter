@@ -4,9 +4,9 @@ import { Amplify } from "aws-amplify";
 import { Authenticator } from "@aws-amplify/ui-react";
 import { I18n } from "aws-amplify/utils";
 import { Box, ThemeProvider } from "@mui/material";
+import { authButtonBoxTheme, authButtonTheme } from "@/const/constants";
 
 import outputs from "@/../amplify_outputs.json";
-import { authButtonBoxTheme, authButtonTheme } from "@/const/constants";
 
 outputs.auth.oauth.domain = outputs.custom.domain;
 Amplify.configure(outputs, { ssr: true });

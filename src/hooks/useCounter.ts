@@ -1,8 +1,8 @@
 "use client";
 
-import { hooksCounterProps, hooksReturnCounterProps } from "@/const/types";
-import { setCookiesCounterNumber } from "@/server/cookie/coookies";
 import { useState } from "react";
+import { setCookiesCounterNumber } from "@/server/cookie/coookies";
+import { hooksCounterProps, hooksReturnCounterProps } from "@/const/types";
 
 const useCounter = (props: hooksCounterProps): hooksReturnCounterProps => {
   const [counterNumber, setCount] = useState(props.counterNumber);
