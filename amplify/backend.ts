@@ -3,7 +3,7 @@ import { auth } from "./auth/resource";
 
 const backend = defineBackend({ auth });
 
-const domainName = secret("COGNITO_CUSTOM_DOMAIN");
+const domainName = "https://auth.hana-counter.net";
 
 backend.addOutput({
   custom: {
