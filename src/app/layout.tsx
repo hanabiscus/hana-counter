@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { fontNotoSansJp } from "@/utils/font";
+import ConfigureAmplifyClientSide from "@/components/amplify-outputs-import/ConfigureAmplifyClientSide";
 import SuperHeaderMenu from "@/components/super-header-menu/SuperHeaderMenu";
 import Header from "@/components/header/Header";
-import ConfigureAmplifyClientSide from "@/components/ConfigureAmplifyClientSide";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "はなカウンター | hana-counter",
+  title: "はなカウンタ | hana-counter",
 };
 
 const RootLayout = ({
@@ -18,9 +18,9 @@ const RootLayout = ({
   return (
     <html lang="ja">
       <body className={`${fontNotoSansJp.variable}`}>
+        <ConfigureAmplifyClientSide />
         <SuperHeaderMenu />
         <Header />
-        <ConfigureAmplifyClientSide />
         <main>{children}</main>
       </body>
     </html>

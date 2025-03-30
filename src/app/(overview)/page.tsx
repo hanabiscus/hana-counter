@@ -1,5 +1,5 @@
 import { getCookiesAllCounterNumber } from "@/server/cookie/coookies";
-import HanaCounter from "@/components/pageComponents/HanaCounter";
+import HanaCounter from "@/components/page-components/HanaCounter";
 
 const Home = async () => {
   const allCookies = await getCookiesAllCounterNumber();
