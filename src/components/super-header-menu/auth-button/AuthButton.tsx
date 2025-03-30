@@ -8,6 +8,7 @@ import { Box, ThemeProvider } from "@mui/material";
 import outputs from "@/../amplify_outputs.json";
 import { authButtonBoxTheme, authButtonTheme } from "@/const/constants";
 
+outputs.auth.oauth.domain = outputs.custom.domain;
 Amplify.configure(outputs, { ssr: true });
 
 I18n.putVocabulariesForLanguage("ja", {
