@@ -1,14 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { counterProps } from "@/const/types";
 import useCounter from "@/hooks/useCounter";
-import { TextField, Box, ThemeProvider } from "@mui/material";
-import {
-  COUNTER_ICON_SIZE,
-  counterBoxTheme,
-  counterIconTheme,
-} from "@/const/constants";
+import TextField from "@mui/material/TextField";
+import { counterProps } from "@/const/types";
+import { COUNTER_ICON_SIZE } from "@/const/constants";
 
 const Counter = (props: counterProps) => {
   const [counterNumber, { increment, decrement, setCounterNumber }] =
@@ -18,7 +14,7 @@ const Counter = (props: counterProps) => {
     });
 
   return (
-    <div className="m-1 flex items-center justify-center">
+    <div className="m-1.5 flex items-center justify-center">
       <TextField
         type="number"
         value={counterNumber}
@@ -28,21 +24,19 @@ const Counter = (props: counterProps) => {
         size="small"
         sx={{ maxWidth: props.textFieldWidth }}
       />
-      <ThemeProvider theme={counterBoxTheme}>
-        <Box
-          onClick={props.decrementFlag ? decrement : increment}
-          sx={counterIconTheme}
-        >
-          <div className="m-1">
-            <Image
-              src={props.imagePath}
-              alt="counterIcon"
-              width={COUNTER_ICON_SIZE}
-              height={COUNTER_ICON_SIZE}
-            />
-          </div>
-        </Box>
-      </ThemeProvider>
+      <button
+        onClick={props.decrementFlag ? decrement : increment}
+        className="h-[45px] w-[45px] ml-5 bg-[#dcdcdc] rounded-xl"
+      >
+        <div className="flex justify-center">
+          <Image
+            src={props.imagePath}
+            alt="counterIcon"
+            width={COUNTER_ICON_SIZE}
+            height={COUNTER_ICON_SIZE}
+          />
+        </div>
+      </button>
     </div>
   );
 };

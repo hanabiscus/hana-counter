@@ -3,8 +3,6 @@
 import { Amplify } from "aws-amplify";
 import { Authenticator } from "@aws-amplify/ui-react";
 import { I18n } from "aws-amplify/utils";
-import { Box, ThemeProvider } from "@mui/material";
-import { authButtonBoxTheme, authButtonTheme } from "@/const/constants";
 
 import outputs from "@/../amplify_outputs.json";
 
@@ -20,14 +18,15 @@ const AuthButton = () => {
     <div className="w-15">
       <Authenticator socialProviders={["google"]} hideSignUp>
         {({ signOut }) => (
-          <div className="p-[5px]">
-            <ThemeProvider theme={authButtonBoxTheme}>
-              <Box onClick={signOut} sx={authButtonTheme}>
-                <div className="text-[#333333] flex justify-center">
-                  {"ログアウト"}
-                </div>
-              </Box>
-            </ThemeProvider>
+          <div className="flex justify-center">
+            <button
+              onClick={signOut}
+              className="bg-[#cccccc] h-[50px] w-[140px] m-[2px] border-[3px] border-[#666666] rounded-[30px]"
+            >
+              <div className="text-[#333333] p-[3px] flex justify-center">
+                {"ログアウト"}
+              </div>
+            </button>
           </div>
         )}
       </Authenticator>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CircularProgress, Box } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { resetCookiesCounterNumber } from "@/server/cookie/coookies";
 
@@ -20,9 +20,9 @@ const ResetCounterNumberButton = () => {
         <CircularProgress color="error" size={30} />
       ) : (
         <div className="content-center">
-          <Box onClick={resetAllCounterNumber}>
+          <button onClick={resetAllCounterNumber}>
             <DeleteForeverIcon color="error" />
-          </Box>
+          </button>
         </div>
       )}
     </>

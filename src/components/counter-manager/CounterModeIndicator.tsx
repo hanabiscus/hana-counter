@@ -1,11 +1,4 @@
-import { Box, ThemeProvider } from "@mui/material";
 import { counterModeIndicatorProps } from "@/const/types";
-import {
-  decrementModeIndicatorBoxTheme,
-  decrementModeIndicatorTheme,
-  incrementModeIndicatorBoxTheme,
-  incrementModeIndicatorTheme,
-} from "@/const/constants";
 
 const CounterModeIndicator = (props: counterModeIndicatorProps) => {
   return (
@@ -19,21 +12,21 @@ const CounterModeIndicator = (props: counterModeIndicatorProps) => {
 
 const IncrementModeIndicator = () => {
   return (
-    <ThemeProvider theme={incrementModeIndicatorBoxTheme}>
-      <Box sx={incrementModeIndicatorTheme}>
-        <div className="text-xl flex justify-center">{"+ +"}</div>
-      </Box>
-    </ThemeProvider>
+    <div className="flex justify-center">
+      <div className="text-xl w-[100px] p-2 flex justify-center bg-[#009844] rounded-[30px]">
+        {"+ +"}
+      </div>
+    </div>
   );
 };
 
 const DecrementModeIndicator = () => {
   return (
-    <ThemeProvider theme={decrementModeIndicatorBoxTheme}>
-      <Box sx={decrementModeIndicatorTheme}>
-        <div className="text-xl flex justify-center">{"- -"}</div>
-      </Box>
-    </ThemeProvider>
+    <div className="flex justify-center">
+      <div className="text-xl w-[100px] p-2 flex justify-center bg-[#f44336] rounded-[30px]">
+        {"- -"}
+      </div>
+    </div>
   );
 };
 
