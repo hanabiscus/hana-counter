@@ -17,7 +17,7 @@ const SuperHeaderMenu = () => {
             <NavigationItem
               Icon={DatasetRoundedIcon}
               href={HOME_PAGE_PATH}
-              name={"カウンター"}
+              name={"カウンタ"}
             />
             <NavigationItem
               Icon={PaidRoundedIcon}
