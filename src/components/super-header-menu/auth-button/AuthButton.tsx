@@ -21,9 +21,9 @@ const AuthButton = () => {
           <div className="flex justify-center">
             <button
               onClick={signOut}
-              className="bg-[#cccccc] h-[50px] w-[140px] m-[2px] border-[3px] border-[#666666] rounded-[30px]"
+              className="bg-[#cccccc] h-[45px] w-[130px] m-[7px] border-[2px] border-[#666666] rounded-[30px]"
             >
-              <div className="text-[#333333] p-[3px] flex justify-center">
+              <div className="text-[#333333] flex justify-center">
                 {"ログアウト"}
               </div>
             </button>
