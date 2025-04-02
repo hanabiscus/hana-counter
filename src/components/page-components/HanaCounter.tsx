@@ -25,7 +25,7 @@ const HanaCounter = (props: hanaCounterProps) => {
           {decrementFlag ? <ResetCounterNumberButton /> : null}
         </div>
       </div>
-      <div className="content-center h-[90px]">
+      <div className="content-center h-[85px]">
         <UsuallyCounter
           decrementFlag={decrementFlag}
           usuallyCounterNumber={{
@@ -34,7 +34,7 @@ const HanaCounter = (props: hanaCounterProps) => {
           }}
         />
       </div>
-      <div className="content-center h-[225px]">
+      <div className="content-center h-[207px]">
         <BigbonusCounter
           decrementFlag={decrementFlag}
           bigbonusCounterNumbers={{
@@ -56,7 +56,7 @@ const HanaCounter = (props: hanaCounterProps) => {
           }}
         />
       </div>
-      <div className="content-center h-[150px]">
+      <div className="content-center h-[146px]">
         <RegularBonusCounter
           decrementFlag={decrementFlag}
           regularbonusCounterNumbers={{
