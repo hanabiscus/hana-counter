@@ -1,5 +1,5 @@
-import { isSuperHeaderMenuOpenState } from "@/atoms/superHeaderMenuState";
 import { useAtom, useAtomValue } from "jotai";
+import { isSuperHeaderMenuOpenState } from "@/atoms/superHeaderMenuState";
 
 export const useIsSuperHeaderMenuOpenState = () => {
   return useAtomValue(isSuperHeaderMenuOpenState);

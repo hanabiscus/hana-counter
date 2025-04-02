@@ -2,7 +2,17 @@ import Switch, { SwitchProps } from "@mui/material/Switch";
 
 const CounterModeSwitch = (props: SwitchProps) => {
   return (
-    <Switch color="error" checked={props.checked} onChange={props.onChange} />
+    <div className="flex justify-center">
+      <div className="text-[25px] content-center">{"+"}</div>
+      <div className="content-center">
+        <Switch
+          checked={props.checked}
+          onChange={props.onChange}
+          color="error"
+        />
+      </div>
+      <div className="text-[25px] content-center">{"-"}</div>
+    </div>
   );
 };
 

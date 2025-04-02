@@ -15,7 +15,7 @@ const ResetCounterNumberButton = () => {
   };
 
   return (
-    <>
+    <div className="content-center">
       {resetFlag ? (
         <CircularProgress color="error" size={30} />
       ) : (
@@ -25,7 +25,7 @@ const ResetCounterNumberButton = () => {
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

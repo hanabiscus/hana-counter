@@ -14,7 +14,7 @@ const Counter = (props: counterProps) => {
     });
 
   return (
-    <div className="m-1.5 flex items-center justify-center">
+    <div className="m-2.5 flex items-center justify-center">
       <TextField
         type="number"
         value={counterNumber}

@@ -6,7 +6,6 @@ import BigbonusCounter from "../counter/bigbonus-counter/BIgbonusCounter";
 import UsuallyCounter from "../counter/usually-counter/UsuallyCounter";
 import RegularBonusCounter from "../counter/regularbonus-counter/RegularbonusCounter";
 import CounterModeSwitch from "../counter-manager/CounterModeSwitch";
-import CounterModeIndicator from "../counter-manager/CounterModeIndicator";
 import ResetCounterNumberButton from "../counter-manager/ResetCounterNumberButton";
 
 const HanaCounter = (props: hanaCounterProps) => {
@@ -17,12 +16,16 @@ const HanaCounter = (props: hanaCounterProps) => {
   };
 
   return (
-    <div className="h-screen">
-      <div className="mt-1 flex justify-end content-center h-0.5/6">
-        {decrementFlag ? <ResetCounterNumberButton /> : null}
-        <CounterModeSwitch onChange={handleModeChange} />
+    <div className="h-[650px]">
+      <div className="mt-1 grid grid-cols-2">
+        <div className="content-center flex justify-start ml-2">
+          <CounterModeSwitch onChange={handleModeChange} />
+        </div>
+        <div className="content-center flex justify-end mr-2">
+          {decrementFlag ? <ResetCounterNumberButton /> : null}
+        </div>
       </div>
-      <div className="content-center h-1/12">
+      <div className="content-center h-[90px]">
         <UsuallyCounter
           decrementFlag={decrementFlag}
           usuallyCounterNumber={{
@@ -31,7 +34,7 @@ const HanaCounter = (props: hanaCounterProps) => {
           }}
         />
       </div>
-      <div className="content-center h-1.5/6">
+      <div className="content-center h-[225px]">
         <BigbonusCounter
           decrementFlag={decrementFlag}
           bigbonusCounterNumbers={{
@@ -53,7 +56,7 @@ const HanaCounter = (props: hanaCounterProps) => {
           }}
         />
       </div>
-      <div className="content-center h-1/6">
+      <div className="content-center h-[150px]">
         <RegularBonusCounter
           decrementFlag={decrementFlag}
           regularbonusCounterNumbers={{
@@ -71,9 +74,6 @@ const HanaCounter = (props: hanaCounterProps) => {
                 .blueSideCounterNumber,
           }}
         />
-      </div>
-      <div className="content-center h-1/6">
-        <CounterModeIndicator decrementFlag={decrementFlag} />
       </div>
     </div>
   );
