@@ -12,7 +12,7 @@ const SuperHeaderMenu = () => {
   return (
     <>
       {IsSuperHeaderMenuOpen ? (
-        <>
+        <div className="bg-[#333333]">
           <div className="grid grid-cols-2 place-items-center">
             <NavigationItem
               Icon={DatasetRoundedIcon}
@@ -28,7 +28,7 @@ const SuperHeaderMenu = () => {
           <div className="p-1">
             <AuthButton />
           </div>
-        </>
+        </div>
       ) : null}
     </>
   );
