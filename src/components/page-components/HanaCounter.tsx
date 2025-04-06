@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { hanaCounterProps } from "@/const/types";
-import BigbonusCounter from "../counter/bigbonus-counter/BIgbonusCounter";
-import UsuallyCounter from "../counter/usually-counter/UsuallyCounter";
-import RegularBonusCounter from "../counter/regularbonus-counter/RegularbonusCounter";
+import BigbonusCounter from "../counter-components/bigbonus-counter/BIgbonusCounter";
+import UsuallyCounter from "../counter-components/usually-counter/UsuallyCounter";
+import RegularBonusCounter from "../counter-components/regularbonus-counter/RegularbonusCounter";
 import CounterModeSwitch from "../counter-manager/CounterModeSwitch";
 import ResetCounterNumberButton from "../counter-manager/ResetCounterNumberButton";
 

@@ -35,7 +35,7 @@ const AuthButton = () => {
     <>
       {logoutState ? (
         <div className="h-[45px] m-[10px] flex justify-center">
-          <CircularProgress color="error" size={30} />
+          <CircularProgress color="secondary" size={30} />
         </div>
       ) : (
         <Authenticator socialProviders={["google"]} hideSignUp>

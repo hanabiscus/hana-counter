@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import useCounter from "@/hooks/useCounter";
+import { useCounter } from "@/hooks/useCounter";
 import TextField from "@mui/material/TextField";
 import { counterProps } from "@/const/types";
 import { COUNTER_ICON_SIZE } from "@/const/constants";

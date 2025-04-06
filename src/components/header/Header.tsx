@@ -2,10 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import {
-  useIsSuperHeaderMenuOpenState,
-  useSuperHeaderMenu,
-} from "@/hooks/useSuperHeaderMenu";
+import { useSuperHeaderMenu } from "@/hooks/useSuperHeaderMenu";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import {
@@ -15,8 +12,8 @@ import {
 } from "@/const/constants";
 
 const Header = () => {
-  const isSuperHeaderMenuOpen = useIsSuperHeaderMenuOpenState();
-  const superHeaderMenuMutator: () => void = useSuperHeaderMenu();
+  const [isSuperHeaderMenuOpen, { superHeaderMenuMutator }] =
+    useSuperHeaderMenu();
 
   return (
     <header className="bg-[#009844] p-2.5">

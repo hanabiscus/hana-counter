@@ -1,5 +1,6 @@
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { SvgIconTypeMap } from "@mui/material/SvgIcon/SvgIcon";
+import dayjs from "dayjs";
 
 export type navigationItemProps = {
   Icon: OverridableComponent<SvgIconTypeMap> & { muiName: string };
@@ -12,12 +13,35 @@ export type hooksCounterProps = {
   counterNumber: number;
 };
 
-export type hooksReturnCounterProps = [
+export type hooksReturnCounterReturn = [
   number,
   {
     increment: () => void;
     decrement: () => void;
     setCounterNumber: (counterNumber: number) => void;
+  },
+];
+
+export type hooksSuperHeaderMenuReturn = [
+  boolean,
+  {
+    superHeaderMenuMutator: () => void;
+  },
+];
+
+export type hooksBalanceValueReturn = [
+  number,
+  number,
+  {
+    setIntegerIncome: (income: number) => void;
+    setIntegerExpenditure: (expenditure: number) => void;
+  },
+];
+
+export type hooksBalanceDateReturn = [
+  string,
+  {
+    setStringBalanceDate: (balanceDate: dayjs.Dayjs | null) => void;
   },
 ];
 

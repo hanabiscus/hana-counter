@@ -7,6 +7,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { useIsLogoutState } from "@/hooks/useLogout";
 
 import outputs from "@/../amplify_outputs.json";
+import Balance from "@/components/page-components/Balance";
 
 Amplify.configure(outputs, { ssr: true });
 
@@ -20,7 +21,9 @@ const BalancePage = () => {
           <CircularProgress color="error" size={30} />
         </div>
       ) : (
-        <Authenticator socialProviders={["google"]} hideSignUp></Authenticator>
+        <Authenticator socialProviders={["google"]} hideSignUp>
+          <Balance />
+        </Authenticator>
       )}
     </>
   );

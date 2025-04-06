@@ -1,17 +1,14 @@
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom } from "jotai";
 import { isSuperHeaderMenuOpenState } from "@/atoms/superHeaderMenuState";
+import { hooksSuperHeaderMenuReturn } from "@/const/types";
 
-export const useIsSuperHeaderMenuOpenState = () => {
-  return useAtomValue(isSuperHeaderMenuOpenState);
-};
-
-export const useSuperHeaderMenu = () => {
+export const useSuperHeaderMenu = (): hooksSuperHeaderMenuReturn => {
   const [isSuperHeaderMenuOpen, setIsSuperHeaderMenuOpen] = useAtom(
     isSuperHeaderMenuOpenState
   );
 
-  const superHeaderMutator = () =>
+  const superHeaderMenuMutator = () =>
     setIsSuperHeaderMenuOpen(!isSuperHeaderMenuOpen);
 
-  return superHeaderMutator;
+  return [isSuperHeaderMenuOpen, { superHeaderMenuMutator }];
 };
