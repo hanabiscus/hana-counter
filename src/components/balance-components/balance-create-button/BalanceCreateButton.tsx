@@ -8,10 +8,10 @@ const BalanceCreateButton = () => {
     <>
       <button
         onClick={balanceModalMutator}
-        className="h-[50px] w-[50px] bg-[#009844] rounded-full shadow-md flex justify-center"
+        className="h-[50px] w-[50px] bg-[#009844] rounded-full shadow-md"
       >
-        <div className="text-5xl text-[#333333] h-[50px] w-[50px] content-center">
-          {"+"}
+        <div className="flex justify-center items-center">
+          <div className="text-[30px] text-[#333333]">{"+"}</div>
         </div>
       </button>
       <BalanceModal />
