@@ -3,7 +3,7 @@ import BalanceCreateButton from "../balance-components/balance-create-button/Bal
 const Balance = () => {
   return (
     <div className="h-svh relative">
-      <div className="z-50 opacity-100 fixed bottom-16 right-8">
+      <div className="z-50 opacity-100 fixed bottom-8 right-8">
         <BalanceCreateButton />
       </div>
     </div>

@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/ja";
 import { useBalanceDate } from "@/hooks/useBalance";
 import {
+  BALANCE_MODAL_DATE_PICKER_FLAG,
   DATE_PICKER_FIELD_SIZE,
   DATE_PICKER_FORMAT,
   DATE_PICKER_HEADER_FORMAT,
@@ -17,13 +18,14 @@ const BalanceDatePicker = () => {
   const [balanceDate, { setStringBalanceDate }] = useBalanceDate();
 
   return (
-    <div className="h-[65px] w-full grid content-center">
+    <div className="h-[70px] w-full grid content-center">
       <div className="m-auto">
         <LocalizationProvider
           dateAdapter={AdapterDayjs}
           dateFormats={{ year: DATE_PICKER_YEAR_FORMAT }}
         >
           <MobileDatePicker
+            label={BALANCE_MODAL_DATE_PICKER_FLAG}
             format={DATE_PICKER_FORMAT}
             slotProps={{
               calendarHeader: { format: DATE_PICKER_HEADER_FORMAT },

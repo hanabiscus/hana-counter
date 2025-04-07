@@ -12,28 +12,30 @@ const BalanceTextFields = () => {
 
   return (
     <>
-      <div className="text-[30px] h-[40px] w-full flex justify-center">
-        {income - expenditure >= 0 ? (
-          <div className="text-[#009844]">
-            {new Intl.NumberFormat("ja-JP", {
-              style: "currency",
-              currency: "JPY",
-            }).format(income - expenditure)}
-          </div>
-        ) : (
-          <div className="text-[#d32f2f]">
-            {new Intl.NumberFormat("ja-JP", {
-              style: "currency",
-              currency: "JPY",
-            }).format(income - expenditure)}
-          </div>
-        )}
+      <div className="text-[25px] h-[60px] w-full flex justify-center items-center">
+        <div className="border-b-[1px] border-[#333333]">
+          {income - expenditure >= 0 ? (
+            <div className="text-[#009844]">
+              {new Intl.NumberFormat("ja-JP", {
+                style: "currency",
+                currency: "JPY",
+              }).format(income - expenditure)}
+            </div>
+          ) : (
+            <div className="text-[#d32f2f]">
+              {new Intl.NumberFormat("ja-JP", {
+                style: "currency",
+                currency: "JPY",
+              }).format(income - expenditure)}
+            </div>
+          )}
+        </div>
       </div>
-      <div className="h-[100px] w-full grid grid-cols-2 content-center">
+      <div className="h-[90px] w-full grid grid-cols-2 content-center">
         <div className="m-auto">
           <TextField
             type="number"
-            value={expenditure}
+            value={String(expenditure).replace(/^0+/, "")}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               setIntegerExpenditure(Number(event.target.value))
             }
@@ -46,7 +48,7 @@ const BalanceTextFields = () => {
         <div className="m-auto">
           <TextField
             type="number"
-            value={income}
+            value={String(income).replace(/^0+/, "")}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               setIntegerIncome(Number(event.target.value))
             }

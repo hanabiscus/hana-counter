@@ -35,8 +35,9 @@ export const EXPENDITURE_LABEL = "投資金額";
 export const INCOME_LABEL = "回収金額";
 
 export const BALANCE_FIELD_SIZE = 100;
-export const DATE_PICKER_FIELD_SIZE = 200;
+export const DATE_PICKER_FIELD_SIZE = 110;
 
+export const BALANCE_MODAL_DATE_PICKER_FLAG = "実践日";
 export const DATE_PICKER_YEAR_FORMAT = "YYYY";
 export const DATE_PICKER_HEADER_FORMAT = "YYYY-MM";
 export const DATE_PICKER_FORMAT = "YYYY-MM-DD";

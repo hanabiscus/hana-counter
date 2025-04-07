@@ -4,7 +4,7 @@ import Modal from "@mui/material/Modal";
 import BalanceTextFields from "./balance-text-fields/BalanceTextFields";
 import BalanceDatePicker from "./date-picker/BalanceDatePicker";
 import { useIsBalanceOpenState } from "@/hooks/useBalanceModal";
-import CancelButton from "./buttons/CancelButton";
+import BalanceModalCancelButton from "./buttons/BalanceModalCancelButton";
 
 const BalanceModal = () => {
   const isBalanceModalOpen = useIsBalanceOpenState();
@@ -12,12 +12,12 @@ const BalanceModal = () => {
   return (
     <Modal open={isBalanceModalOpen}>
       <div className="h-svh flex flex-wrap justify-center items-center">
-        <div className="h-[270px] w-[300px] bg-[#bfc5ca] rounded-md">
+        <div className="h-[260px] w-[300px] bg-[#bfc5ca] rounded-2xl shadow-xl">
           <BalanceTextFields />
           <BalanceDatePicker />
-          <div className="flex justify-end items-end">
+          <div className="h-[40px] flex justify-end items-end">
             <div>
-              <CancelButton />
+              <BalanceModalCancelButton />
             </div>
           </div>
         </div>

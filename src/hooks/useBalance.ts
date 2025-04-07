@@ -14,12 +14,21 @@ export const useBalanceValue = (): hooksBalanceValueReturn => {
   const [expenditure, setExpenditure] = useAtom(expenditureState);
 
   const setIntegerIncome = (income: number) => {
-    setIncome(Math.floor(income));
+    if (income >= 0) {
+      setIncome(Math.floor(income));
+    } else {
+      setIncome(0);
+    }
+
     setBalance(income - expenditure);
   };
 
   const setIntegerExpenditure = (expenditure: number) => {
-    setExpenditure(Math.floor(expenditure));
+    if (expenditure >= 0) {
+      setExpenditure(Math.floor(expenditure));
+    } else {
+      setExpenditure(0);
+    }
 
     setBalance(income - expenditure);
   };
