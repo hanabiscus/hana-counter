@@ -5,6 +5,7 @@ import BalanceTextFields from "./balance-text-fields/BalanceTextFields";
 import BalanceDatePicker from "./date-picker/BalanceDatePicker";
 import { useIsBalanceOpenState } from "@/hooks/useBalanceModal";
 import BalanceModalCancelButton from "./buttons/BalanceModalCancelButton";
+import BalanceUpdateButton from "./buttons/BalanceUpdateButton";
 
 const BalanceModal = () => {
   const isBalanceModalOpen = useIsBalanceOpenState();
@@ -18,6 +19,9 @@ const BalanceModal = () => {
           <div className="h-[40px] flex justify-end items-end">
             <div>
               <BalanceModalCancelButton />
+            </div>
+            <div>
+              <BalanceUpdateButton />
             </div>
           </div>
         </div>

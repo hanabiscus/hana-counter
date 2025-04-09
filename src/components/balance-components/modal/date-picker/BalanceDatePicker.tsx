@@ -2,7 +2,6 @@ import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-import "dayjs/locale/ja";
 import { useBalanceDate } from "@/hooks/useBalance";
 import {
   BALANCE_MODAL_DATE_PICKER_FLAG,
@@ -11,8 +10,6 @@ import {
   DATE_PICKER_HEADER_FORMAT,
   DATE_PICKER_YEAR_FORMAT,
 } from "@/const/constants";
-
-dayjs.locale("ja");
 
 const BalanceDatePicker = () => {
   const [balanceDate, { setStringBalanceDate }] = useBalanceDate();

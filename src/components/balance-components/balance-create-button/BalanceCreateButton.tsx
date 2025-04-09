@@ -1,5 +1,4 @@
 import { useBalanceModal } from "@/hooks/useBalanceModal";
-import BalanceModal from "../modal/BalanceModal";
 
 const BalanceCreateButton = () => {
   const balanceModalMutator = useBalanceModal();
@@ -14,7 +13,6 @@ const BalanceCreateButton = () => {
           <div className="text-[30px] text-[#333333]">{"+"}</div>
         </div>
       </button>
-      <BalanceModal />
     </>
   );
 };
