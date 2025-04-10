@@ -4,12 +4,12 @@ import { updateBalance } from "@/server/balance/balanceProcedures";
 
 const BalanceUpdateButton = () => {
   const [income, expenditure] = useBalanceValue();
-  const [balanceData] = useBalanceDate();
+  const [balanceDate] = useBalanceDate();
   const balanceModalMutator = useBalanceModal();
 
   const handleClickBalanceUpdateButton = async () => {
-    await updateBalance(income, expenditure, balanceData);
     balanceModalMutator();
+    await updateBalance(income, expenditure, balanceDate);
   };
 
   return (

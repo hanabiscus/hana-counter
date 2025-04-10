@@ -1,5 +1,5 @@
 import { useAtom, useAtomValue } from "jotai";
-import { balanceModalState } from "@/atoms/balanceModalSate";
+import { balanceModalState } from "@/atoms/balanceModalState";
 
 export const useIsBalanceOpenState = () => {
   return useAtomValue(balanceModalState);

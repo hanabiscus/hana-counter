@@ -2,12 +2,14 @@
 
 import { cookies } from "next/headers";
 import {
+  ALL_COUNTER_KIND_SET,
   BELL_COUNTER,
   BLUE_FEATHER_COUNTER,
   BLUE_SIDE_COUNTER,
   COOKIES_AGE,
   GREEN_FEATHER_COUNTER,
   GREEN_SIDE_COUNTER,
+  HOME_PAGE_PATH,
   RED_FEATHER_COUNTER,
   RED_SIDE_COUNTER,
   WATERMELON_COUNTER,
@@ -15,17 +17,23 @@ import {
   YELLOW_SIDE_COUNTER,
 } from "@/const/constants";
 
-const setCookiesCounterNumber = async (
+export const setCookiesCounterNumber = async (
   counterKind: string,
   countNumber: number
 ) => {
-  (await cookies()).set(counterKind, String(countNumber), {
-    path: "/",
-    maxAge: COOKIES_AGE,
-  });
+  if (
+    ALL_COUNTER_KIND_SET.includes(counterKind) &&
+    Number.isInteger(countNumber) &&
+    countNumber >= 0
+  ) {
+    (await cookies()).set(counterKind, String(countNumber), {
+      path: HOME_PAGE_PATH,
+      maxAge: COOKIES_AGE,
+    });
+  }
 };
 
-const resetCookiesCounterNumber = async () => {
+export const resetCookiesCounterNumber = async () => {
   await setCookiesCounterNumber(BELL_COUNTER, 0);
   await setCookiesCounterNumber(WATERMELON_COUNTER, 0);
   await setCookiesCounterNumber(RED_FEATHER_COUNTER, 0);
@@ -38,13 +46,15 @@ const resetCookiesCounterNumber = async () => {
   await setCookiesCounterNumber(BLUE_SIDE_COUNTER, 0);
 };
 
-const getCookiesCounterNumber = async (counterKind: string) => {
-  return (await (await cookies()).has(counterKind))
-    ? Number(await (await cookies()).get(counterKind)?.value)
-    : 0;
+export const getCookiesCounterNumber = async (counterKind: string) => {
+  if (ALL_COUNTER_KIND_SET.includes(counterKind)) {
+    return (await (await cookies()).has(counterKind))
+      ? Number(await (await cookies()).get(counterKind)?.value)
+      : 0;
+  }
 };
 
-const getCookiesAllCounterNumber = async () => {
+export const getCookiesAllCounterNumber = async () => {
   return {
     bellCounterNumber: Number(await getCookiesCounterNumber(BELL_COUNTER)),
     watermelonCounterNumber: Number(
@@ -75,11 +85,4 @@ const getCookiesAllCounterNumber = async () => {
       await getCookiesCounterNumber(BLUE_SIDE_COUNTER)
     ),
   };
-};
-
-export {
-  setCookiesCounterNumber,
-  resetCookiesCounterNumber,
-  getCookiesCounterNumber,
-  getCookiesAllCounterNumber,
 };

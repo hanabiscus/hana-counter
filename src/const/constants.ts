@@ -31,6 +31,19 @@ export const GREEN_SIDE_COUNTER = "greenSideCounter";
 export const YELLOW_SIDE_COUNTER = "yellowSideCounter";
 export const BLUE_SIDE_COUNTER = "blueSideCounter";
 
+export const ALL_COUNTER_KIND_SET = [
+  BELL_COUNTER,
+  WATERMELON_COUNTER,
+  RED_FEATHER_COUNTER,
+  GREEN_FEATHER_COUNTER,
+  YELLOW_FEATHER_COUNTER,
+  BLUE_FEATHER_COUNTER,
+  RED_SIDE_COUNTER,
+  GREEN_SIDE_COUNTER,
+  YELLOW_SIDE_COUNTER,
+  BLUE_SIDE_COUNTER,
+];
+
 export const EXPENDITURE_LABEL = "投資金額";
 export const INCOME_LABEL = "回収金額";
 
@@ -41,3 +54,6 @@ export const BALANCE_MODAL_DATE_PICKER_FLAG = "実践日";
 export const DATE_PICKER_YEAR_FORMAT = "YYYY";
 export const DATE_PICKER_HEADER_FORMAT = "YYYY-MM";
 export const DATE_PICKER_FORMAT = "YYYY-MM-DD";
+
+export const BALANCE_DATE_FORMAT =
+  /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;

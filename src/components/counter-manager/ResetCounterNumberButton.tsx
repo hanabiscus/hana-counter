@@ -3,7 +3,7 @@
 import { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import { resetCookiesCounterNumber } from "@/server/cookie/coookies";
+import { resetCookiesCounterNumber } from "@/server/cookie/cookies";
 
 const ResetCounterNumberButton = () => {
   const [resetFlag, setResetFlag] = useState(false);
