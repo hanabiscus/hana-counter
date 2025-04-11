@@ -35,7 +35,7 @@ const BalanceTextFields = () => {
         <div className="m-auto">
           <TextField
             type="number"
-            value={String(expenditure).replace(/^0+/, "")}
+            value={String(expenditure)}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               setIntegerExpenditure(Number(event.target.value))
             }
@@ -48,7 +48,7 @@ const BalanceTextFields = () => {
         <div className="m-auto">
           <TextField
             type="number"
-            value={String(income).replace(/^0+/, "")}
+            value={String(income)}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               setIntegerIncome(Number(event.target.value))
             }
