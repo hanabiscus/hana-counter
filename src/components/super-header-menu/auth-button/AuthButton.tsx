@@ -9,8 +9,8 @@ import { useIsLogoutState, useSetLogout } from "@/hooks/useLogout";
 
 import outputs from "@/../amplify_outputs.json";
 
-if (process.env.AUTH_OAUTH_DOMAIN) {
-  outputs.auth.oauth.domain = process.env.AUTH_OAUTH_DOMAIN;
+if (process.env.NEXT_PUBLIC_AUTH_OAUTH_DOMAIN) {
+  outputs.auth.oauth.domain = process.env.NEXT_PUBLIC_AUTH_OAUTH_DOMAIN;
 }
 Amplify.configure(outputs, { ssr: true });
 

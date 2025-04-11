@@ -7,7 +7,7 @@ export const { runWithAmplifyServerContext } = createServerRunner({
   config: outputs,
   runtimeOptions: {
     cookies: {
-      domain: process.env.AUTH_COOKIE_DOMAIN,
+      domain: process.env.NEXT_PUBLIC_AUTH_COOKIE_DOMAIN,
       sameSite: "strict",
       maxAge: COOKIES_AGE,
     },

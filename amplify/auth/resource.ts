@@ -12,8 +12,8 @@ export const auth = defineAuth({
           email: "email",
         },
       },
-      callbackUrls: ["https://localhost:3000", "https://hana-counter.net"],
-      logoutUrls: ["https://localhost:3000", "https://hana-counter.net"],
+      callbackUrls: ["https://hana-counter.net", "https://localhost:3000"],
+      logoutUrls: ["https://hana-counter.net", "https://localhost:3000"],
     },
   },
 });
