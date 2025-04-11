@@ -9,7 +9,9 @@ import { useIsLogoutState, useSetLogout } from "@/hooks/useLogout";
 
 import outputs from "@/../amplify_outputs.json";
 
-outputs.auth.oauth.domain = outputs.custom.domain;
+if (process.env.AUTH_OAUTH_DOMAIN) {
+  outputs.auth.oauth.domain = process.env.AUTH_OAUTH_DOMAIN;
+}
 Amplify.configure(outputs, { ssr: true });
 
 I18n.putVocabulariesForLanguage("ja", {

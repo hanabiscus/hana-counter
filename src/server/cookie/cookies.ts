@@ -29,6 +29,9 @@ export const setCookiesCounterNumber = async (
     (await cookies()).set(counterKind, String(countNumber), {
       path: HOME_PAGE_PATH,
       maxAge: COOKIES_AGE,
+      sameSite: "lax",
+      secure: true,
+      httpOnly: true,
     });
   }
 };

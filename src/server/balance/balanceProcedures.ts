@@ -13,10 +13,6 @@ import outputs from "@/../amplify_outputs.json";
 
 Amplify.configure(outputs, { ssr: true });
 
-const client = generateClient<Schema>({
-  authMode: "identityPool",
-});
-
 export const updateBalance = async (
   income: number,
   expenditure: number,
@@ -30,6 +26,10 @@ export const updateBalance = async (
     expenditure >= 0 &&
     !(income === 0 && expenditure === 0)
   ) {
+    const client = generateClient<Schema>({
+      authMode: "identityPool",
+    });
+
     const { userId } = await runWithAmplifyServerContext({
       nextServerContext: { cookies },
       operation: (contextSpec: AmplifyServer.ContextSpec) =>
