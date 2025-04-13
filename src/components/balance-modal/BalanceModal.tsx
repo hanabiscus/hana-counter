@@ -2,10 +2,10 @@
 
 import Modal from "@mui/material/Modal";
 import BalanceTextFields from "./balance-text-fields/BalanceTextFields";
-import BalanceDatePicker from "./date-picker/BalanceDatePicker";
+import BalanceDatePicker from "./balance-date-picker/BalanceDatePicker";
 import { useIsBalanceOpenState } from "@/hooks/useBalanceModal";
-import BalanceModalCancelButton from "./buttons/BalanceModalCancelButton";
-import BalanceUpdateButton from "./buttons/BalanceUpdateButton";
+import BalanceModalCancelButton from "./buttons/balance-modal-cancel-button/BalanceModalCancelButton";
+import BalanceUpdateButton from "./buttons/balance-update-button/BalanceUpdateButton";
 
 const BalanceModal = () => {
   const isBalanceModalOpen = useIsBalanceOpenState();

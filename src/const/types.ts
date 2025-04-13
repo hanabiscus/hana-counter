@@ -45,6 +45,11 @@ export type hooksBalanceDateReturn = [
   },
 ];
 
+export type hooksMonthlyBalanceDataReturn = [
+  balanceDTOType,
+  { setFetchedMonthlyBalanceData: (balanceData: balanceDTOType) => void },
+];
+
 export type counterProps = {
   counterKind: string;
   counterNumber: number;
@@ -99,4 +104,26 @@ export type hanaCounterProps = {
 
 export type counterModeIndicatorProps = {
   decrementFlag: boolean;
+};
+
+export type balanceData = {
+  recordId: string;
+  income: number;
+  expenditure: number;
+  balanceDate: string;
+  recordOwner: string;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+}[];
+
+export type balanceDTOType = {
+  income: number;
+  expenditure: number;
+  balanceDate: string;
+}[];
+
+export type balanceMonthDTOType = string[];
+
+export type balanceProps = {
+  balanceDataDTO: balanceDTOType;
 };

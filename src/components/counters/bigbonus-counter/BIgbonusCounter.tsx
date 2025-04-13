@@ -1,4 +1,4 @@
-import Counter from "../Counter";
+import CounterUnit from "../counter-unit/CounterUnit";
 import { bigbonusCounterProps } from "@/const/types";
 import {
   BLUE_FEATHER_COUNTER,
@@ -17,7 +17,7 @@ import {
 const BigbonusCounter = (props: bigbonusCounterProps) => {
   return (
     <div className="bg-[#bfc5ca] rounded-md p-1 m-2">
-      <Counter
+      <CounterUnit
         counterKind={WATERMELON_COUNTER}
         counterNumber={props.bigbonusCounterNumbers.watermelonCounterNumber}
         decrementFlag={props.decrementFlag}
@@ -26,7 +26,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
       />
       <div className="flex">
         <div className="basis-1/2">
-          <Counter
+          <CounterUnit
             counterKind={RED_FEATHER_COUNTER}
             counterNumber={props.bigbonusCounterNumbers.redFeatherCounterNumber}
             decrementFlag={props.decrementFlag}
@@ -35,7 +35,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
           />
         </div>
         <div className="basis-1/2">
-          <Counter
+          <CounterUnit
             counterKind={GREEN_FEATHER_COUNTER}
             counterNumber={
               props.bigbonusCounterNumbers.greenFeatherCounterNumber
@@ -48,7 +48,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
       </div>
       <div className="flex">
         <div className="basis-1/2">
-          <Counter
+          <CounterUnit
             counterKind={YELLOW_FEATHER_COUNTER}
             counterNumber={
               props.bigbonusCounterNumbers.yellowFeatherCounterNumber
@@ -59,7 +59,7 @@ const BigbonusCounter = (props: bigbonusCounterProps) => {
           />
         </div>
         <div className="basis-1/2">
-          <Counter
+          <CounterUnit
             counterKind={BLUE_FEATHER_COUNTER}
             counterNumber={
               props.bigbonusCounterNumbers.blueFeatherCounterNumber

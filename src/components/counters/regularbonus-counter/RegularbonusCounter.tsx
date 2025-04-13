@@ -1,4 +1,4 @@
-import Counter from "../Counter";
+import CounterUnit from "../counter-unit/CounterUnit";
 import { regularbonusCounterProps } from "@/const/types";
 import {
   BLUE_IMAGE_PATH,
@@ -17,7 +17,7 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
     <div className="bg-[#bfc5ca] rounded-md p-1 m-2">
       <div className="flex">
         <div className="basis-1/2">
-          <Counter
+          <CounterUnit
             counterKind={RED_SIDE_COUNTER}
             counterNumber={
               props.regularbonusCounterNumbers.redSideCounterNumber
@@ -28,7 +28,7 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
           />
         </div>
         <div className="basis-1/2">
-          <Counter
+          <CounterUnit
             counterKind={GREEN_SIDE_COUNTER}
             counterNumber={
               props.regularbonusCounterNumbers.greenSideCounterNumber
@@ -41,7 +41,7 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
       </div>
       <div className="flex">
         <div className="basis-1/2">
-          <Counter
+          <CounterUnit
             counterKind={YELLOW_SIDE_COUNTER}
             counterNumber={
               props.regularbonusCounterNumbers.yellowSideCounterNumber
@@ -52,7 +52,7 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
           />
         </div>
         <div className="basis-1/2">
-          <Counter
+          <CounterUnit
             counterKind={BLUE_SIDE_COUNTER}
             counterNumber={
               props.regularbonusCounterNumbers.blueSideCounterNumber

@@ -26,10 +26,6 @@ export const updateBalance = async (
     expenditure >= 0 &&
     !(income === 0 && expenditure === 0)
   ) {
-    const client = generateClient<Schema>({
-      authMode: "identityPool",
-    });
-
     const { userId } = await runWithAmplifyServerContext({
       nextServerContext: { cookies },
       operation: (contextSpec: AmplifyServer.ContextSpec) =>
@@ -37,6 +33,10 @@ export const updateBalance = async (
     });
 
     if (userId != null || userId != undefined || userId != "") {
+      const client = generateClient<Schema>({
+        authMode: "identityPool",
+      });
+
       const primaryKey = userId + balanceDate;
 
       const { data: fetchedBalanceData } = await client.models.Balance.get(

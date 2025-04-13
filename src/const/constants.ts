@@ -55,5 +55,15 @@ export const DATE_PICKER_YEAR_FORMAT = "YYYY";
 export const DATE_PICKER_HEADER_FORMAT = "YYYY-MM";
 export const DATE_PICKER_FORMAT = "YYYY-MM-DD";
 
+export const SUNDAY = "日";
+export const MONDAY = "月";
+export const TUESDAY = "火";
+export const WEDNESDAY = "水";
+export const THURSDAY = "木";
+export const FRIDAY = "金";
+export const SATURDAY = "土";
+
 export const BALANCE_DATE_FORMAT =
   /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+
+export const BALANCE_MONTH_FORMAT = /^[0-9]{4}-(0[1-9]|1[0-2])$/;

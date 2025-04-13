@@ -1,4 +1,4 @@
-import Counter from "../Counter";
+import CounterUnit from "../counter-unit/CounterUnit";
 import { usuallyCounterProps } from "@/const/types";
 import {
   BELL_COUNTER,
@@ -9,7 +9,7 @@ import {
 const UsuallyCounter = (props: usuallyCounterProps) => {
   return (
     <div className="bg-[#bfc5ca] rounded-md p-1 m-2">
-      <Counter
+      <CounterUnit
         counterKind={BELL_COUNTER}
         counterNumber={props.usuallyCounterNumber.bellCounterNumber}
         decrementFlag={props.decrementFlag}

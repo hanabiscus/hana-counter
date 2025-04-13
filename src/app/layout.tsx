@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { fontNotoSansJp } from "@/utils/font";
-import ConfigureAmplifyClientSide from "@/components/amplify-outputs-import/ConfigureAmplifyClientSide";
+import ConfigureAmplifyClientSide from "@/components/configure-amplify-client-side/ConfigureAmplifyClientSide";
 import SuperHeaderMenu from "@/components/super-header-menu/SuperHeaderMenu";
 import Header from "@/components/header/Header";
 

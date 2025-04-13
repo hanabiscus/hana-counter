@@ -1,6 +1,6 @@
 "use client";
 
-import NavigationItem from "./navigation/NavigationItem";
+import NavigationItem from "./navigation-item/NavigationItem";
 import { useSuperHeaderMenu } from "@/hooks/useSuperHeaderMenu";
 import DatasetRoundedIcon from "@mui/icons-material/DatasetRounded";
 import PaidRoundedIcon from "@mui/icons-material/PaidRounded";
@@ -8,7 +8,7 @@ import AuthButton from "./auth-button/AuthButton";
 import { BALANCE_PAGE_PATH, HOME_PAGE_PATH } from "@/const/constants";
 
 const SuperHeaderMenu = () => {
-  const [isSuperHeaderMenuOpen] = useSuperHeaderMenu();
+  const isSuperHeaderMenuOpen = useSuperHeaderMenu()[0];
   return (
     <>
       {isSuperHeaderMenuOpen ? (

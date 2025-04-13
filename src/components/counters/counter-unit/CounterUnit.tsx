@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 import { counterProps } from "@/const/types";
 import { COUNTER_ICON_SIZE } from "@/const/constants";
 
-const Counter = (props: counterProps) => {
+const CounterUnit = (props: counterProps) => {
   const [counterNumber, { increment, decrement, setCounterNumber }] =
     useCounter({
       counterKind: props.counterKind,
@@ -41,4 +41,4 @@ const Counter = (props: counterProps) => {
   );
 };
 
-export default Counter;
+export default CounterUnit;

@@ -1,32 +1,10 @@
-"use client";
-
-import React from "react";
-import { Amplify } from "aws-amplify";
-import { Authenticator } from "@aws-amplify/ui-react";
-import CircularProgress from "@mui/material/CircularProgress";
-import { useIsLogoutState } from "@/hooks/useLogout";
-
-import outputs from "@/../amplify_outputs.json";
 import Balance from "@/components/page-components/Balance";
+import { getMonthlyBalanceData } from "@/server/balance/balanceProcessors";
 
-Amplify.configure(outputs, { ssr: true });
+const BalancePage = async () => {
+  const fetchedMonthlyBalanceData = await getMonthlyBalanceData("2025-04");
 
-const BalancePage = () => {
-  const logoutState = useIsLogoutState();
-
-  return (
-    <>
-      {logoutState ? (
-        <div className="h-svh grid justify-center content-center">
-          <CircularProgress color="error" size={30} />
-        </div>
-      ) : (
-        <Authenticator socialProviders={["google"]} hideSignUp>
-          <Balance />
-        </Authenticator>
-      )}
-    </>
-  );
+  return <Balance balanceDataDTO={fetchedMonthlyBalanceData} />;
 };
 
 export default BalancePage;
