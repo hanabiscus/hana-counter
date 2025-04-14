@@ -7,11 +7,7 @@ import type { Schema } from "@/../amplify/data/resource";
 import { getCurrentUser } from "aws-amplify/auth/server";
 import { runWithAmplifyServerContext } from "@/utils/amplifyServerUtils";
 import { AmplifyServer } from "aws-amplify/adapter-core";
-import {
-  balanceData,
-  balanceDTOType,
-  balanceMonthDTOType,
-} from "@/const/types";
+import { balanceData, balanceDTOType } from "@/const/types";
 import { BALANCE_MONTH_FORMAT } from "@/const/constants";
 
 import outputs from "@/../amplify_outputs.json";
@@ -28,53 +24,31 @@ const transformBalanceDataToBalanceDTO = (
   }));
 };
 
-const transformBalanceDataToBalanceMonthDTO = (
-  data: balanceData
-): balanceMonthDTOType => {
-  const balanceDates = data.map(({ balanceDate }) => ({ balanceDate }));
+// export const getBalanceMonthList = async (): balanceMonthDTOType => {
+//   const { userId } = await runWithAmplifyServerContext({
+//     nextServerContext: { cookies },
+//     operation: (contextSpec: AmplifyServer.ContextSpec) =>
+//       getCurrentUser(contextSpec),
+//   });
 
-  const duplicatedBalanceMonths = balanceDates.map((data) =>
-    data.balanceDate.slice(0, -3)
-  );
+//   if (userId != null || userId != undefined || userId != "") {
+//     const client = generateClient<Schema>({
+//       authMode: "identityPool",
+//     });
 
-  // 正規表現チェック
+//     const { data: fetchedBalanceData } = await client.models.Balance.list({
+//       filter: {
+//         recordOwner: {
+//           eq: userId,
+//         },
+//       },
+//     });
 
-  return Array.from(
-    new Map(duplicatedBalanceMonths.map((data) => [data, data])).values()
-  );
-};
-
-export const getBalanceMonth = async (
-  balanceMonth: string
-): Promise<balanceMonthDTOType> => {
-  if (BALANCE_MONTH_FORMAT.test(balanceMonth)) {
-    const { userId } = await runWithAmplifyServerContext({
-      nextServerContext: { cookies },
-      operation: (contextSpec: AmplifyServer.ContextSpec) =>
-        getCurrentUser(contextSpec),
-    });
-
-    if (userId != null || userId != undefined || userId != "") {
-      const client = generateClient<Schema>({
-        authMode: "identityPool",
-      });
-
-      const { data: fetchedBalanceData } = await client.models.Balance.list({
-        filter: {
-          recordOwner: {
-            eq: userId,
-          },
-        },
-      });
-
-      return transformBalanceDataToBalanceMonthDTO(fetchedBalanceData);
-    } else {
-      return [];
-    }
-  } else {
-    return [];
-  }
-};
+//     //変換
+//   } else {
+//     return [];
+//   }
+// };
 
 export const getMonthlyBalanceData = async (
   balanceMonth: string

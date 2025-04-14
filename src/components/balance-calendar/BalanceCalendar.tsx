@@ -1,6 +1,10 @@
 "use client";
 
 import { useMonthlyBalanceData } from "@/hooks/useBalance";
+import { useLoadingState } from "@/hooks/useLoading";
+import { createBalanceCalendarArray } from "@/utils/balanceDataUtils";
+import Loading from "@/app/loading";
+import { balanceProps } from "@/const/types";
 import {
   FRIDAY,
   MONDAY,
@@ -10,10 +14,13 @@ import {
   TUESDAY,
   WEDNESDAY,
 } from "@/const/constants";
-import { createBalanceCalendarArray } from "@/utils/balanceDataUtils";
 
-const BalanceCalendar = () => {
+const BalanceCalendar = (props: balanceProps) => {
+  const isLoading = useLoadingState()[0];
   const [monthlyBalanceData] = useMonthlyBalanceData();
+  const { setFetchedMonthlyBalanceData } = useMonthlyBalanceData()[1];
+
+  setFetchedMonthlyBalanceData(props.balanceDataDTO);
 
   const balanceCalendarArray = createBalanceCalendarArray(
     "2025-04",
@@ -45,19 +52,25 @@ const BalanceCalendar = () => {
   });
 
   return (
-    <div className="m-1 bg-[#555555] rounded-md">
-      <div className="grid grid-cols-7 place-items-center">
-        <div>{SUNDAY}</div>
-        <div>{MONDAY}</div>
-        <div>{TUESDAY}</div>
-        <div>{WEDNESDAY}</div>
-        <div>{THURSDAY}</div>
-        <div>{FRIDAY}</div>
-        <div>{SATURDAY}</div>
-        {emptyDate}
-        {balanceCalendar}
-      </div>
-    </div>
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="m-1 bg-[#555555] rounded-md">
+          <div className="grid grid-cols-7 place-items-center">
+            <div>{SUNDAY}</div>
+            <div>{MONDAY}</div>
+            <div>{TUESDAY}</div>
+            <div>{WEDNESDAY}</div>
+            <div>{THURSDAY}</div>
+            <div>{FRIDAY}</div>
+            <div>{SATURDAY}</div>
+            {emptyDate}
+            {balanceCalendar}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

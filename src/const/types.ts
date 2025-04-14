@@ -13,12 +13,19 @@ export type hooksCounterProps = {
   counterNumber: number;
 };
 
-export type hooksReturnCounterReturn = [
+export type hooksCounterReturn = [
   number,
   {
     increment: () => void;
     decrement: () => void;
     setCounterNumber: (counterNumber: number) => void;
+  },
+];
+
+export type hooksLoadingReturn = [
+  boolean,
+  {
+    loadingMutator: (isLoading: boolean) => void;
   },
 ];
 
@@ -111,6 +118,7 @@ export type balanceData = {
   income: number;
   expenditure: number;
   balanceDate: string;
+  balanceMonth: string;
   recordOwner: string;
   readonly createdAt: string;
   readonly updatedAt: string;
@@ -122,7 +130,9 @@ export type balanceDTOType = {
   balanceDate: string;
 }[];
 
-export type balanceMonthDTOType = string[];
+export type balanceMonthDTOType = {
+  balanceMonth: string;
+}[];
 
 export type balanceProps = {
   balanceDataDTO: balanceDTOType;

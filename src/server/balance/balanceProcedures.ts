@@ -51,6 +51,7 @@ export const updateBalance = async (
         income: income,
         expenditure: expenditure,
         balanceDate: balanceDate,
+        balanceMonth: balanceDate.slice(0, 7),
         recordOwner: userId,
       };
 
