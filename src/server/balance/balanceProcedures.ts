@@ -1,13 +1,14 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 import { Amplify } from "aws-amplify";
 import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/../amplify/data/resource";
 import { getCurrentUser } from "aws-amplify/auth/server";
 import { runWithAmplifyServerContext } from "@/utils/amplifyServerUtils";
 import { AmplifyServer } from "aws-amplify/adapter-core";
-import { BALANCE_DATE_FORMAT } from "@/const/constants";
+import { BALANCE_DATE_FORMAT, BALANCE_PAGE_PATH } from "@/const/constants";
 
 import outputs from "@/../amplify_outputs.json";
 
@@ -66,4 +67,5 @@ export const updateBalance = async (
       }
     }
   }
+  revalidatePath(BALANCE_PAGE_PATH);
 };
