@@ -1,10 +1,6 @@
 import CounterUnit from "../counter-unit/CounterUnit";
 import { usuallyCounterProps } from "@/const/types";
-import {
-  BELL_COUNTER,
-  BELL_IMAGE_PATH,
-  USUALLY_COUNTER_FIELD_SIZE,
-} from "@/const/constants";
+import { BELL_COUNTER, USUALLY_COUNTER_FIELD_SIZE } from "@/const/constants";
 
 const UsuallyCounter = (props: usuallyCounterProps) => {
   return (
@@ -13,7 +9,6 @@ const UsuallyCounter = (props: usuallyCounterProps) => {
         counterKind={BELL_COUNTER}
         counterNumber={props.usuallyCounterNumber.bellCounterNumber}
         decrementFlag={props.decrementFlag}
-        imagePath={BELL_IMAGE_PATH}
         textFieldWidth={USUALLY_COUNTER_FIELD_SIZE}
       />
     </div>

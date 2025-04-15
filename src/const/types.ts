@@ -61,7 +61,6 @@ export type counterProps = {
   counterKind: string;
   counterNumber: number;
   decrementFlag: boolean;
-  imagePath: string;
   textFieldWidth: number;
 };
 

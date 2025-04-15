@@ -1,14 +1,10 @@
 import CounterUnit from "../counter-unit/CounterUnit";
 import { regularbonusCounterProps } from "@/const/types";
 import {
-  BLUE_IMAGE_PATH,
   BLUE_SIDE_COUNTER,
   BONUS_COUNTER_FIELD_SIZE,
-  GREEN_IMAGE_PATH,
   GREEN_SIDE_COUNTER,
-  RED_IMAGE_PATH,
   RED_SIDE_COUNTER,
-  YELLOW_IMAGE_PATH,
   YELLOW_SIDE_COUNTER,
 } from "@/const/constants";
 
@@ -23,7 +19,6 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
               props.regularbonusCounterNumbers.redSideCounterNumber
             }
             decrementFlag={props.decrementFlag}
-            imagePath={RED_IMAGE_PATH}
             textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
           />
         </div>
@@ -34,7 +29,6 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
               props.regularbonusCounterNumbers.greenSideCounterNumber
             }
             decrementFlag={props.decrementFlag}
-            imagePath={GREEN_IMAGE_PATH}
             textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
           />
         </div>
@@ -47,7 +41,6 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
               props.regularbonusCounterNumbers.yellowSideCounterNumber
             }
             decrementFlag={props.decrementFlag}
-            imagePath={YELLOW_IMAGE_PATH}
             textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
           />
         </div>
@@ -58,7 +51,6 @@ const RegularBonusCounter = (props: regularbonusCounterProps) => {
               props.regularbonusCounterNumbers.blueSideCounterNumber
             }
             decrementFlag={props.decrementFlag}
-            imagePath={BLUE_IMAGE_PATH}
             textFieldWidth={BONUS_COUNTER_FIELD_SIZE}
           />
         </div>
