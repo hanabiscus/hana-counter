@@ -63,7 +63,7 @@ const BalanceCalendar = () => {
   }, 0);
 
   const balanceCalendar = balanceCalendarArray.map((data, index) => {
-    if (data === undefined) {
+    if (data === undefined || data.income - data.expenditure === 0) {
       return (
         <div key={index} className="h-[70px] w-[50px] text-center">
           <div>{index + 1}</div>
