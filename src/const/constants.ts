@@ -39,6 +39,12 @@ export const ALL_COUNTER_KIND_SET = [
   BLUE_SIDE_COUNTER,
 ];
 
+export const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
+
 export const textFiledTheme = createTheme({
   palette: {
     text: {
@@ -46,6 +52,27 @@ export const textFiledTheme = createTheme({
     },
   },
 });
+
+export const incomeTextFiledTheme = createTheme({
+  palette: {
+    mode: "dark",
+    text: {
+      primary: "#009844",
+    },
+  },
+});
+
+export const expenditureTextFiledTheme = createTheme({
+  palette: {
+    mode: "dark",
+    text: {
+      primary: "#d32f2f",
+    },
+  },
+});
+
+export const BALANCE_MONTH_SELECTOR_MIN_WIDTH = 90;
+export const BALANCE_MONTH_SELECTOR_MARGIN = 2;
 
 export const SHM_NAVIGATION_NAME_COUNTER = "カウンタ";
 export const SHM_NAVIGATION_NAME_MONTHLY_BALANCE = "月別収支";

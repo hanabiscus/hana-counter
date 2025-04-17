@@ -1,26 +1,41 @@
 import Balance from "@/components/page-components/Balance";
 import { checkAuthSession } from "@/server/authentication/amplifyAuthSession";
-import { getMonthlyBalanceData } from "@/server/balance/balanceProcessors";
-import { balanceDTOType } from "@/const/types";
+import {
+  getBalanceMonthList,
+  getMonthlyBalanceData,
+} from "@/server/balance/balanceProcessors";
 import { getCurrentBalanceMonth } from "@/utils/dateUtils";
+import { balanceDTOType, balanceMonthDTOType } from "@/const/types";
 
 const BalancePage = async () => {
   const isLogin = await checkAuthSession();
+
   const fetchedMonthlyBalanceData: balanceDTOType = [];
+  const fetchedBalanceMonthData: balanceMonthDTOType = [];
+
+  const currentBalanceMonth = getCurrentBalanceMonth();
+
   if (isLogin) {
     Array.prototype.push.apply(
       fetchedMonthlyBalanceData,
-      await getMonthlyBalanceData(getCurrentBalanceMonth())
+      await getMonthlyBalanceData(currentBalanceMonth)
+    );
+
+    Array.prototype.push.apply(
+      fetchedBalanceMonthData,
+      await getBalanceMonthList()
     );
   }
 
   return (
     <>
       {isLogin ? (
-        <Balance balanceDataDTO={fetchedMonthlyBalanceData} />
+        <>
+          <Balance balanceMonthDataDTO={fetchedBalanceMonthData} />
+        </>
       ) : (
         <div className="h-svh flex justify-center items-center">
-          <Balance balanceDataDTO={fetchedMonthlyBalanceData} />
+          <Balance balanceMonthDataDTO={[]} />
         </div>
       )}
     </>

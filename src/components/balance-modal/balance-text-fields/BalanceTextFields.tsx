@@ -1,11 +1,13 @@
 import TextField from "@mui/material/TextField";
 import { useBalanceValue } from "@/hooks/useBalance";
 import { ThemeProvider } from "@mui/material";
+import { formatNumberToYen } from "@/utils/balanceUtils";
 import {
   BALANCE_FIELD_SIZE,
   EXPENDITURE_LABEL,
+  expenditureTextFiledTheme,
   INCOME_LABEL,
-  textFiledTheme,
+  incomeTextFiledTheme,
 } from "@/const/constants";
 
 const BalanceTextFields = () => {
@@ -18,24 +20,18 @@ const BalanceTextFields = () => {
         <div className="border-b-[1px] border-[#333333]">
           {income - expenditure >= 0 ? (
             <div className="text-[#009844]">
-              {new Intl.NumberFormat("ja-JP", {
-                style: "currency",
-                currency: "JPY",
-              }).format(income - expenditure)}
+              {formatNumberToYen(income - expenditure)}
             </div>
           ) : (
             <div className="text-[#d32f2f]">
-              {new Intl.NumberFormat("ja-JP", {
-                style: "currency",
-                currency: "JPY",
-              }).format(income - expenditure)}
+              {formatNumberToYen(income - expenditure)}
             </div>
           )}
         </div>
       </div>
       <div className="h-[90px] w-full grid grid-cols-2 content-center">
         <div className="m-auto">
-          <ThemeProvider theme={textFiledTheme}>
+          <ThemeProvider theme={expenditureTextFiledTheme}>
             <TextField
               type="number"
               value={String(expenditure)}
@@ -50,7 +46,7 @@ const BalanceTextFields = () => {
           </ThemeProvider>
         </div>
         <div className="m-auto">
-          <ThemeProvider theme={textFiledTheme}>
+          <ThemeProvider theme={incomeTextFiledTheme}>
             <TextField
               type="number"
               value={String(income)}

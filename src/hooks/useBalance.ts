@@ -1,6 +1,8 @@
 import { useAtom, useSetAtom } from "jotai";
 import {
   balanceDateState,
+  balanceMonthDataState,
+  balanceMonthState,
   balanceState,
   expenditureState,
   incomeState,
@@ -8,7 +10,10 @@ import {
 } from "@/atoms/balanceState";
 import {
   balanceDTOType,
+  balanceMonthDTOType,
   hooksBalanceDateReturn,
+  hooksBalanceMonthDataReturn,
+  hooksBalanceMonthReturn,
   hooksBalanceValueReturn,
   hooksMonthlyBalanceDataReturn,
 } from "@/const/types";
@@ -54,6 +59,12 @@ export const useBalanceDate = (): hooksBalanceDateReturn => {
   return [balanceDate, { setBalanceDate, setStringBalanceDate }];
 };
 
+export const useBalanceMonth = (): hooksBalanceMonthReturn => {
+  const [balanceMonth, setBalanceMonth] = useAtom(balanceMonthState);
+
+  return [balanceMonth, { setBalanceMonth }];
+};
+
 export const useMonthlyBalanceData = (): hooksMonthlyBalanceDataReturn => {
   const [monthlyBalanceData, setMonthlyBalanceData] = useAtom(
     monthlyBalanceDataState
@@ -64,4 +75,18 @@ export const useMonthlyBalanceData = (): hooksMonthlyBalanceDataReturn => {
   };
 
   return [monthlyBalanceData, { setFetchedMonthlyBalanceData }];
+};
+
+export const useBalanceMonthData = (): hooksBalanceMonthDataReturn => {
+  const [balanceMonthData, setBalanceMonthData] = useAtom(
+    balanceMonthDataState
+  );
+
+  const setFetchedBalanceMonthData = (
+    balanceMonthData: balanceMonthDTOType
+  ) => {
+    setBalanceMonthData(balanceMonthData);
+  };
+
+  return [balanceMonthData, { setFetchedBalanceMonthData }];
 };

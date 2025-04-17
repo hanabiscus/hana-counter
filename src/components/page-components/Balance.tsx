@@ -7,16 +7,15 @@ import { useIsLogoutState } from "@/hooks/useLogout";
 import BalanceCalendar from "../balance-calendar/BalanceCalendar";
 import BalanceCreateButton from "../balance-create-button/BalanceCreateButton";
 import BalanceModal from "../balance-modal/BalanceModal";
+import BalanceMonthSelector from "../balance-month-selector/BalanceMonthSelector";
 import { balanceProps } from "@/const/types";
 
 import outputs from "@/../amplify_outputs.json";
-import { useCreateBalance } from "@/hooks/useBalanceModal";
 
 Amplify.configure(outputs, { ssr: true });
 
 const Balance = (props: balanceProps) => {
   const logoutState = useIsLogoutState();
-  const isCreateBalance = useCreateBalance()[0];
 
   return (
     <>
@@ -27,14 +26,17 @@ const Balance = (props: balanceProps) => {
       ) : (
         <Authenticator socialProviders={["google"]} hideSignUp>
           <div className="h-svh">
-            <BalanceCalendar balanceDataDTO={props.balanceDataDTO} />
+            <BalanceMonthSelector
+              balanceMonthDataDTO={props.balanceMonthDataDTO}
+            />
+            <BalanceCalendar />
             <div className="relative">
               <div className="z-50 opacity-100 fixed bottom-8 right-8">
                 <BalanceCreateButton />
               </div>
             </div>
           </div>
-          <BalanceModal isCreate={isCreateBalance} />
+          <BalanceModal />
         </Authenticator>
       )}
     </>

@@ -9,7 +9,7 @@ const BalanceUpdateButton = () => {
   const balanceDate = useBalanceDate()[0];
   const balanceModalMutator = useBalanceModal();
 
-  const handleClickBalanceUpdateButton = async () => {
+  const handleClickBalanceUpdate = async () => {
     balanceModalMutator();
     loadingMutator(true);
     await updateBalance(income, expenditure, balanceDate);
@@ -18,8 +18,8 @@ const BalanceUpdateButton = () => {
 
   return (
     <button
-      onClick={handleClickBalanceUpdateButton}
-      className="m-[10px] text-[13px] text-[#40ba8d]"
+      onClick={handleClickBalanceUpdate}
+      className="m-[10px] text-[13px] text-[#90caf9]"
     >
       {"登録"}
     </button>

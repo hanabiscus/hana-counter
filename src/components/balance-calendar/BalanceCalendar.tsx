@@ -2,6 +2,7 @@
 
 import {
   useBalanceDate,
+  useBalanceMonth,
   useBalanceValue,
   useMonthlyBalanceData,
 } from "@/hooks/useBalance";
@@ -9,7 +10,13 @@ import { useLoadingState } from "@/hooks/useLoading";
 import { createBalanceCalendarArray } from "@/utils/balanceDataUtils";
 import Loading from "@/app/loading";
 import { useBalanceModal, useCreateBalance } from "@/hooks/useBalanceModal";
-import { balanceDTOType, balanceProps } from "@/const/types";
+import {
+  formatBalanceToCurrency,
+  formatBalanceToSmallDigit,
+  formatNumberToYen,
+} from "@/utils/balanceUtils";
+import { getDayFromBalanceMonth } from "@/utils/dateUtils";
+import { balanceDTOType } from "@/const/types";
 import {
   FRIDAY,
   MONDAY,
@@ -20,24 +27,23 @@ import {
   WEDNESDAY,
 } from "@/const/constants";
 
-const BalanceCalendar = (props: balanceProps) => {
+const BalanceCalendar = () => {
   const isLoading = useLoadingState()[0];
-  const [monthlyBalanceData] = useMonthlyBalanceData();
-  const { setFetchedMonthlyBalanceData } = useMonthlyBalanceData()[1];
-  const { createBalanceStateMutator } = useCreateBalance()[1];
+  const monthlyBalanceData = useMonthlyBalanceData()[0];
+  const createBalanceStateMutator =
+    useCreateBalance()[1].createBalanceStateMutator;
   const balanceModalMutator = useBalanceModal();
   const setIntegerIncome = useBalanceValue()[2].setIntegerIncome;
   const setIntegerExpenditure = useBalanceValue()[2].setIntegerExpenditure;
   const setBalanceDate = useBalanceDate()[1].setBalanceDate;
-
-  setFetchedMonthlyBalanceData(props.balanceDataDTO);
+  const balanceMonth = useBalanceMonth()[0];
 
   const balanceCalendarArray = createBalanceCalendarArray(
-    "2025-04",
+    balanceMonth,
     monthlyBalanceData
   );
 
-  const emptyDateArray = [...Array(new Date(2025, 3, 1).getDay())].map(
+  const emptyDateArray = [...Array(getDayFromBalanceMonth(balanceMonth))].map(
     (_, i) => i + 32
   );
   const emptyDate = emptyDateArray.map((data) => {
@@ -52,14 +58,19 @@ const BalanceCalendar = (props: balanceProps) => {
     balanceModalMutator();
   };
 
-  const balanceCalendar = balanceCalendarArray.map((data, i) => {
+  const monthlyBalance = monthlyBalanceData.reduce((monthlyBalance, data) => {
+    return monthlyBalance + data.income - data.expenditure;
+  }, 0);
+
+  const balanceCalendar = balanceCalendarArray.map((data, index) => {
     if (data === undefined) {
       return (
-        <div key={i} className="h-[70px] w-[50px] text-center">
-          <div>{i + 1}</div>
+        <div key={index} className="h-[70px] w-[50px] text-center">
+          <div>{index + 1}</div>
         </div>
       );
     } else {
+      const balance = data.income - data.expenditure;
       return (
         <button
           key={data.balanceDate}
@@ -74,8 +85,24 @@ const BalanceCalendar = (props: balanceProps) => {
           }
         >
           <div className="h-[70px] w-[50px] text-center">
-            <div>{i + 1}</div>
-            <div>{data.income - data.expenditure}</div>
+            <div>{index + 1}</div>
+            {balance >= 0 ? (
+              <div className="text-[#009844]">
+                <div className="text-[12px]">
+                  {String(balance).length <= 6
+                    ? formatBalanceToCurrency(balance)
+                    : formatBalanceToSmallDigit(balance)}
+                </div>
+              </div>
+            ) : (
+              <div className="text-[#d32f2f]">
+                <div className="text-[12px]">
+                  {String(balance).length <= 6
+                    ? formatBalanceToCurrency(balance)
+                    : formatBalanceToSmallDigit(balance)}
+                </div>
+              </div>
+            )}
           </div>
         </button>
       );
@@ -87,19 +114,34 @@ const BalanceCalendar = (props: balanceProps) => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="m-1 bg-[#555555] rounded-md">
-          <div className="grid grid-cols-7 place-items-center">
-            <div>{SUNDAY}</div>
-            <div>{MONDAY}</div>
-            <div>{TUESDAY}</div>
-            <div>{WEDNESDAY}</div>
-            <div>{THURSDAY}</div>
-            <div>{FRIDAY}</div>
-            <div>{SATURDAY}</div>
-            {emptyDate}
-            {balanceCalendar}
+        <>
+          <div className="m-1 bg-[#444444] rounded-md">
+            <div className="grid grid-cols-7 place-items-center">
+              <div className="text-[#999999]">{SUNDAY}</div>
+              <div className="text-[#999999]">{MONDAY}</div>
+              <div className="text-[#999999]">{TUESDAY}</div>
+              <div className="text-[#999999]">{WEDNESDAY}</div>
+              <div className="text-[#999999]">{THURSDAY}</div>
+              <div className="text-[#999999]">{FRIDAY}</div>
+              <div className="text-[#999999]">{SATURDAY}</div>
+              {emptyDate}
+              {balanceCalendar}
+            </div>
           </div>
-        </div>
+          <div className="h-[30px] m-7 flex justify-center items-center">
+            <div className="bg-[#444444] rounded-[30px]">
+              {monthlyBalance >= 0 ? (
+                <div className="text-[20px] text-[#009844] p-3">
+                  {formatNumberToYen(monthlyBalance)}
+                </div>
+              ) : (
+                <div className="text-[20px] text-[#d32f2f]">
+                  {formatNumberToYen(monthlyBalance)}
+                </div>
+              )}
+            </div>
+          </div>
+        </>
       )}
     </>
   );

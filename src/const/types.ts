@@ -53,9 +53,21 @@ export type hooksBalanceDateReturn = [
   },
 ];
 
+export type hooksBalanceMonthReturn = [
+  string,
+  {
+    setBalanceMonth: (balanceMonth: string) => void;
+  },
+];
+
 export type hooksMonthlyBalanceDataReturn = [
   balanceDTOType,
   { setFetchedMonthlyBalanceData: (balanceData: balanceDTOType) => void },
+];
+
+export type hooksBalanceMonthDataReturn = [
+  balanceMonthDTOType,
+  { setFetchedBalanceMonthData: (balanceData: balanceMonthDTOType) => void },
 ];
 
 export type hooksIsCreateBalanceReturn = [
@@ -120,10 +132,6 @@ export type counterModeIndicatorProps = {
   decrementFlag: boolean;
 };
 
-export type balanceModalProps = {
-  isCreate: boolean;
-};
-
 export type balanceData = {
   recordId: string;
   income: number;
@@ -145,6 +153,10 @@ export type balanceMonthDTOType = {
   balanceMonth: string;
 }[];
 
+export type balanceMonthSelectorProps = {
+  balanceMonthDataDTO: balanceMonthDTOType;
+};
+
 export type balanceProps = {
-  balanceDataDTO: balanceDTOType;
+  balanceMonthDataDTO: balanceMonthDTOType;
 };

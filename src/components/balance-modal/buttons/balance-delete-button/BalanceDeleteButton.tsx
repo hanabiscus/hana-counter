@@ -8,7 +8,7 @@ const BalanceDeleteButton = () => {
   const balanceDate = useBalanceDate()[0];
   const balanceModalMutator = useBalanceModal();
 
-  const handleClickBalanceUpdateButton = async () => {
+  const handleClickBalanceDelete = async () => {
     balanceModalMutator();
     loadingMutator(true);
     await deleteBalance(balanceDate);
@@ -17,7 +17,7 @@ const BalanceDeleteButton = () => {
 
   return (
     <button
-      onClick={handleClickBalanceUpdateButton}
+      onClick={handleClickBalanceDelete}
       className="m-[10px] text-[13px] text-[#d32f2f]"
     >
       {"削除"}
