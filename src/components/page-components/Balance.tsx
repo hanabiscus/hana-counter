@@ -21,7 +21,7 @@ const Balance = (props: balanceProps) => {
     <>
       {logoutState ? (
         <div className="h-svh grid justify-center content-center">
-          <CircularProgress color="error" size={30} />
+          <CircularProgress color="error" />
         </div>
       ) : (
         <Authenticator socialProviders={["google"]} hideSignUp>
