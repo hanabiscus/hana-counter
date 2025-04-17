@@ -135,7 +135,7 @@ const BalanceCalendar = () => {
                   {formatNumberToYen(monthlyBalance)}
                 </div>
               ) : (
-                <div className="text-[20px] text-[#d32f2f]">
+                <div className="text-[20px] text-[#d32f2f] p-3">
                   {formatNumberToYen(monthlyBalance)}
                 </div>
               )}
