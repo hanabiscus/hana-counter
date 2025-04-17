@@ -1,15 +1,15 @@
 import { useBalanceModal } from "@/hooks/useBalanceModal";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 const BalanceModalCancelButton = () => {
   const balanceModalMutator = useBalanceModal();
 
   return (
-    <button
-      onClick={balanceModalMutator}
-      className="text-[13px] text-[#3f50b5] m-2"
-    >
-      {"キャンセル"}
-    </button>
+    <div className="m-[6px] flex justify-center items-center">
+      <button onClick={balanceModalMutator}>
+        <CloseRoundedIcon />
+      </button>
+    </div>
   );
 };
 

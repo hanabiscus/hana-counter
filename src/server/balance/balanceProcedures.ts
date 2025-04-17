@@ -69,3 +69,38 @@ export const updateBalance = async (
   }
   revalidatePath(BALANCE_PAGE_PATH);
 };
+
+export const deleteBalance = async (balanceDate: string): Promise<void> => {
+  if (BALANCE_DATE_FORMAT.test(balanceDate)) {
+    const { userId } = await runWithAmplifyServerContext({
+      nextServerContext: { cookies },
+      operation: (contextSpec: AmplifyServer.ContextSpec) =>
+        getCurrentUser(contextSpec),
+    });
+
+    if (userId != null || userId != undefined || userId != "") {
+      const client = generateClient<Schema>({
+        authMode: "identityPool",
+      });
+
+      const primaryKey = userId + balanceDate;
+
+      const { data: fetchedBalanceData } = await client.models.Balance.get(
+        { recordId: primaryKey },
+        {
+          authMode: "identityPool",
+        }
+      );
+
+      if (fetchedBalanceData != null) {
+        await client.models.Balance.delete(
+          { recordId: primaryKey },
+          {
+            authMode: "identityPool",
+          }
+        );
+      }
+    }
+  }
+  revalidatePath(BALANCE_PAGE_PATH);
+};

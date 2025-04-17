@@ -1,5 +1,26 @@
 import { BALANCE_MONTH_FORMAT } from "@/const/constants";
 
+export const getCurrentBalanceDate = () => {
+  return new Date()
+    .toLocaleDateString("ja-JP", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replaceAll("/", "-");
+};
+
+export const getCurrentBalanceMonth = () => {
+  return new Date()
+    .toLocaleDateString("ja-JP", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .slice(0, 7)
+    .replaceAll("/", "-");
+};
+
 export const getLastDay = (year: number, month: number): number => {
   return new Date(year, month - 1, 0).getDate();
 };
@@ -19,4 +40,3 @@ export const getMonthOfBalanceMonth = (balanceDate: string): number => {
     return NaN;
   }
 };
-

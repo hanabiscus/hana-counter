@@ -51,7 +51,7 @@ export const useBalanceDate = (): hooksBalanceDateReturn => {
     }
   };
 
-  return [balanceDate, { setStringBalanceDate }];
+  return [balanceDate, { setBalanceDate, setStringBalanceDate }];
 };
 
 export const useMonthlyBalanceData = (): hooksMonthlyBalanceDataReturn => {

@@ -1,5 +1,9 @@
 import { useAtom, useAtomValue } from "jotai";
-import { balanceModalState } from "@/atoms/balanceModalState";
+import {
+  balanceModalState,
+  createBalanceState,
+} from "@/atoms/balanceModalState";
+import { hooksIsCreateBalanceReturn } from "@/const/types";
 
 export const useIsBalanceOpenState = () => {
   return useAtomValue(balanceModalState);
@@ -12,4 +16,13 @@ export const useBalanceModal = () => {
   const balanceModalMutator = () => setIsBalanceModalOpen(!isBalanceModalOpen);
 
   return balanceModalMutator;
+};
+
+export const useCreateBalance = (): hooksIsCreateBalanceReturn => {
+  const [isCreateBalance, setIsCreateBalance] = useAtom(createBalanceState);
+
+  const createBalanceStateMutator = (isCreate: boolean) =>
+    setIsCreateBalance(isCreate);
+
+  return [isCreateBalance, { createBalanceStateMutator }];
 };

@@ -2,11 +2,13 @@
 
 import { useCounter } from "@/hooks/useCounter";
 import TextField from "@mui/material/TextField";
+import { ThemeProvider } from "@mui/material";
 import { counterProps } from "@/const/types";
 import {
   BELL_COUNTER,
   BLUE_FEATHER_COUNTER,
   BLUE_SIDE_COUNTER,
+  textFiledTheme,
   GREEN_FEATHER_COUNTER,
   GREEN_SIDE_COUNTER,
   RED_FEATHER_COUNTER,
@@ -60,18 +62,20 @@ const CounterUnit = (props: counterProps) => {
 
   return (
     <div className="m-2 flex items-center justify-center">
-      <TextField
-        type="number"
-        value={counterNumber}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-          setCounterNumber(Number(event.target.value))
-        }
-        size="small"
-        sx={{ maxWidth: props.textFieldWidth }}
-      />
+      <ThemeProvider theme={textFiledTheme}>
+        <TextField
+          type="number"
+          value={String(counterNumber)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setCounterNumber(Number(event.target.value))
+          }
+          size="small"
+          sx={{ maxWidth: props.textFieldWidth }}
+        />
+      </ThemeProvider>
       <button
         onClick={props.decrementFlag ? decrement : increment}
-        className="h-[45px] w-[45px] ml-5 bg-[#dcdcdc] rounded-xl"
+        className="h-[45px] w-[45px] ml-5 bg-[#666666] rounded-xl"
       >
         <div className="flex justify-center items-center">{counterIcon()}</div>
       </button>

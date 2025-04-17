@@ -16,7 +16,7 @@ const HanaCounter = (props: hanaCounterProps) => {
   };
 
   return (
-    <div className="h-[650px]">
+    <div className="h-svh">
       <div className="mt-1 grid grid-cols-2">
         <div className="content-center flex justify-start ml-2">
           <CounterModeSwitch onChange={handleModeChange} />

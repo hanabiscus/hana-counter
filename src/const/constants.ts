@@ -1,3 +1,5 @@
+import { createTheme } from "@mui/material";
+
 export const HANA_IMAGE_PATH = "/hana.svg";
 
 export const HOME_PAGE_PATH = "/";
@@ -37,10 +39,21 @@ export const ALL_COUNTER_KIND_SET = [
   BLUE_SIDE_COUNTER,
 ];
 
+export const textFiledTheme = createTheme({
+  palette: {
+    text: {
+      primary: "#ffffff",
+    },
+  },
+});
+
+export const SHM_NAVIGATION_NAME_COUNTER = "カウンタ";
+export const SHM_NAVIGATION_NAME_MONTHLY_BALANCE = "月別収支";
+
 export const EXPENDITURE_LABEL = "投資金額";
 export const INCOME_LABEL = "回収金額";
 
-export const BALANCE_FIELD_SIZE = 100;
+export const BALANCE_FIELD_SIZE = 130;
 export const DATE_PICKER_FIELD_SIZE = 150;
 
 export const BALANCE_MODAL_DATE_PICKER_FLAG = "実践日";

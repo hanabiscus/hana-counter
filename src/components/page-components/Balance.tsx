@@ -10,11 +10,13 @@ import BalanceModal from "../balance-modal/BalanceModal";
 import { balanceProps } from "@/const/types";
 
 import outputs from "@/../amplify_outputs.json";
+import { useCreateBalance } from "@/hooks/useBalanceModal";
 
 Amplify.configure(outputs, { ssr: true });
 
 const Balance = (props: balanceProps) => {
   const logoutState = useIsLogoutState();
+  const isCreateBalance = useCreateBalance()[0];
 
   return (
     <>
@@ -32,7 +34,7 @@ const Balance = (props: balanceProps) => {
               </div>
             </div>
           </div>
-          <BalanceModal />
+          <BalanceModal isCreate={isCreateBalance} />
         </Authenticator>
       )}
     </>

@@ -10,7 +10,7 @@ import {
 
 const RegularBonusCounter = (props: regularbonusCounterProps) => {
   return (
-    <div className="bg-[#bfc5ca] rounded-md p-1 m-2">
+    <div className="bg-[#555555] rounded-md p-1 m-2">
       <div className="flex">
         <div className="basis-1/2">
           <CounterUnit

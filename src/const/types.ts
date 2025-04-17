@@ -48,6 +48,7 @@ export type hooksBalanceValueReturn = [
 export type hooksBalanceDateReturn = [
   string,
   {
+    setBalanceDate: (balanceDate: string) => void;
     setStringBalanceDate: (balanceDate: dayjs.Dayjs | null) => void;
   },
 ];
@@ -55,6 +56,13 @@ export type hooksBalanceDateReturn = [
 export type hooksMonthlyBalanceDataReturn = [
   balanceDTOType,
   { setFetchedMonthlyBalanceData: (balanceData: balanceDTOType) => void },
+];
+
+export type hooksIsCreateBalanceReturn = [
+  boolean,
+  {
+    createBalanceStateMutator: (isCreate: boolean) => void;
+  },
 ];
 
 export type counterProps = {
@@ -110,6 +118,10 @@ export type hanaCounterProps = {
 
 export type counterModeIndicatorProps = {
   decrementFlag: boolean;
+};
+
+export type balanceModalProps = {
+  isCreate: boolean;
 };
 
 export type balanceData = {

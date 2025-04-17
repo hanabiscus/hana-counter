@@ -1,29 +1,28 @@
-import { useBalanceDate, useBalanceValue } from "@/hooks/useBalance";
+import { useBalanceDate } from "@/hooks/useBalance";
 import { useBalanceModal } from "@/hooks/useBalanceModal";
 import { useLoadingState } from "@/hooks/useLoading";
-import { updateBalance } from "@/server/balance/balanceProcedures";
+import { deleteBalance } from "@/server/balance/balanceProcedures";
 
-const BalanceUpdateButton = () => {
+const BalanceDeleteButton = () => {
   const { loadingMutator } = useLoadingState()[1];
-  const [income, expenditure] = useBalanceValue();
   const balanceDate = useBalanceDate()[0];
   const balanceModalMutator = useBalanceModal();
 
   const handleClickBalanceUpdateButton = async () => {
     balanceModalMutator();
     loadingMutator(true);
-    await updateBalance(income, expenditure, balanceDate);
+    await deleteBalance(balanceDate);
     loadingMutator(false);
   };
 
   return (
     <button
       onClick={handleClickBalanceUpdateButton}
-      className="m-[10px] text-[13px] text-[#40ba8d]"
+      className="m-[10px] text-[13px] text-[#d32f2f]"
     >
-      {"登録"}
+      {"削除"}
     </button>
   );
 };
 
-export default BalanceUpdateButton;
+export default BalanceDeleteButton;

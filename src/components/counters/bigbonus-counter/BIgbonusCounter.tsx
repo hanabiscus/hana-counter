@@ -11,7 +11,7 @@ import {
 
 const BigbonusCounter = (props: bigbonusCounterProps) => {
   return (
-    <div className="bg-[#bfc5ca] rounded-md p-1 m-2">
+    <div className="bg-[#555555] rounded-md p-1 m-2">
       <CounterUnit
         counterKind={WATERMELON_COUNTER}
         counterNumber={props.bigbonusCounterNumbers.watermelonCounterNumber}

@@ -2,6 +2,7 @@ import Balance from "@/components/page-components/Balance";
 import { checkAuthSession } from "@/server/authentication/amplifyAuthSession";
 import { getMonthlyBalanceData } from "@/server/balance/balanceProcessors";
 import { balanceDTOType } from "@/const/types";
+import { getCurrentBalanceMonth } from "@/utils/dateUtils";
 
 const BalancePage = async () => {
   const isLogin = await checkAuthSession();
@@ -9,7 +10,7 @@ const BalancePage = async () => {
   if (isLogin) {
     Array.prototype.push.apply(
       fetchedMonthlyBalanceData,
-      await getMonthlyBalanceData("2025-04")
+      await getMonthlyBalanceData(getCurrentBalanceMonth())
     );
   }
 

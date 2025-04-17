@@ -37,16 +37,16 @@ export const setCookiesCounterNumber = async (
 };
 
 export const resetCookiesCounterNumber = async () => {
-  await setCookiesCounterNumber(BELL_COUNTER, 0);
-  await setCookiesCounterNumber(WATERMELON_COUNTER, 0);
-  await setCookiesCounterNumber(RED_FEATHER_COUNTER, 0);
-  await setCookiesCounterNumber(GREEN_FEATHER_COUNTER, 0);
-  await setCookiesCounterNumber(YELLOW_FEATHER_COUNTER, 0);
-  await setCookiesCounterNumber(BLUE_FEATHER_COUNTER, 0);
-  await setCookiesCounterNumber(RED_SIDE_COUNTER, 0);
-  await setCookiesCounterNumber(GREEN_SIDE_COUNTER, 0);
-  await setCookiesCounterNumber(YELLOW_SIDE_COUNTER, 0);
-  await setCookiesCounterNumber(BLUE_SIDE_COUNTER, 0);
+  (await cookies()).delete(BELL_COUNTER);
+  (await cookies()).delete(WATERMELON_COUNTER);
+  (await cookies()).delete(RED_FEATHER_COUNTER);
+  (await cookies()).delete(GREEN_FEATHER_COUNTER);
+  (await cookies()).delete(YELLOW_FEATHER_COUNTER);
+  (await cookies()).delete(BLUE_FEATHER_COUNTER);
+  (await cookies()).delete(RED_SIDE_COUNTER);
+  (await cookies()).delete(GREEN_SIDE_COUNTER);
+  (await cookies()).delete(YELLOW_SIDE_COUNTER);
+  (await cookies()).delete(BLUE_SIDE_COUNTER);
 };
 
 export const getCookiesCounterNumber = async (counterKind: string) => {

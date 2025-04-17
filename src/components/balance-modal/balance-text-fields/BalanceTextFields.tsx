@@ -1,9 +1,11 @@
 import TextField from "@mui/material/TextField";
 import { useBalanceValue } from "@/hooks/useBalance";
+import { ThemeProvider } from "@mui/material";
 import {
   BALANCE_FIELD_SIZE,
   EXPENDITURE_LABEL,
   INCOME_LABEL,
+  textFiledTheme,
 } from "@/const/constants";
 
 const BalanceTextFields = () => {
@@ -33,30 +35,34 @@ const BalanceTextFields = () => {
       </div>
       <div className="h-[90px] w-full grid grid-cols-2 content-center">
         <div className="m-auto">
-          <TextField
-            type="number"
-            value={String(expenditure)}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              setIntegerExpenditure(Number(event.target.value))
-            }
-            label={EXPENDITURE_LABEL}
-            variant="filled"
-            color="error"
-            sx={{ maxWidth: BALANCE_FIELD_SIZE }}
-          />
+          <ThemeProvider theme={textFiledTheme}>
+            <TextField
+              type="number"
+              value={String(expenditure)}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setIntegerExpenditure(Number(event.target.value))
+              }
+              label={EXPENDITURE_LABEL}
+              variant="filled"
+              color="error"
+              sx={{ maxWidth: BALANCE_FIELD_SIZE }}
+            />
+          </ThemeProvider>
         </div>
         <div className="m-auto">
-          <TextField
-            type="number"
-            value={String(income)}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              setIntegerIncome(Number(event.target.value))
-            }
-            label={INCOME_LABEL}
-            variant="filled"
-            color="success"
-            sx={{ maxWidth: BALANCE_FIELD_SIZE }}
-          />
+          <ThemeProvider theme={textFiledTheme}>
+            <TextField
+              type="number"
+              value={String(income)}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setIntegerIncome(Number(event.target.value))
+              }
+              label={INCOME_LABEL}
+              variant="filled"
+              color="success"
+              sx={{ maxWidth: BALANCE_FIELD_SIZE }}
+            />
+          </ThemeProvider>
         </div>
       </div>
     </>
