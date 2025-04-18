@@ -19,7 +19,7 @@ const BalanceUpdateButton = () => {
   return (
     <button
       onClick={handleClickBalanceUpdate}
-      className="m-[10px] text-[13px] text-[#90caf9]"
+      className="m-[10px] text-[15px] text-[#90caf9]"
     >
       {"登録"}
     </button>

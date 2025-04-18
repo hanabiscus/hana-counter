@@ -18,7 +18,7 @@ const BalanceDeleteButton = () => {
   return (
     <button
       onClick={handleClickBalanceDelete}
-      className="m-[10px] text-[13px] text-[#d32f2f]"
+      className="m-[10px] text-[15px] text-[#d32f2f]"
     >
       {"削除"}
     </button>

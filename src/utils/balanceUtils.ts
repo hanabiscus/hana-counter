@@ -6,9 +6,13 @@ export const formatNumberToYen = (balance: number) => {
 };
 
 export const formatBalanceToCurrency = (balance: number) => {
-  return new Intl.NumberFormat("ja", { minimumIntegerDigits: 3 }).format(
-    balance
-  );
+  if (String(balance).length < 4) {
+    return balance;
+  } else {
+    return new Intl.NumberFormat("ja", { minimumIntegerDigits: 3 }).format(
+      balance
+    );
+  }
 };
 
 export const formatBalanceToSmallDigit = (balance: number) => {

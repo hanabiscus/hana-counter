@@ -42,9 +42,5 @@ export const getMonthOfBalanceMonth = (balanceDate: string): number => {
 };
 
 export const getDayFromBalanceMonth = (balanceMonth: string): number => {
-  return new Date(
-    Number(balanceMonth.slice(0, 3)),
-    Number(balanceMonth.slice(5, 6)) - 1,
-    1
-  ).getDay();
+  return new Date(balanceMonth + "-01").getDay();
 };

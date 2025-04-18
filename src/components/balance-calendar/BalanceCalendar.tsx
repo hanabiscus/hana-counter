@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import {
   useBalanceDate,
   useBalanceMonth,
@@ -38,17 +39,22 @@ const BalanceCalendar = () => {
   const setBalanceDate = useBalanceDate()[1].setBalanceDate;
   const balanceMonth = useBalanceMonth()[0];
 
+  const emptyDateArray = useMemo(() => {
+    return [...Array(getDayFromBalanceMonth(balanceMonth))].map(
+      (_, i) => i + 32
+    );
+  }, [balanceMonth]);
+
+  const emptyDate = useMemo(() => {
+    return emptyDateArray.map((data) => {
+      return <div key={data} className="h-[70px] w-[50px]"></div>;
+    });
+  }, [emptyDateArray]);
+
   const balanceCalendarArray = createBalanceCalendarArray(
     balanceMonth,
     monthlyBalanceData
   );
-
-  const emptyDateArray = [...Array(getDayFromBalanceMonth(balanceMonth))].map(
-    (_, i) => i + 32
-  );
-  const emptyDate = emptyDateArray.map((data) => {
-    return <div key={data} className="h-[70px] w-[50px]"></div>;
-  });
 
   const handleClickBalance = (balanceData: balanceDTOType) => {
     setIntegerIncome(balanceData[0].income);
@@ -63,7 +69,7 @@ const BalanceCalendar = () => {
   }, 0);
 
   const balanceCalendar = balanceCalendarArray.map((data, index) => {
-    if (data === undefined || data.income - data.expenditure === 0) {
+    if (data === undefined) {
       return (
         <div key={index} className="h-[70px] w-[50px] text-center">
           <div>{index + 1}</div>

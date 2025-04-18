@@ -80,6 +80,9 @@ const BalanceMonthSelector = (props: balanceMonthSelectorProps) => {
           onChange={handleChangeBalanceMonth}
           label="実践月"
         >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
           {balanceMonthList}
         </Select>
       </FormControl>
