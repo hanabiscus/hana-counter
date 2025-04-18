@@ -39,8 +39,14 @@ const BalanceMonthSelector = (props: balanceMonthSelectorProps) => {
 
   useEffect(() => {
     (async () => {
+      const balanceMonthList = await getBalanceMonthList();
+      if (balanceMonthList.length === 0) {
+        Array.prototype.push.apply(balanceMonthList, [
+          { balanceMonth: getCurrentBalanceMonth() },
+        ]);
+      }
+      setFetchedBalanceMonthData(balanceMonthList);
       setFetchedMonthlyBalanceData(await getMonthlyBalanceData(balanceMonth));
-      setFetchedBalanceMonthData(await getBalanceMonthList());
     })();
   }, [balanceMonth, isBalanceModalOpen]);
 
