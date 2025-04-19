@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import type { Metadata } from "next";
 import { fontNotoSansJp } from "@/utils/font";
 import ConfigureAmplifyClientSide from "@/components/configure-amplify-client-side/ConfigureAmplifyClientSide";
@@ -10,7 +11,11 @@ export const metadata: Metadata = {
   title: "はなカウンタ | hana-counter",
 };
 
-const RootLayout = ({
+const RootLayout: ({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) => JSX.Element = ({
   children,
 }: Readonly<{
   children: React.ReactNode;

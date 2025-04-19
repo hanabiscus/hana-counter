@@ -4,7 +4,7 @@ import { checkAuthSession } from "@/server/authentication/amplifyAuthSession";
 import { getBalanceMonthList } from "@/server/balance/balanceProcessors";
 import { balanceMonthDTOType } from "@/const/types";
 
-const BalancePage = async (): Promise<JSX.Element> => {
+const BalancePage: () => Promise<JSX.Element> = async () => {
   const isLogin: boolean = await checkAuthSession();
 
   const fetchedBalanceMonthList: balanceMonthDTOType = [];

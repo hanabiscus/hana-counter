@@ -2,7 +2,7 @@ import { JSX } from "react";
 import { getCookiesAllCounterNumber } from "@/server/cookie/cookies";
 import HanaCounter from "@/components/page-components/HanaCounter";
 
-const Home = async (): Promise<JSX.Element> => {
+const Home: () => Promise<JSX.Element> = async () => {
   const allCookies: {
     bellCounterNumber: number;
     watermelonCounterNumber: number;
