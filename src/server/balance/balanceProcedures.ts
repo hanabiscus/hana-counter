@@ -14,11 +14,15 @@ import outputs from "@/../amplify_outputs.json";
 
 Amplify.configure(outputs, { ssr: true });
 
-export const updateBalance = async (
+export const updateBalance: (
   income: number,
   expenditure: number,
   balanceDate: string
-): Promise<void> => {
+) => Promise<void> = async (
+  income: number,
+  expenditure: number,
+  balanceDate: string
+) => {
   if (
     BALANCE_DATE_FORMAT.test(balanceDate) &&
     Number.isInteger(income) &&
@@ -70,7 +74,9 @@ export const updateBalance = async (
   revalidatePath(BALANCE_PAGE_PATH);
 };
 
-export const deleteBalance = async (balanceDate: string): Promise<void> => {
+export const deleteBalance: (balanceDate: string) => Promise<void> = async (
+  balanceDate: string
+) => {
   if (BALANCE_DATE_FORMAT.test(balanceDate)) {
     const { userId } = await runWithAmplifyServerContext({
       nextServerContext: { cookies },

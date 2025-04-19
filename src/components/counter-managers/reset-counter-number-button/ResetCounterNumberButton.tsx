@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { JSX, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { resetCookiesCounterNumber } from "@/server/cookie/cookies";
 
-const ResetCounterNumberButton = () => {
+const ResetCounterNumberButton: () => JSX.Element = () => {
   const [resetFlag, setResetFlag] = useState(false);
 
-  const resetAllCounterNumber = async () => {
+  const resetAllCounterNumber: () => Promise<void> = async () => {
     setResetFlag(true);
     await resetCookiesCounterNumber();
     window.location.reload();

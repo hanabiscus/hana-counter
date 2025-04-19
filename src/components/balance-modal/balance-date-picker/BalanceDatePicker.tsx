@@ -1,9 +1,11 @@
+import { JSX } from "react";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { useBalanceDate } from "@/hooks/useBalance";
 import { useCreateBalance } from "@/hooks/useBalanceModal";
+import { ThemeProvider } from "@mui/material";
 import {
   BALANCE_MODAL_DATE_PICKER_FLAG,
   darkTheme,
@@ -12,16 +14,18 @@ import {
   DATE_PICKER_HEADER_FORMAT,
   DATE_PICKER_YEAR_FORMAT,
 } from "@/const/constants";
-import { ThemeProvider } from "@mui/material";
 
-const BalanceDatePicker = () => {
+const BalanceDatePicker: () => JSX.Element = () => {
   const [balanceDate, { setStringBalanceDate }] = useBalanceDate();
-  const createBalanceStateMutator =
-    useCreateBalance()[1].createBalanceStateMutator;
 
-  const handleChangeBalanceDate = (newDate: dayjs.Dayjs | null) => {
+  const createBalanceMutator: (isCreate: boolean) => void =
+    useCreateBalance()[1].createBalanceMutator;
+
+  const handleChangeBalanceDate: (newDate: dayjs.Dayjs | null) => void = (
+    newDate: dayjs.Dayjs | null
+  ) => {
     setStringBalanceDate(newDate);
-    createBalanceStateMutator(true);
+    createBalanceMutator(true);
   };
 
   return (

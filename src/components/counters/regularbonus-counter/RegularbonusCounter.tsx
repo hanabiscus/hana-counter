@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import CounterUnit from "../counter-unit/CounterUnit";
 import { regularbonusCounterProps } from "@/const/types";
 import {
@@ -8,7 +9,9 @@ import {
   YELLOW_SIDE_COUNTER,
 } from "@/const/constants";
 
-const RegularBonusCounter = (props: regularbonusCounterProps) => {
+const RegularBonusCounter: (props: regularbonusCounterProps) => JSX.Element = (
+  props: regularbonusCounterProps
+) => {
   return (
     <div className="bg-[#555555] rounded-md p-1 m-2">
       <div className="flex">

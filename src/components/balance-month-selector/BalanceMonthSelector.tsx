@@ -1,5 +1,6 @@
 "use client";
 
+import { JSX } from "react";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
@@ -11,7 +12,7 @@ import {
   useBalanceMonthData,
   useMonthlyBalanceData,
 } from "@/hooks/useBalance";
-import { balanceMonthSelectorProps } from "@/const/types";
+import { balanceDTOType, balanceMonthSelectorProps } from "@/const/types";
 import {
   ALL_BALANCE_MONTH,
   BALANCE_MONTH_SELECTOR_LABEL,
@@ -21,23 +22,29 @@ import {
   darkTheme,
 } from "@/const/constants";
 
-const BalanceMonthSelector = (props: balanceMonthSelectorProps) => {
+const BalanceMonthSelector: (
+  props: balanceMonthSelectorProps
+) => JSX.Element = (props: balanceMonthSelectorProps) => {
   const [balanceMonthData, { setFetchedBalanceMonthData }] =
     useBalanceMonthData();
+
   const [balanceMonth, { setBalanceMonth }] = useBalanceMonth();
-  const setFetchedMonthlyBalanceData =
+
+  const setFetchedMonthlyBalanceData: (balanceData: balanceDTOType) => void =
     useMonthlyBalanceData()[1].setFetchedMonthlyBalanceData;
 
-  setFetchedBalanceMonthData(props.balanceMonthDataDTO);
-
-  const handleChangeBalanceMonth = async (event: SelectChangeEvent) => {
+  const handleChangeBalanceMonth: (
+    event: SelectChangeEvent
+  ) => Promise<void> = async (event: SelectChangeEvent) => {
     setFetchedMonthlyBalanceData(
       await getMonthlyBalanceData(String(event.target.value))
     );
     setBalanceMonth(String(event.target.value));
   };
 
-  const balanceMonthList = balanceMonthData.map((data) => {
+  setFetchedBalanceMonthData(props.balanceMonthDataDTO);
+
+  const balanceMonthList: JSX.Element[] = balanceMonthData.map((data) => {
     return (
       <MenuItem key={data.balanceMonth} value={data.balanceMonth}>
         {data.balanceMonth}

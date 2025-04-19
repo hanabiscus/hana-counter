@@ -1,5 +1,6 @@
 "use client";
 
+import { JSX } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSuperHeaderMenu } from "@/hooks/useSuperHeaderMenu";
@@ -11,7 +12,7 @@ import {
   HOME_PAGE_PATH,
 } from "@/const/constants";
 
-const Header = () => {
+const Header: () => JSX.Element = () => {
   const [isSuperHeaderMenuOpen, { superHeaderMenuMutator }] =
     useSuperHeaderMenu();
 

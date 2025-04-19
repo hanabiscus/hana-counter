@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import CounterUnit from "../counter-unit/CounterUnit";
 import { bigbonusCounterProps } from "@/const/types";
 import {
@@ -9,7 +10,9 @@ import {
   YELLOW_FEATHER_COUNTER,
 } from "@/const/constants";
 
-const BigbonusCounter = (props: bigbonusCounterProps) => {
+const BigbonusCounter: (props: bigbonusCounterProps) => JSX.Element = (
+  props: bigbonusCounterProps
+) => {
   return (
     <div className="bg-[#555555] rounded-md p-1 m-2">
       <CounterUnit

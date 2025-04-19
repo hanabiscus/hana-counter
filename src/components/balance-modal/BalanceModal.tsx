@@ -1,19 +1,20 @@
 "use client";
 
+import { JSX } from "react";
 import Modal from "@mui/material/Modal";
 import BalanceTextFields from "./balance-text-fields/BalanceTextFields";
 import BalanceDatePicker from "./balance-date-picker/BalanceDatePicker";
 import {
   useCreateBalance,
-  useIsBalanceOpenState,
+  useIsBalanceModalOpen,
 } from "@/hooks/useBalanceModal";
 import BalanceModalCancelButton from "./buttons/balance-modal-cancel-button/BalanceModalCancelButton";
 import BalanceUpdateButton from "./buttons/balance-update-button/BalanceUpdateButton";
 import BalanceDeleteButton from "./buttons/balance-delete-button/BalanceDeleteButton";
 
-const BalanceModal = () => {
-  const isBalanceModalOpen = useIsBalanceOpenState();
-  const isCreateBalance = useCreateBalance()[0];
+const BalanceModal: () => JSX.Element = () => {
+  const isBalanceModalOpen: boolean = useIsBalanceModalOpen();
+  const isCreateBalance: boolean = useCreateBalance()[0];
 
   return (
     <Modal open={isBalanceModalOpen}>

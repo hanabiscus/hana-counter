@@ -1,5 +1,6 @@
 "use client";
 
+import { JSX } from "react";
 import { Amplify } from "aws-amplify";
 import { Authenticator } from "@aws-amplify/ui-react";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -14,8 +15,8 @@ import outputs from "@/../amplify_outputs.json";
 
 Amplify.configure(outputs, { ssr: true });
 
-const Balance = (props: balanceProps) => {
-  const logoutState = useIsLogoutState();
+const Balance: (props: balanceProps) => JSX.Element = (props: balanceProps) => {
+  const logoutState: boolean = useIsLogoutState();
 
   return (
     <>

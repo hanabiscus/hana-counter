@@ -2,6 +2,9 @@ import { createTheme } from "@mui/material";
 
 export const HANA_IMAGE_PATH = "/hana.svg";
 
+export const INTERNAL_SERVER_ERROR = "500";
+export const NOT_FOUND = "404";
+
 export const HOME_PAGE_PATH = "/";
 export const BALANCE_PAGE_PATH = "/balance";
 
@@ -11,6 +14,9 @@ export const HEADER_ICON_SIZE = 40;
 
 export const USUALLY_COUNTER_FIELD_SIZE = 75;
 export const BONUS_COUNTER_FIELD_SIZE = 55;
+
+export const PLUS = "+";
+export const MINUS = "-";
 
 export const BELL_COUNTER = "bellCounter";
 
@@ -79,6 +85,8 @@ export const SHM_NAVIGATION_NAME_MONTHLY_BALANCE = "収支";
 
 export const EXPENDITURE_LABEL = "投資金額";
 export const INCOME_LABEL = "回収金額";
+
+export const SUBMIT = "登録";
 
 export const BALANCE_FIELD_SIZE = 130;
 export const DATE_PICKER_FIELD_SIZE = 150;

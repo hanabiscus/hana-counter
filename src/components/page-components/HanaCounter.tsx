@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { JSX, useState } from "react";
 import { hanaCounterProps } from "@/const/types";
 import BigbonusCounter from "../counters/bigbonus-counter/BIgbonusCounter";
 import UsuallyCounter from "../counters/usually-counter/UsuallyCounter";
@@ -8,10 +8,14 @@ import RegularBonusCounter from "../counters/regularbonus-counter/RegularbonusCo
 import CounterModeSwitch from "../counter-managers/counter-mode-switch/CounterModeSwitch";
 import ResetCounterNumberButton from "../counter-managers/reset-counter-number-button/ResetCounterNumberButton";
 
-const HanaCounter = (props: hanaCounterProps) => {
+const HanaCounter: (props: hanaCounterProps) => JSX.Element = (
+  props: hanaCounterProps
+) => {
   const [decrementFlag, setDecrementFlag] = useState(false);
 
-  const handleModeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleModeChange: (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => void = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDecrementFlag(event.target.checked);
   };
 

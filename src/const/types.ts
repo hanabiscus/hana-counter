@@ -73,7 +73,7 @@ export type hooksBalanceMonthDataReturn = [
 export type hooksIsCreateBalanceReturn = [
   boolean,
   {
-    createBalanceStateMutator: (isCreate: boolean) => void;
+    createBalanceMutator: (isCreate: boolean) => void;
   },
 ];
 

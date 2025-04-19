@@ -1,8 +1,20 @@
+import { JSX } from "react";
 import { getCookiesAllCounterNumber } from "@/server/cookie/cookies";
 import HanaCounter from "@/components/page-components/HanaCounter";
 
-const Home = async () => {
-  const allCookies = await getCookiesAllCounterNumber();
+const Home = async (): Promise<JSX.Element> => {
+  const allCookies: {
+    bellCounterNumber: number;
+    watermelonCounterNumber: number;
+    redFeatherCounterNumber: number;
+    greenFeatherCounterNumber: number;
+    yellowFeatherCounterNumber: number;
+    blueFeatherCounterNumber: number;
+    redSideCounterNumber: number;
+    greenSideCounterNumber: number;
+    yellowSideCounterNumber: number;
+    blueSideCounterNumber: number;
+  } = await getCookiesAllCounterNumber();
 
   return (
     <HanaCounter

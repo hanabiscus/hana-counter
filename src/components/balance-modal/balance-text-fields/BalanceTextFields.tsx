@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import TextField from "@mui/material/TextField";
 import { useBalanceValue } from "@/hooks/useBalance";
 import { ThemeProvider } from "@mui/material";
@@ -10,7 +11,7 @@ import {
   incomeTextFiledTheme,
 } from "@/const/constants";
 
-const BalanceTextFields = () => {
+const BalanceTextFields: () => JSX.Element = () => {
   const [income, expenditure, { setIntegerIncome, setIntegerExpenditure }] =
     useBalanceValue();
 

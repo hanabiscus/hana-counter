@@ -17,10 +17,10 @@ import {
   YELLOW_SIDE_COUNTER,
 } from "@/const/constants";
 
-export const setCookiesCounterNumber = async (
+export const setCookiesCounterNumber: (
   counterKind: string,
   countNumber: number
-) => {
+) => Promise<void> = async (counterKind: string, countNumber: number) => {
   if (
     ALL_COUNTER_KIND_SET.includes(counterKind) &&
     Number.isInteger(countNumber) &&
@@ -36,7 +36,7 @@ export const setCookiesCounterNumber = async (
   }
 };
 
-export const resetCookiesCounterNumber = async () => {
+export const resetCookiesCounterNumber: () => Promise<void> = async () => {
   (await cookies()).delete(BELL_COUNTER);
   (await cookies()).delete(WATERMELON_COUNTER);
   (await cookies()).delete(RED_FEATHER_COUNTER);
@@ -49,15 +49,30 @@ export const resetCookiesCounterNumber = async () => {
   (await cookies()).delete(BLUE_SIDE_COUNTER);
 };
 
-export const getCookiesCounterNumber = async (counterKind: string) => {
+export const getCookiesCounterNumber: (
+  counterKind: string
+) => Promise<number> = async (counterKind: string) => {
   if (ALL_COUNTER_KIND_SET.includes(counterKind)) {
     return (await (await cookies()).has(counterKind))
       ? Number(await (await cookies()).get(counterKind)?.value)
       : 0;
+  } else {
+    return 0;
   }
 };
 
-export const getCookiesAllCounterNumber = async () => {
+export const getCookiesAllCounterNumber: () => Promise<{
+  bellCounterNumber: number;
+  watermelonCounterNumber: number;
+  redFeatherCounterNumber: number;
+  greenFeatherCounterNumber: number;
+  yellowFeatherCounterNumber: number;
+  blueFeatherCounterNumber: number;
+  redSideCounterNumber: number;
+  greenSideCounterNumber: number;
+  yellowSideCounterNumber: number;
+  blueSideCounterNumber: number;
+}> = async () => {
   return {
     bellCounterNumber: Number(await getCookiesCounterNumber(BELL_COUNTER)),
     watermelonCounterNumber: Number(

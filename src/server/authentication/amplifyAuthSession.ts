@@ -10,7 +10,7 @@ import outputs from "@/../amplify_outputs.json";
 
 Amplify.configure(outputs, { ssr: true });
 
-export const checkAuthSession = async (): Promise<boolean> => {
+export const checkAuthSession: () => Promise<boolean> = async () => {
   try {
     const { userId } = await runWithAmplifyServerContext({
       nextServerContext: { cookies },

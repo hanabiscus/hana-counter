@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import {
   useBalanceDate,
   useBalanceMonth,
@@ -9,17 +10,26 @@ import { useLoadingState } from "@/hooks/useLoading";
 import { updateBalance } from "@/server/balance/balanceProcedures";
 import { getMonthlyBalanceData } from "@/server/balance/balanceProcessors";
 import { translateBalanceDateToBalanceMonth } from "@/utils/dateUtils";
+import { balanceDTOType } from "@/const/types";
+import { SUBMIT } from "@/const/constants";
 
-const BalanceUpdateButton = () => {
-  const { loadingMutator } = useLoadingState()[1];
+const BalanceUpdateButton: () => JSX.Element = () => {
   const [income, expenditure] = useBalanceValue();
-  const balanceDate = useBalanceDate()[0];
-  const balanceModalMutator = useBalanceModal();
-  const setFetchedMonthlyBalanceData =
-    useMonthlyBalanceData()[1].setFetchedMonthlyBalanceData;
-  const setBalanceMonth = useBalanceMonth()[1].setBalanceMonth;
 
-  const handleClickBalanceUpdate = async () => {
+  const balanceDate: string = useBalanceDate()[0];
+
+  const loadingMutator: (isLoading: boolean) => void =
+    useLoadingState()[1].loadingMutator;
+
+  const balanceModalMutator: () => void = useBalanceModal();
+
+  const setFetchedMonthlyBalanceData: (balanceData: balanceDTOType) => void =
+    useMonthlyBalanceData()[1].setFetchedMonthlyBalanceData;
+
+  const setBalanceMonth: (balanceMonth: string) => void =
+    useBalanceMonth()[1].setBalanceMonth;
+
+  const handleClickBalanceUpdate: () => Promise<void> = async () => {
     balanceModalMutator();
     loadingMutator(true);
     await updateBalance(income, expenditure, balanceDate);
@@ -37,7 +47,7 @@ const BalanceUpdateButton = () => {
       onClick={handleClickBalanceUpdate}
       className="m-[10px] text-[15px] text-[#90caf9]"
     >
-      {"登録"}
+      {SUBMIT}
     </button>
   );
 };

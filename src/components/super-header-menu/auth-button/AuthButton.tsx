@@ -1,5 +1,6 @@
 "use client";
 
+import { JSX } from "react";
 import { Amplify } from "aws-amplify";
 import { Authenticator } from "@aws-amplify/ui-react";
 import { AuthEventData } from "@aws-amplify/ui";
@@ -18,13 +19,13 @@ I18n.putVocabulariesForLanguage("ja", {
   "Sign In with Google": "ログイン",
 });
 
-const AuthButton = () => {
-  const logoutState = useIsLogoutState();
+const AuthButton: () => JSX.Element = () => {
+  const logoutState: boolean = useIsLogoutState();
   const logout: () => void = useSetLogout();
 
-  const handleSignOut = (
+  const handleSignOut: (
     signOut: ((data?: AuthEventData) => void) | undefined
-  ) => {
+  ) => void = (signOut: ((data?: AuthEventData) => void) | undefined) => {
     logout();
 
     const signOutGoogle = signOut;

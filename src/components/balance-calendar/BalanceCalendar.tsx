@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { JSX, useMemo } from "react";
 import {
   useBalanceDate,
   useBalanceMonth,
@@ -29,40 +29,50 @@ import {
   WEDNESDAY,
 } from "@/const/constants";
 
-const BalanceCalendar = () => {
-  const isLoading = useLoadingState()[0];
-  const monthlyBalanceData = useMonthlyBalanceData()[0];
-  const createBalanceStateMutator =
-    useCreateBalance()[1].createBalanceStateMutator;
-  const balanceModalMutator = useBalanceModal();
-  const setIntegerIncome = useBalanceValue()[2].setIntegerIncome;
-  const setIntegerExpenditure = useBalanceValue()[2].setIntegerExpenditure;
-  const setBalanceDate = useBalanceDate()[1].setBalanceDate;
-  const balanceMonth = useBalanceMonth()[0];
+const BalanceCalendar = (): JSX.Element => {
+  const isLoading: boolean = useLoadingState()[0];
 
-  const emptyDateArray = useMemo(() => {
+  const monthlyBalanceData: balanceDTOType = useMonthlyBalanceData()[0];
+
+  const balanceMonth: string = useBalanceMonth()[0];
+
+  const createBalanceMutator: (isCreate: boolean) => void =
+    useCreateBalance()[1].createBalanceMutator;
+
+  const setIntegerIncome: (income: number) => void =
+    useBalanceValue()[2].setIntegerIncome;
+
+  const setIntegerExpenditure: (expenditure: number) => void =
+    useBalanceValue()[2].setIntegerExpenditure;
+
+  const setBalanceDate: (balanceDate: string) => void =
+    useBalanceDate()[1].setBalanceDate;
+
+  const balanceModalMutator: () => void = useBalanceModal();
+
+  const emptyDateArray: number[] = useMemo(() => {
     return [...Array(getDayFromBalanceMonth(balanceMonth))].map(
       (_, i) => i + 32
     );
   }, [balanceMonth, monthlyBalanceData]);
 
-  const emptyDate = useMemo(() => {
+  const emptyDate: JSX.Element[] = useMemo(() => {
     return emptyDateArray.map((data) => {
       return <div key={data} className="h-[70px] w-[50px]"></div>;
     });
   }, [emptyDateArray]);
 
-  const balanceCalendarArray = useMemo(() => {
+  const balanceCalendarArray: balanceDTOType = useMemo(() => {
     return createBalanceCalendarArray(balanceMonth, monthlyBalanceData);
   }, [balanceMonth, monthlyBalanceData]);
 
-  const monthlyBalance = useMemo(() => {
+  const monthlyBalance: number = useMemo(() => {
     return monthlyBalanceData.reduce((monthlyBalance, data) => {
       return monthlyBalance + data.income - data.expenditure;
     }, 0);
   }, [monthlyBalanceData]);
 
-  const balanceCalendar = useMemo(() => {
+  const balanceCalendar: JSX.Element[] = useMemo(() => {
     return balanceCalendarArray.map((data, index) => {
       if (data === undefined) {
         return (
@@ -111,11 +121,13 @@ const BalanceCalendar = () => {
     });
   }, [balanceCalendarArray]);
 
-  const handleClickBalance = (balanceData: balanceDTOType) => {
+  const handleClickBalance: (balanceData: balanceDTOType) => void = (
+    balanceData: balanceDTOType
+  ) => {
     setIntegerIncome(balanceData[0].income);
     setIntegerExpenditure(balanceData[0].expenditure);
     setBalanceDate(balanceData[0].balanceDate);
-    createBalanceStateMutator(false);
+    createBalanceMutator(false);
     balanceModalMutator();
   };
 

@@ -1,20 +1,29 @@
+import { JSX } from "react";
 import { useBalanceDate, useBalanceValue } from "@/hooks/useBalance";
 import { useBalanceModal, useCreateBalance } from "@/hooks/useBalanceModal";
 import { getCurrentBalanceDate } from "@/utils/dateUtils";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
-const BalanceCreateButton = () => {
-  const { createBalanceStateMutator } = useCreateBalance()[1];
-  const balanceModalMutator = useBalanceModal();
-  const setIntegerIncome = useBalanceValue()[2].setIntegerIncome;
-  const setIntegerExpenditure = useBalanceValue()[2].setIntegerExpenditure;
-  const setStringBalanceDate = useBalanceDate()[1].setBalanceDate;
+const BalanceCreateButton: () => JSX.Element = () => {
+  const createBalanceMutator: (isCreate: boolean) => void =
+    useCreateBalance()[1].createBalanceMutator;
 
-  const handleClickBalanceCreate = () => {
+  const balanceModalMutator: () => void = useBalanceModal();
+
+  const setIntegerIncome: (income: number) => void =
+    useBalanceValue()[2].setIntegerIncome;
+
+  const setIntegerExpenditure: (expenditure: number) => void =
+    useBalanceValue()[2].setIntegerExpenditure;
+
+  const setStringBalanceDate: (balanceDate: string) => void =
+    useBalanceDate()[1].setBalanceDate;
+
+  const handleClickBalanceCreate: () => void = () => {
     setIntegerIncome(0);
     setIntegerExpenditure(0);
     setStringBalanceDate(getCurrentBalanceDate());
-    createBalanceStateMutator(true);
+    createBalanceMutator(true);
     balanceModalMutator();
   };
 

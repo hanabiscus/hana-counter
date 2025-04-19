@@ -6,10 +6,13 @@ import {
 } from "./dateUtils";
 import { BALANCE_MONTH_FORMAT } from "@/const/constants";
 
-export const createBalanceCalendarArray = (
+export const createBalanceCalendarArray: (
   balanceMonth: string,
   monthlyBalanceData: balanceDTOType
-): balanceDTOType => {
+) => balanceDTOType = (
+  balanceMonth: string,
+  monthlyBalanceData: balanceDTOType
+) => {
   if (BALANCE_MONTH_FORMAT.test(balanceMonth)) {
     const yearOfBalanceDate = getYearOfBalanceMonth(balanceMonth);
     const monthOfBalanceDate = getMonthOfBalanceMonth(balanceMonth);

@@ -18,9 +18,9 @@ import outputs from "@/../amplify_outputs.json";
 
 Amplify.configure(outputs, { ssr: true });
 
-const transformBalanceDataToBalanceDTO = (
+const transformBalanceDataToBalanceDTO: (
   data: balanceData
-): balanceDTOType => {
+) => balanceDTOType = (data: balanceData) => {
   return data.map(({ income, expenditure, balanceDate }) => ({
     income,
     expenditure,
@@ -28,9 +28,9 @@ const transformBalanceDataToBalanceDTO = (
   }));
 };
 
-const transformBalancedataToBalanceMonthDTO = (
+const transformBalancedataToBalanceMonthDTO: (
   data: balanceData
-): balanceMonthDTOType => {
+) => balanceMonthDTOType = (data: balanceData) => {
   return data
     .map(({ balanceMonth }) => ({ balanceMonth }))
     .filter(
@@ -41,35 +41,36 @@ const transformBalancedataToBalanceMonthDTO = (
     );
 };
 
-export const getBalanceMonthList = async (): Promise<balanceMonthDTOType> => {
-  const { userId } = await runWithAmplifyServerContext({
-    nextServerContext: { cookies },
-    operation: (contextSpec: AmplifyServer.ContextSpec) =>
-      getCurrentUser(contextSpec),
-  });
-
-  if (userId != null || userId != undefined || userId != "") {
-    const client = generateClient<Schema>({
-      authMode: "identityPool",
+export const getBalanceMonthList: () => Promise<balanceMonthDTOType> =
+  async () => {
+    const { userId } = await runWithAmplifyServerContext({
+      nextServerContext: { cookies },
+      operation: (contextSpec: AmplifyServer.ContextSpec) =>
+        getCurrentUser(contextSpec),
     });
 
-    const { data: fetchedBalanceData } = await client.models.Balance.list({
-      filter: {
-        recordOwner: {
-          eq: userId,
+    if (userId != null || userId != undefined || userId != "") {
+      const client = generateClient<Schema>({
+        authMode: "identityPool",
+      });
+
+      const { data: fetchedBalanceData } = await client.models.Balance.list({
+        filter: {
+          recordOwner: {
+            eq: userId,
+          },
         },
-      },
-    });
+      });
 
-    return transformBalancedataToBalanceMonthDTO(fetchedBalanceData);
-  } else {
-    return [];
-  }
-};
+      return transformBalancedataToBalanceMonthDTO(fetchedBalanceData);
+    } else {
+      return [];
+    }
+  };
 
-export const getMonthlyBalanceData = async (
+export const getMonthlyBalanceData: (
   balanceMonth: string
-): Promise<balanceDTOType> => {
+) => Promise<balanceDTOType> = async (balanceMonth: string) => {
   if (BALANCE_MONTH_FORMAT.test(balanceMonth)) {
     const { userId } = await runWithAmplifyServerContext({
       nextServerContext: { cookies },

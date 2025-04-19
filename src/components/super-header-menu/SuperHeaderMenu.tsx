@@ -1,5 +1,6 @@
 "use client";
 
+import { JSX } from "react";
 import NavigationItem from "./navigation-item/NavigationItem";
 import { useSuperHeaderMenu } from "@/hooks/useSuperHeaderMenu";
 import DatasetRoundedIcon from "@mui/icons-material/DatasetRounded";
@@ -12,8 +13,9 @@ import {
   SHM_NAVIGATION_NAME_MONTHLY_BALANCE,
 } from "@/const/constants";
 
-const SuperHeaderMenu = () => {
-  const isSuperHeaderMenuOpen = useSuperHeaderMenu()[0];
+const SuperHeaderMenu: () => JSX.Element = () => {
+  const isSuperHeaderMenuOpen: boolean = useSuperHeaderMenu()[0];
+
   return (
     <>
       {isSuperHeaderMenuOpen ? (

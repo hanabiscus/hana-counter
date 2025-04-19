@@ -1,8 +1,11 @@
+import { JSX } from "react";
 import CounterUnit from "../counter-unit/CounterUnit";
 import { usuallyCounterProps } from "@/const/types";
 import { BELL_COUNTER, USUALLY_COUNTER_FIELD_SIZE } from "@/const/constants";
 
-const UsuallyCounter = (props: usuallyCounterProps) => {
+const UsuallyCounter: (props: usuallyCounterProps) => JSX.Element = (
+  props: usuallyCounterProps
+) => {
   return (
     <div className="bg-[#555555] rounded-md p-1 m-2">
       <CounterUnit

@@ -7,7 +7,7 @@ if (process.env.NEXT_PUBLIC_AUTH_OAUTH_DOMAIN) {
 }
 Amplify.configure(outputs, { ssr: true });
 
-const ConfigureAmplifyClientSide = () => {
+const ConfigureAmplifyClientSide: () => null = () => {
   return null;
 };
 

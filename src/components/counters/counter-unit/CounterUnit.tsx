@@ -1,5 +1,6 @@
 "use client";
 
+import { JSX } from "react";
 import { useCounter } from "@/hooks/useCounter";
 import TextField from "@mui/material/TextField";
 import { ThemeProvider } from "@mui/material";
@@ -18,14 +19,16 @@ import {
   YELLOW_SIDE_COUNTER,
 } from "@/const/constants";
 
-const CounterUnit = (props: counterProps) => {
+const CounterUnit: (props: counterProps) => JSX.Element = (
+  props: counterProps
+) => {
   const [counterNumber, { increment, decrement, setCounterNumber }] =
     useCounter({
       counterKind: props.counterKind,
       counterNumber: props.counterNumber,
     });
 
-  const counterIcon = () => {
+  const counterIcon: () => JSX.Element | null = () => {
     switch (props.counterKind) {
       case BELL_COUNTER:
         return (
@@ -56,7 +59,7 @@ const CounterUnit = (props: counterProps) => {
           <div className="h-[27px] w-[27px] bg-[#659ad2] rounded-full"></div>
         );
       default:
-        return;
+        return null;
     }
   };
 

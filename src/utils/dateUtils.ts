@@ -4,7 +4,7 @@ import {
   BALANCE_MONTH_FORMAT,
 } from "@/const/constants";
 
-export const getCurrentBalanceDate = () => {
+export const getCurrentBalanceDate: () => string = () => {
   return new Date()
     .toLocaleDateString("ja-JP", {
       year: "numeric",
@@ -14,7 +14,7 @@ export const getCurrentBalanceDate = () => {
     .replaceAll("/", "-");
 };
 
-export const getCurrentBalanceMonth = () => {
+export const getCurrentBalanceMonth: () => string = () => {
   return new Date()
     .toLocaleDateString("ja-JP", {
       year: "numeric",
@@ -25,11 +25,16 @@ export const getCurrentBalanceMonth = () => {
     .replaceAll("/", "-");
 };
 
-export const getLastDay = (year: number, month: number): number => {
+export const getLastDay: (year: number, month: number) => number = (
+  year: number,
+  month: number
+) => {
   return new Date(year, month, 0).getDate();
 };
 
-export const getYearOfBalanceMonth = (balanceDate: string): number => {
+export const getYearOfBalanceMonth: (balanceDate: string) => number = (
+  balanceDate: string
+) => {
   if (BALANCE_MONTH_FORMAT.test(balanceDate)) {
     return Number(balanceDate.slice(0, 4));
   } else {
@@ -37,7 +42,9 @@ export const getYearOfBalanceMonth = (balanceDate: string): number => {
   }
 };
 
-export const getMonthOfBalanceMonth = (balanceDate: string): number => {
+export const getMonthOfBalanceMonth: (balanceDate: string) => number = (
+  balanceDate: string
+) => {
   if (BALANCE_MONTH_FORMAT.test(balanceDate)) {
     return Number(balanceDate.slice(5, 7));
   } else {
@@ -45,7 +52,9 @@ export const getMonthOfBalanceMonth = (balanceDate: string): number => {
   }
 };
 
-export const getDayFromBalanceMonth = (balanceMonth: string): number => {
+export const getDayFromBalanceMonth: (balanceMonth: string) => number = (
+  balanceMonth: string
+) => {
   if (BALANCE_MONTH_FORMAT.test(balanceMonth)) {
     return new Date(balanceMonth + "-01").getDay();
   } else {
@@ -53,9 +62,9 @@ export const getDayFromBalanceMonth = (balanceMonth: string): number => {
   }
 };
 
-export const translateBalanceDateToBalanceMonth = (
+export const translateBalanceDateToBalanceMonth: (
   balanceDate: string
-): string => {
+) => string = (balanceDate: string) => {
   if (BALANCE_DATE_FORMAT.test(balanceDate)) {
     return balanceDate.slice(0, 7);
   } else {
