@@ -1,7 +1,6 @@
 import Balance from "@/components/page-components/Balance";
 import { checkAuthSession } from "@/server/authentication/amplifyAuthSession";
 import { getBalanceMonthList } from "@/server/balance/balanceProcessors";
-import { getCurrentBalanceMonth } from "@/utils/dateUtils";
 import { balanceMonthDTOType } from "@/const/types";
 
 const BalancePage = async () => {
@@ -14,11 +13,6 @@ const BalancePage = async () => {
       fetchedBalanceMonthList,
       await getBalanceMonthList()
     );
-    if (fetchedBalanceMonthList.length === 0) {
-      Array.prototype.push.apply(fetchedBalanceMonthList, [
-        { balanceMonth: getCurrentBalanceMonth() },
-      ]);
-    }
   }
 
   return (

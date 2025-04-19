@@ -19,6 +19,7 @@ import {
 import { getDayFromBalanceMonth } from "@/utils/dateUtils";
 import { balanceDTOType } from "@/const/types";
 import {
+  BALANCE_CALENDAR_NO_DATA_MESSAGE,
   FRIDAY,
   MONDAY,
   SATURDAY,
@@ -43,7 +44,7 @@ const BalanceCalendar = () => {
     return [...Array(getDayFromBalanceMonth(balanceMonth))].map(
       (_, i) => i + 32
     );
-  }, [balanceMonth]);
+  }, [balanceMonth, monthlyBalanceData]);
 
   const emptyDate = useMemo(() => {
     return emptyDateArray.map((data) => {
@@ -51,10 +52,64 @@ const BalanceCalendar = () => {
     });
   }, [emptyDateArray]);
 
-  const balanceCalendarArray = createBalanceCalendarArray(
-    balanceMonth,
-    monthlyBalanceData
-  );
+  const balanceCalendarArray = useMemo(() => {
+    return createBalanceCalendarArray(balanceMonth, monthlyBalanceData);
+  }, [balanceMonth, monthlyBalanceData]);
+
+  const monthlyBalance = useMemo(() => {
+    return monthlyBalanceData.reduce((monthlyBalance, data) => {
+      return monthlyBalance + data.income - data.expenditure;
+    }, 0);
+  }, [monthlyBalanceData]);
+
+  const balanceCalendar = useMemo(() => {
+    return balanceCalendarArray.map((data, index) => {
+      if (data === undefined) {
+        return (
+          <div key={index} className="h-[70px] w-[50px] text-center">
+            <div>{index + 1}</div>
+          </div>
+        );
+      } else {
+        const balance = data.income - data.expenditure;
+        return (
+          <button
+            key={data.balanceDate}
+            onClick={() =>
+              handleClickBalance([
+                {
+                  income: data.income,
+                  expenditure: data.expenditure,
+                  balanceDate: data.balanceDate,
+                },
+              ])
+            }
+          >
+            <div className="h-[70px] w-[50px] text-center">
+              <div>{index + 1}</div>
+              {balance >= 0 ? (
+                <div className="text-[#009844]">
+                  <div className="text-[12px]">
+                    {String(balance).length <= 6
+                      ? formatBalanceToCurrency(balance)
+                      : formatBalanceToSmallDigit(balance)}
+                  </div>
+                </div>
+              ) : (
+                <div className="text-[#d32f2f]">
+                  <div className="text-[12px]">
+                    {String(balance).length <= 6
+                      ? formatBalanceToCurrency(balance)
+                      : formatBalanceToSmallDigit(balance)}
+                  </div>
+                </div>
+              )}
+            </div>
+          </button>
+        );
+      }
+    });
+  }, [balanceCalendarArray]);
 
   const handleClickBalance = (balanceData: balanceDTOType) => {
     setIntegerIncome(balanceData[0].income);
@@ -64,89 +119,45 @@ const BalanceCalendar = () => {
     balanceModalMutator();
   };
 
-  const monthlyBalance = monthlyBalanceData.reduce((monthlyBalance, data) => {
-    return monthlyBalance + data.income - data.expenditure;
-  }, 0);
-
-  const balanceCalendar = balanceCalendarArray.map((data, index) => {
-    if (data === undefined) {
-      return (
-        <div key={index} className="h-[70px] w-[50px] text-center">
-          <div>{index + 1}</div>
-        </div>
-      );
-    } else {
-      const balance = data.income - data.expenditure;
-      return (
-        <button
-          key={data.balanceDate}
-          onClick={() =>
-            handleClickBalance([
-              {
-                income: data.income,
-                expenditure: data.expenditure,
-                balanceDate: data.balanceDate,
-              },
-            ])
-          }
-        >
-          <div className="h-[70px] w-[50px] text-center">
-            <div>{index + 1}</div>
-            {balance >= 0 ? (
-              <div className="text-[#009844]">
-                <div className="text-[12px]">
-                  {String(balance).length <= 6
-                    ? formatBalanceToCurrency(balance)
-                    : formatBalanceToSmallDigit(balance)}
-                </div>
-              </div>
-            ) : (
-              <div className="text-[#d32f2f]">
-                <div className="text-[12px]">
-                  {String(balance).length <= 6
-                    ? formatBalanceToCurrency(balance)
-                    : formatBalanceToSmallDigit(balance)}
-                </div>
-              </div>
-            )}
-          </div>
-        </button>
-      );
-    }
-  });
-
   return (
     <>
       {isLoading ? (
         <Loading />
       ) : (
         <>
-          <div className="m-1 bg-[#444444] rounded-md">
-            <div className="grid grid-cols-7 place-items-center">
-              <div className="text-[#999999]">{SUNDAY}</div>
-              <div className="text-[#999999]">{MONDAY}</div>
-              <div className="text-[#999999]">{TUESDAY}</div>
-              <div className="text-[#999999]">{WEDNESDAY}</div>
-              <div className="text-[#999999]">{THURSDAY}</div>
-              <div className="text-[#999999]">{FRIDAY}</div>
-              <div className="text-[#999999]">{SATURDAY}</div>
-              {emptyDate}
-              {balanceCalendar}
-            </div>
-          </div>
-          <div className="h-[30px] m-7 flex justify-center items-center">
-            <div className="bg-[#444444] rounded-[30px]">
-              {monthlyBalance >= 0 ? (
-                <div className="text-[20px] text-[#009844] p-3">
-                  {formatNumberToYen(monthlyBalance)}
+          {balanceCalendarArray.length === 0 ||
+          balanceCalendarArray.every((data) => data === undefined) ? (
+            <div className="m-3">{BALANCE_CALENDAR_NO_DATA_MESSAGE}</div>
+          ) : (
+            <>
+              <div className="h-[30px] m-7 flex justify-center items-center">
+                <div className="bg-[#444444] rounded-[30px]">
+                  {monthlyBalance >= 0 ? (
+                    <div className="text-[20px] text-[#009844] p-3">
+                      {formatNumberToYen(monthlyBalance)}
+                    </div>
+                  ) : (
+                    <div className="text-[20px] text-[#d32f2f] p-3">
+                      {formatNumberToYen(monthlyBalance)}
+                    </div>
+                  )}
                 </div>
-              ) : (
-                <div className="text-[20px] text-[#d32f2f] p-3">
-                  {formatNumberToYen(monthlyBalance)}
+              </div>
+              <div className="m-1 bg-[#444444] rounded-md">
+                <div className="grid grid-cols-7 place-items-center">
+                  <div className="text-[#999999]">{SUNDAY}</div>
+                  <div className="text-[#999999]">{MONDAY}</div>
+                  <div className="text-[#999999]">{TUESDAY}</div>
+                  <div className="text-[#999999]">{WEDNESDAY}</div>
+                  <div className="text-[#999999]">{THURSDAY}</div>
+                  <div className="text-[#999999]">{FRIDAY}</div>
+                  <div className="text-[#999999]">{SATURDAY}</div>
+                  {emptyDate}
+                  {balanceCalendar}
                 </div>
-              )}
-            </div>
-          </div>
+              </div>
+            </>
+          )}
         </>
       )}
     </>

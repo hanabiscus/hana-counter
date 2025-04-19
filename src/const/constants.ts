@@ -75,7 +75,7 @@ export const BALANCE_MONTH_SELECTOR_MIN_WIDTH = 90;
 export const BALANCE_MONTH_SELECTOR_MARGIN = 2;
 
 export const SHM_NAVIGATION_NAME_COUNTER = "カウンタ";
-export const SHM_NAVIGATION_NAME_MONTHLY_BALANCE = "月別収支";
+export const SHM_NAVIGATION_NAME_MONTHLY_BALANCE = "収支";
 
 export const EXPENDITURE_LABEL = "投資金額";
 export const INCOME_LABEL = "回収金額";
@@ -87,6 +87,11 @@ export const BALANCE_MODAL_DATE_PICKER_FLAG = "実践日";
 export const DATE_PICKER_YEAR_FORMAT = "YYYY";
 export const DATE_PICKER_HEADER_FORMAT = "YYYY-MM";
 export const DATE_PICKER_FORMAT = "YYYY-MM-DD";
+
+export const BALANCE_MONTH_SELECTOR_LABEL = "期間";
+export const BALANCE_SUM_LABEL = "全期間";
+export const ALL_BALANCE_MONTH = "allBalanceMonth";
+export const BALANCE_CALENDAR_NO_DATA_MESSAGE = "データが存在しません";
 
 export const SUNDAY = "日";
 export const MONDAY = "月";

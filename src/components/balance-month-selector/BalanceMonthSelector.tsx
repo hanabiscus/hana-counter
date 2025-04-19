@@ -1,26 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { ThemeProvider } from "@mui/material";
+import { getMonthlyBalanceData } from "@/server/balance/balanceProcessors";
 import {
   useBalanceMonth,
   useBalanceMonthData,
   useMonthlyBalanceData,
 } from "@/hooks/useBalance";
-import {
-  getBalanceMonthList,
-  getMonthlyBalanceData,
-} from "@/server/balance/balanceProcessors";
-import { getCurrentBalanceMonth } from "@/utils/dateUtils";
-import { useIsBalanceOpenState } from "@/hooks/useBalanceModal";
 import { balanceMonthSelectorProps } from "@/const/types";
 import {
+  ALL_BALANCE_MONTH,
+  BALANCE_MONTH_SELECTOR_LABEL,
   BALANCE_MONTH_SELECTOR_MARGIN,
   BALANCE_MONTH_SELECTOR_MIN_WIDTH,
+  BALANCE_SUM_LABEL,
   darkTheme,
 } from "@/const/constants";
 
@@ -31,30 +28,13 @@ const BalanceMonthSelector = (props: balanceMonthSelectorProps) => {
   const setFetchedMonthlyBalanceData =
     useMonthlyBalanceData()[1].setFetchedMonthlyBalanceData;
 
-  const [selectedBalanceMonth, setSelectedBalanceMonth] = useState(
-    getCurrentBalanceMonth()
-  );
-
-  const isBalanceModalOpen = useIsBalanceOpenState();
-
-  useEffect(() => {
-    (async () => {
-      const balanceMonthList = await getBalanceMonthList();
-      if (balanceMonthList.length === 0) {
-        Array.prototype.push.apply(balanceMonthList, [
-          { balanceMonth: getCurrentBalanceMonth() },
-        ]);
-      }
-      setFetchedBalanceMonthData(balanceMonthList);
-      setFetchedMonthlyBalanceData(await getMonthlyBalanceData(balanceMonth));
-    })();
-  }, [balanceMonth, isBalanceModalOpen]);
-
   setFetchedBalanceMonthData(props.balanceMonthDataDTO);
 
-  const handleChangeBalanceMonth = (event: SelectChangeEvent) => {
-    setSelectedBalanceMonth(event.target.value);
-    setBalanceMonth(event.target.value);
+  const handleChangeBalanceMonth = async (event: SelectChangeEvent) => {
+    setFetchedMonthlyBalanceData(
+      await getMonthlyBalanceData(String(event.target.value))
+    );
+    setBalanceMonth(String(event.target.value));
   };
 
   const balanceMonthList = balanceMonthData.map((data) => {
@@ -74,15 +54,14 @@ const BalanceMonthSelector = (props: balanceMonthSelectorProps) => {
           minWidth: BALANCE_MONTH_SELECTOR_MIN_WIDTH,
         }}
       >
-        <InputLabel>{"実践月"}</InputLabel>
+        <InputLabel>{BALANCE_MONTH_SELECTOR_LABEL}</InputLabel>
         <Select
-          value={selectedBalanceMonth}
+          value={balanceMonth}
           onChange={handleChangeBalanceMonth}
-          label="実践月"
+          label={BALANCE_MONTH_SELECTOR_LABEL}
+          defaultValue={ALL_BALANCE_MONTH}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
+          <MenuItem value={ALL_BALANCE_MONTH}>{BALANCE_SUM_LABEL}</MenuItem>
           {balanceMonthList}
         </Select>
       </FormControl>
