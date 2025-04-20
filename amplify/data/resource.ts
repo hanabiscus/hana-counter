@@ -8,6 +8,7 @@ const schema = a.schema({
       expenditure: a.integer().required(),
       balanceDate: a.string().required(),
       balanceMonth: a.string().required(),
+      balanceYear: a.string().required(),
       recordOwner: a.string().required(),
     })
     .identifier(["recordId"])

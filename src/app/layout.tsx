@@ -2,8 +2,8 @@ import { JSX } from "react";
 import type { Metadata } from "next";
 import { fontNotoSansJp } from "@/utils/font";
 import ConfigureAmplifyClientSide from "@/components/configure-amplify-client-side/ConfigureAmplifyClientSide";
-import SuperHeaderMenu from "@/components/super-header-menu/SuperHeaderMenu";
-import Header from "@/components/header/Header";
+import SuperHeaderMenu from "@/components/headers/super-header-menu/SuperHeaderMenu";
+import Header from "@/components/headers/header/Header";
 
 import "./globals.css";
 

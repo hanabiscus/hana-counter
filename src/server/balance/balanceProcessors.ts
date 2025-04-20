@@ -28,7 +28,7 @@ const transformBalanceDataToBalanceDTO: (
   }));
 };
 
-const transformBalancedataToBalanceMonthDTO: (
+const transformBalanceDataToBalanceMonthDTO: (
   data: balanceData
 ) => balanceMonthDTOType = (data: balanceData) => {
   return data
@@ -62,7 +62,7 @@ export const getBalanceMonthList: () => Promise<balanceMonthDTOType> =
         },
       });
 
-      return transformBalancedataToBalanceMonthDTO(fetchedBalanceData);
+      return transformBalanceDataToBalanceMonthDTO(fetchedBalanceData);
     } else {
       return [];
     }
@@ -103,6 +103,34 @@ export const getMonthlyBalanceData: (
     } else {
       return [];
     }
+  } else {
+    return [];
+  }
+};
+
+export const getAllBalanceData: () => Promise<balanceDTOType> = async () => {
+  const { userId } = await runWithAmplifyServerContext({
+    nextServerContext: { cookies },
+    operation: (contextSpec: AmplifyServer.ContextSpec) =>
+      getCurrentUser(contextSpec),
+  });
+
+  if (userId != null || userId != undefined || userId != "") {
+    const client = generateClient<Schema>({
+      authMode: "identityPool",
+    });
+
+    const { data: fetchedBalanceData } = await client.models.Balance.list({
+      filter: {
+        recordOwner: {
+          eq: userId,
+        },
+      },
+    });
+
+    const balanceDataDTO = transformBalanceDataToBalanceDTO(fetchedBalanceData);
+
+    return balanceDataDTO;
   } else {
     return [];
   }

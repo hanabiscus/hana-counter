@@ -3,10 +3,10 @@ import {
   useBalanceDate,
   useBalanceMonth,
   useBalanceValue,
-  useMonthlyBalanceData,
+  useBalanceData,
 } from "@/hooks/useBalance";
 import { useBalanceModal } from "@/hooks/useBalanceModal";
-import { useLoadingState } from "@/hooks/useLoading";
+import { useLoading } from "@/hooks/useLoading";
 import { updateBalance } from "@/server/balance/balanceProcedures";
 import { getMonthlyBalanceData } from "@/server/balance/balanceProcessors";
 import { translateBalanceDateToBalanceMonth } from "@/utils/dateUtils";
@@ -19,12 +19,12 @@ const BalanceUpdateButton: () => JSX.Element = () => {
   const balanceDate: string = useBalanceDate()[0];
 
   const loadingMutator: (isLoading: boolean) => void =
-    useLoadingState()[1].loadingMutator;
+    useLoading()[1].loadingMutator;
 
   const balanceModalMutator: () => void = useBalanceModal();
 
-  const setFetchedMonthlyBalanceData: (balanceData: balanceDTOType) => void =
-    useMonthlyBalanceData()[1].setFetchedMonthlyBalanceData;
+  const setFetchedBalanceData: (balanceData: balanceDTOType) => void =
+    useBalanceData()[1].setFetchedBalanceData;
 
   const setBalanceMonth: (balanceMonth: string) => void =
     useBalanceMonth()[1].setBalanceMonth;
@@ -34,7 +34,7 @@ const BalanceUpdateButton: () => JSX.Element = () => {
     loadingMutator(true);
     await updateBalance(income, expenditure, balanceDate);
     setBalanceMonth(translateBalanceDateToBalanceMonth(balanceDate));
-    setFetchedMonthlyBalanceData(
+    setFetchedBalanceData(
       await getMonthlyBalanceData(
         translateBalanceDateToBalanceMonth(balanceDate)
       )

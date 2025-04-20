@@ -18,7 +18,7 @@ const BalanceTextFields: () => JSX.Element = () => {
   return (
     <>
       <div className="text-[25px] h-[60px] w-full flex justify-center items-center">
-        <div className="border-b-[1px] border-[#333333]">
+        <div className="border-b-[1px] border-[#666666]">
           {income - expenditure >= 0 ? (
             <div className="text-[#009844]">
               {formatNumberToYen(income - expenditure)}

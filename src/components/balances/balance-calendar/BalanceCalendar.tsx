@@ -5,9 +5,9 @@ import {
   useBalanceDate,
   useBalanceMonth,
   useBalanceValue,
-  useMonthlyBalanceData,
+  useBalanceData,
 } from "@/hooks/useBalance";
-import { useLoadingState } from "@/hooks/useLoading";
+import { useLoading } from "@/hooks/useLoading";
 import { createBalanceCalendarArray } from "@/utils/balanceDataUtils";
 import Loading from "@/app/loading";
 import { useBalanceModal, useCreateBalance } from "@/hooks/useBalanceModal";
@@ -30,9 +30,9 @@ import {
 } from "@/const/constants";
 
 const BalanceCalendar = (): JSX.Element => {
-  const isLoading: boolean = useLoadingState()[0];
+  const isLoading: boolean = useLoading()[0];
 
-  const monthlyBalanceData: balanceDTOType = useMonthlyBalanceData()[0];
+  const monthlyBalanceData: balanceDTOType = useBalanceData()[0];
 
   const balanceMonth: string = useBalanceMonth()[0];
 

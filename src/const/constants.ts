@@ -83,8 +83,8 @@ export const BALANCE_MONTH_SELECTOR_MARGIN = 2;
 export const SHM_NAVIGATION_NAME_COUNTER = "カウンタ";
 export const SHM_NAVIGATION_NAME_MONTHLY_BALANCE = "収支";
 
-export const EXPENDITURE_LABEL = "投資金額";
-export const INCOME_LABEL = "回収金額";
+export const EXPENDITURE_LABEL = "投資";
+export const INCOME_LABEL = "回収";
 
 export const SUBMIT = "登録";
 

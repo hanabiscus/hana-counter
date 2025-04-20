@@ -60,9 +60,9 @@ export type hooksBalanceMonthReturn = [
   },
 ];
 
-export type hooksMonthlyBalanceDataReturn = [
+export type hooksBalanceDataReturn = [
   balanceDTOType,
-  { setFetchedMonthlyBalanceData: (balanceData: balanceDTOType) => void },
+  { setFetchedBalanceData: (balanceData: balanceDTOType) => void },
 ];
 
 export type hooksBalanceMonthDataReturn = [
@@ -138,6 +138,7 @@ export type balanceData = {
   expenditure: number;
   balanceDate: string;
   balanceMonth: string;
+  balanceYear: string;
   recordOwner: string;
   readonly createdAt: string;
   readonly updatedAt: string;
@@ -151,6 +152,11 @@ export type balanceDTOType = {
 
 export type balanceMonthDTOType = {
   balanceMonth: string;
+}[];
+
+export type annuallyBalanceArrayType = {
+  balance: number;
+  balanceYear: string;
 }[];
 
 export type balanceMonthSelectorProps = {

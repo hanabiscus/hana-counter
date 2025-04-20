@@ -6,7 +6,7 @@ import {
   balanceState,
   expenditureState,
   incomeState,
-  monthlyBalanceDataState,
+  balanceDataState,
 } from "@/atoms/balanceState";
 import dayjs from "dayjs";
 import {
@@ -16,7 +16,7 @@ import {
   hooksBalanceMonthDataReturn,
   hooksBalanceMonthReturn,
   hooksBalanceValueReturn,
-  hooksMonthlyBalanceDataReturn,
+  hooksBalanceDataReturn,
 } from "@/const/types";
 
 export const useBalanceValue: () => hooksBalanceValueReturn = () => {
@@ -65,18 +65,15 @@ export const useBalanceMonth: () => hooksBalanceMonthReturn = () => {
   return [balanceMonth, { setBalanceMonth }];
 };
 
-export const useMonthlyBalanceData: () => hooksMonthlyBalanceDataReturn =
-  () => {
-    const [monthlyBalanceData, setMonthlyBalanceData] = useAtom(
-      monthlyBalanceDataState
-    );
+export const useBalanceData: () => hooksBalanceDataReturn = () => {
+  const [monthlyBalanceData, setMonthlyBalanceData] = useAtom(balanceDataState);
 
-    const setFetchedMonthlyBalanceData = (balanceData: balanceDTOType) => {
-      setMonthlyBalanceData(balanceData);
-    };
-
-    return [monthlyBalanceData, { setFetchedMonthlyBalanceData }];
+  const setFetchedBalanceData = (balanceData: balanceDTOType) => {
+    setMonthlyBalanceData(balanceData);
   };
+
+  return [monthlyBalanceData, { setFetchedBalanceData }];
+};
 
 export const useBalanceMonthData: () => hooksBalanceMonthDataReturn = () => {
   const [balanceMonthData, setBalanceMonthData] = useAtom(

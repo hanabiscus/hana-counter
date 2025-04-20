@@ -8,5 +8,5 @@ export const incomeState = atom<number>(0);
 export const expenditureState = atom<number>(0);
 export const balanceDateState = atom<string>(getCurrentBalanceDate());
 export const balanceMonthState = atom<string>(ALL_BALANCE_MONTH);
-export const monthlyBalanceDataState = atom<balanceDTOType>([]);
+export const balanceDataState = atom<balanceDTOType>([]);
 export const balanceMonthDataState = atom<balanceMonthDTOType>([]);

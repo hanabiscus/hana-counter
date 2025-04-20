@@ -57,6 +57,7 @@ export const updateBalance: (
         expenditure: expenditure,
         balanceDate: balanceDate,
         balanceMonth: balanceDate.slice(0, 7),
+        balanceYear: balanceDate.slice(0, 4),
         recordOwner: userId,
       };
 

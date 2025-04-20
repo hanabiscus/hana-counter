@@ -10,7 +10,7 @@ import { getMonthlyBalanceData } from "@/server/balance/balanceProcessors";
 import {
   useBalanceMonth,
   useBalanceMonthData,
-  useMonthlyBalanceData,
+  useBalanceData,
 } from "@/hooks/useBalance";
 import { balanceDTOType, balanceMonthSelectorProps } from "@/const/types";
 import {
@@ -30,13 +30,13 @@ const BalanceMonthSelector: (
 
   const [balanceMonth, { setBalanceMonth }] = useBalanceMonth();
 
-  const setFetchedMonthlyBalanceData: (balanceData: balanceDTOType) => void =
-    useMonthlyBalanceData()[1].setFetchedMonthlyBalanceData;
+  const setFetchedBalanceData: (balanceData: balanceDTOType) => void =
+    useBalanceData()[1].setFetchedBalanceData;
 
   const handleChangeBalanceMonth: (
     event: SelectChangeEvent
   ) => Promise<void> = async (event: SelectChangeEvent) => {
-    setFetchedMonthlyBalanceData(
+    setFetchedBalanceData(
       await getMonthlyBalanceData(String(event.target.value))
     );
     setBalanceMonth(String(event.target.value));
