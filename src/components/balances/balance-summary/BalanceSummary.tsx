@@ -1,18 +1,25 @@
 "use client";
 
-import { JSX, useEffect, useMemo } from "react";
-import { getAllBalanceData } from "@/server/balance/balanceProcessors";
+import { JSX, useEffect, useMemo, useState } from "react";
+import {
+  getAllBalanceData,
+  getAnnuallyBalanceArray,
+} from "@/server/balance/balanceProcessors";
 import { useLoading } from "@/hooks/useLoading";
 import { formatNumberToYen } from "@/utils/balanceUtils";
 import { useBalanceMonth, useBalanceData } from "@/hooks/useBalance";
 import Loading from "@/app/loading";
 import UnarchiveRoundedIcon from "@mui/icons-material/UnarchiveRounded";
 import ArchiveRoundedIcon from "@mui/icons-material/ArchiveRounded";
+import { annuallyBalanceArrayType } from "@/const/types";
 
 const BalanceSummary: () => JSX.Element = () => {
   const [allBalanceData, { setFetchedBalanceData }] = useBalanceData();
 
   const [isLoading, { loadingMutator }] = useLoading();
+
+  const [annuallyBalanceArray, setAnnuallyBalanceArray] =
+    useState<annuallyBalanceArrayType>([]);
 
   const balanceMonth: string = useBalanceMonth()[0];
 
@@ -20,6 +27,7 @@ const BalanceSummary: () => JSX.Element = () => {
     (async () => {
       loadingMutator(true);
       setFetchedBalanceData(await getAllBalanceData());
+      setAnnuallyBalanceArray(await getAnnuallyBalanceArray());
       loadingMutator(false);
     })();
   }, [balanceMonth]);
@@ -41,6 +49,35 @@ const BalanceSummary: () => JSX.Element = () => {
       return allIncome - data.expenditure;
     }, 0);
   }, [allBalanceData]);
+
+  const annuallyBalance: JSX.Element[] = useMemo(() => {
+    return annuallyBalanceArray.map((data, index) => {
+      return (
+        <div key={index} className="m-3 grid grid-cols-2 place-items-center">
+          <div key={data.balanceYear} className="text-lg">
+            {data.balanceYear + " " + "年"}
+          </div>
+          <div className="bg-[#444444] rounded-[30px]">
+            {data.balance >= 0 ? (
+              <div
+                key={data.balance}
+                className="text-[20px] text-[#009844] p-3"
+              >
+                {formatNumberToYen(data.balance)}
+              </div>
+            ) : (
+              <div
+                key={data.balance}
+                className="text-[20px] text-[#d32f2f] p-3"
+              >
+                {formatNumberToYen(data.balance)}
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    });
+  }, [annuallyBalanceArray]);
 
   return (
     <>
@@ -76,7 +113,7 @@ const BalanceSummary: () => JSX.Element = () => {
             </div>
           </div>
           <div className="border-b-[1px] border-[#444444] m-2"></div>
-          {/* <AnnuallyBalanceSummary /> */}
+          {annuallyBalance}
         </>
       )}
     </>

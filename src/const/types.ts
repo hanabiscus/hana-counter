@@ -154,6 +154,10 @@ export type balanceMonthDTOType = {
   balanceMonth: string;
 }[];
 
+export type balanceYearDTOType = {
+  balanceYear: string;
+}[];
+
 export type annuallyBalanceArrayType = {
   balance: number;
   balanceYear: string;

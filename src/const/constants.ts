@@ -113,3 +113,5 @@ export const BALANCE_DATE_FORMAT =
   /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
 
 export const BALANCE_MONTH_FORMAT = /^[0-9]{4}-(0[1-9]|1[0-2])$/;
+
+export const BALANCE_YEAR_FORMAT = /^[0-9]{4}$/;
