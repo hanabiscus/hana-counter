@@ -7,6 +7,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { ThemeProvider } from "@mui/material";
 import { getMonthlyBalanceData } from "@/server/balance/balanceProcessors";
+import { useLoading } from "@/hooks/useLoading";
 import {
   useBalanceMonth,
   useBalanceMonthData,
@@ -30,16 +31,21 @@ const BalanceMonthSelector: (
 
   const [balanceMonth, { setBalanceMonth }] = useBalanceMonth();
 
+  const loadingMutator: (isLoading: boolean) => void =
+    useLoading()[1].loadingMutator;
+
   const setFetchedBalanceData: (balanceData: balanceDTOType) => void =
     useBalanceData()[1].setFetchedBalanceData;
 
   const handleChangeBalanceMonth: (
     event: SelectChangeEvent
   ) => Promise<void> = async (event: SelectChangeEvent) => {
+    loadingMutator(true);
     setFetchedBalanceData(
       await getMonthlyBalanceData(String(event.target.value))
     );
     setBalanceMonth(String(event.target.value));
+    loadingMutator(false);
   };
 
   setFetchedBalanceMonthData(props.balanceMonthDataDTO);
