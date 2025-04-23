@@ -7,7 +7,7 @@ import { hooksCounterProps, hooksCounterReturn } from "@/const/types";
 export const useCounter: (props: hooksCounterProps) => hooksCounterReturn = (
   props: hooksCounterProps
 ) => {
-  const [counterNumber, setCount] = useState(props.counterNumber);
+  const [counterNumber, setCount] = useState<number>(props.counterNumber);
 
   const increment = async () => {
     setCount((counterNumber) => counterNumber + 1);

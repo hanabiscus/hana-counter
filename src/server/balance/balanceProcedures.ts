@@ -8,6 +8,7 @@ import type { Schema } from "@/../amplify/data/resource";
 import { getCurrentUser } from "aws-amplify/auth/server";
 import { runWithAmplifyServerContext } from "@/utils/amplifyServerUtils";
 import { AmplifyServer } from "aws-amplify/adapter-core";
+import { checkAuthSession } from "../authentication/amplifyAuthSession";
 import { BALANCE_DATE_FORMAT, BALANCE_PAGE_PATH } from "@/const/constants";
 
 import outputs from "@/../amplify_outputs.json";
@@ -31,13 +32,13 @@ export const updateBalance: (
     expenditure >= 0 &&
     !(income === 0 && expenditure === 0)
   ) {
-    const { userId } = await runWithAmplifyServerContext({
-      nextServerContext: { cookies },
-      operation: (contextSpec: AmplifyServer.ContextSpec) =>
-        getCurrentUser(contextSpec),
-    });
+    if (await checkAuthSession()) {
+      const { userId } = await runWithAmplifyServerContext({
+        nextServerContext: { cookies },
+        operation: (contextSpec: AmplifyServer.ContextSpec) =>
+          getCurrentUser(contextSpec),
+      });
 
-    if (userId != null || userId != undefined || userId != "") {
       const client = generateClient<Schema>({
         authMode: "identityPool",
       });
@@ -79,13 +80,13 @@ export const deleteBalance: (balanceDate: string) => Promise<void> = async (
   balanceDate: string
 ) => {
   if (BALANCE_DATE_FORMAT.test(balanceDate)) {
-    const { userId } = await runWithAmplifyServerContext({
-      nextServerContext: { cookies },
-      operation: (contextSpec: AmplifyServer.ContextSpec) =>
-        getCurrentUser(contextSpec),
-    });
+    if (await checkAuthSession()) {
+      const { userId } = await runWithAmplifyServerContext({
+        nextServerContext: { cookies },
+        operation: (contextSpec: AmplifyServer.ContextSpec) =>
+          getCurrentUser(contextSpec),
+      });
 
-    if (userId != null || userId != undefined || userId != "") {
       const client = generateClient<Schema>({
         authMode: "identityPool",
       });

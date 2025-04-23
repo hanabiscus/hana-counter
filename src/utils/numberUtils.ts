@@ -7,7 +7,7 @@ export const formatNumberToYen: (balance: number) => string = (
   }).format(balance);
 };
 
-export const formatBalanceToCurrency: (balance: number) => string = (
+export const formatNumberToCurrency: (balance: number) => string = (
   balance: number
 ) => {
   if (String(balance).length < 4) {
@@ -19,7 +19,7 @@ export const formatBalanceToCurrency: (balance: number) => string = (
   }
 };
 
-export const formatBalanceToSmallDigit: (balance: number) => string = (
+export const formatNumberToSmallDigit: (balance: number) => string = (
   balance: number
 ) => {
   return String(balance).slice(0, 4) + "...";

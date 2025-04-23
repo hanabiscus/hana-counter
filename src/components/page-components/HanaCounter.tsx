@@ -11,7 +11,7 @@ import ResetCounterNumberButton from "../counters/counter-managers/reset-counter
 const HanaCounter: (props: hanaCounterProps) => JSX.Element = (
   props: hanaCounterProps
 ) => {
-  const [decrementFlag, setDecrementFlag] = useState(false);
+  const [decrementFlag, setDecrementFlag] = useState<boolean>(false);
 
   const handleModeChange: (
     event: React.ChangeEvent<HTMLInputElement>

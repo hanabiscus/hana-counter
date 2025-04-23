@@ -2,7 +2,7 @@ import { JSX } from "react";
 import TextField from "@mui/material/TextField";
 import { useBalanceValue } from "@/hooks/useBalance";
 import { ThemeProvider } from "@mui/material";
-import { formatNumberToYen } from "@/utils/balanceUtils";
+import { formatNumberToYen } from "@/utils/numberUtils";
 import {
   BALANCE_FIELD_SIZE,
   EXPENDITURE_LABEL,

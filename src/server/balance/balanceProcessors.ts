@@ -8,8 +8,13 @@ import { getCurrentUser } from "aws-amplify/auth/server";
 import { runWithAmplifyServerContext } from "@/utils/amplifyServerUtils";
 import { AmplifyServer } from "aws-amplify/adapter-core";
 import {
+  transformBalanceDataToBalanceDTO,
+  transformBalanceDataToBalanceMonthDTO,
+  transformBalanceDataToBalanceYearDTO,
+} from "@/utils/balanceDataUtils";
+import { checkAuthSession } from "../authentication/amplifyAuthSession";
+import {
   annuallyBalanceArrayType,
-  balanceData,
   balanceDTOType,
   balanceMonthDTOType,
   balanceYearDTOType,
@@ -20,63 +25,43 @@ import outputs from "@/../amplify_outputs.json";
 
 Amplify.configure(outputs, { ssr: true });
 
-const transformBalanceDataToBalanceDTO: (
-  data: balanceData
-) => balanceDTOType = (data: balanceData) => {
-  return data.map(({ income, expenditure, balanceDate }) => ({
-    income,
-    expenditure,
-    balanceDate,
-  }));
-};
-
-const transformBalanceDataToBalanceMonthDTO: (
-  data: balanceData
-) => balanceMonthDTOType = (data: balanceData) => {
-  return data
-    .map(({ balanceMonth }) => ({ balanceMonth }))
-    .filter(
-      (balanceData, index, self) =>
-        self.findIndex(
-          (data) => data.balanceMonth === balanceData.balanceMonth
-        ) === index
-    )
-    .sort(
-      (a, b) =>
-        Number(b.balanceMonth.replace("-", "")) -
-        Number(a.balanceMonth.replace("-", ""))
-    );
-};
-
-const transformBalanceDataToBalanceYearDTO: (
-  data: balanceData
-) => balanceYearDTOType = (data: balanceData) => {
-  return data
-    .map(({ balanceYear }) => ({ balanceYear }))
-    .filter(
-      (balanceData, index, self) =>
-        self.findIndex(
-          (data) => data.balanceYear === balanceData.balanceYear
-        ) === index
-    )
-    .sort(
-      (a, b) =>
-        Number(b.balanceYear.replace("-", "")) -
-        Number(a.balanceYear.replace("-", ""))
-    );
-};
-
-const getAnnuallyBalance: (balanceYear: string) => Promise<number> = async (
-  balanceYear: string
-) => {
-  if (BALANCE_YEAR_FORMAT.test(balanceYear)) {
+const getBalanceYearList: () => Promise<balanceYearDTOType> = async () => {
+  if (await checkAuthSession()) {
     const { userId } = await runWithAmplifyServerContext({
       nextServerContext: { cookies },
       operation: (contextSpec: AmplifyServer.ContextSpec) =>
         getCurrentUser(contextSpec),
     });
 
-    if (userId != null || userId != undefined || userId != "") {
+    const client = generateClient<Schema>({
+      authMode: "identityPool",
+    });
+
+    const { data: fetchedBalanceData } = await client.models.Balance.list({
+      filter: {
+        recordOwner: {
+          eq: userId,
+        },
+      },
+    });
+
+    return transformBalanceDataToBalanceYearDTO(fetchedBalanceData);
+  } else {
+    return [];
+  }
+};
+
+const getAnnuallyBalance: (balanceYear: string) => Promise<number> = async (
+  balanceYear: string
+) => {
+  if (BALANCE_YEAR_FORMAT.test(balanceYear)) {
+    if (await checkAuthSession()) {
+      const { userId } = await runWithAmplifyServerContext({
+        nextServerContext: { cookies },
+        operation: (contextSpec: AmplifyServer.ContextSpec) =>
+          getCurrentUser(contextSpec),
+      });
+
       const client = generateClient<Schema>({
         authMode: "identityPool",
       });
@@ -99,25 +84,25 @@ const getAnnuallyBalance: (balanceYear: string) => Promise<number> = async (
           return annuallyBalance + data.income - data.expenditure;
         }, 0);
       } else {
-        return NaN;
+        return 0;
       }
     } else {
-      return NaN;
+      return 0;
     }
   } else {
-    return NaN;
+    return 0;
   }
 };
 
 export const getBalanceMonthList: () => Promise<balanceMonthDTOType> =
   async () => {
-    const { userId } = await runWithAmplifyServerContext({
-      nextServerContext: { cookies },
-      operation: (contextSpec: AmplifyServer.ContextSpec) =>
-        getCurrentUser(contextSpec),
-    });
+    if (await checkAuthSession()) {
+      const { userId } = await runWithAmplifyServerContext({
+        nextServerContext: { cookies },
+        operation: (contextSpec: AmplifyServer.ContextSpec) =>
+          getCurrentUser(contextSpec),
+      });
 
-    if (userId != null || userId != undefined || userId != "") {
       const client = generateClient<Schema>({
         authMode: "identityPool",
       });
@@ -136,41 +121,14 @@ export const getBalanceMonthList: () => Promise<balanceMonthDTOType> =
     }
   };
 
-export const getBalanceYearList: () => Promise<balanceYearDTOType> =
-  async () => {
+export const getAllBalanceData: () => Promise<balanceDTOType> = async () => {
+  if (await checkAuthSession()) {
     const { userId } = await runWithAmplifyServerContext({
       nextServerContext: { cookies },
       operation: (contextSpec: AmplifyServer.ContextSpec) =>
         getCurrentUser(contextSpec),
     });
 
-    if (userId != null || userId != undefined || userId != "") {
-      const client = generateClient<Schema>({
-        authMode: "identityPool",
-      });
-
-      const { data: fetchedBalanceData } = await client.models.Balance.list({
-        filter: {
-          recordOwner: {
-            eq: userId,
-          },
-        },
-      });
-
-      return transformBalanceDataToBalanceYearDTO(fetchedBalanceData);
-    } else {
-      return [];
-    }
-  };
-
-export const getAllBalanceData: () => Promise<balanceDTOType> = async () => {
-  const { userId } = await runWithAmplifyServerContext({
-    nextServerContext: { cookies },
-    operation: (contextSpec: AmplifyServer.ContextSpec) =>
-      getCurrentUser(contextSpec),
-  });
-
-  if (userId != null || userId != undefined || userId != "") {
     const client = generateClient<Schema>({
       authMode: "identityPool",
     });
@@ -195,13 +153,13 @@ export const getMonthlyBalanceData: (
   balanceMonth: string
 ) => Promise<balanceDTOType> = async (balanceMonth: string) => {
   if (BALANCE_MONTH_FORMAT.test(balanceMonth)) {
-    const { userId } = await runWithAmplifyServerContext({
-      nextServerContext: { cookies },
-      operation: (contextSpec: AmplifyServer.ContextSpec) =>
-        getCurrentUser(contextSpec),
-    });
+    if (await checkAuthSession()) {
+      const { userId } = await runWithAmplifyServerContext({
+        nextServerContext: { cookies },
+        operation: (contextSpec: AmplifyServer.ContextSpec) =>
+          getCurrentUser(contextSpec),
+      });
 
-    if (userId != null || userId != undefined || userId != "") {
       const client = generateClient<Schema>({
         authMode: "identityPool",
       });
@@ -233,13 +191,7 @@ export const getMonthlyBalanceData: (
 
 export const getAnnuallyBalanceArray: () => Promise<annuallyBalanceArrayType> =
   async () => {
-    const { userId } = await runWithAmplifyServerContext({
-      nextServerContext: { cookies },
-      operation: (contextSpec: AmplifyServer.ContextSpec) =>
-        getCurrentUser(contextSpec),
-    });
-
-    if (userId != null || userId != undefined || userId != "") {
+    if (await checkAuthSession()) {
       const balanceYearList = await getBalanceYearList();
 
       const annuallyBalanceArray = [];

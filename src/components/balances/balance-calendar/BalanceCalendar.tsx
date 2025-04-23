@@ -12,10 +12,10 @@ import { createBalanceCalendarArray } from "@/utils/balanceDataUtils";
 import Loading from "@/app/loading";
 import { useBalanceModal, useCreateBalance } from "@/hooks/useBalanceModal";
 import {
-  formatBalanceToCurrency,
-  formatBalanceToSmallDigit,
+  formatNumberToCurrency,
+  formatNumberToSmallDigit,
   formatNumberToYen,
-} from "@/utils/balanceUtils";
+} from "@/utils/numberUtils";
 import { getDayFromBalanceMonth } from "@/utils/dateUtils";
 import { balanceDTOType } from "@/const/types";
 import {
@@ -101,16 +101,16 @@ const BalanceCalendar = (): JSX.Element => {
                 <div className="text-[#009844]">
                   <div className="text-[12px]">
                     {String(balance).length <= 6
-                      ? formatBalanceToCurrency(balance)
-                      : formatBalanceToSmallDigit(balance)}
+                      ? formatNumberToCurrency(balance)
+                      : formatNumberToSmallDigit(balance)}
                   </div>
                 </div>
               ) : (
                 <div className="text-[#d32f2f]">
                   <div className="text-[12px]">
                     {String(balance).length <= 6
-                      ? formatBalanceToCurrency(balance)
-                      : formatBalanceToSmallDigit(balance)}
+                      ? formatNumberToCurrency(balance)
+                      : formatNumberToSmallDigit(balance)}
                   </div>
                 </div>
               )}

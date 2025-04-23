@@ -6,7 +6,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { resetCookiesCounterNumber } from "@/server/cookie/cookies";
 
 const ResetCounterNumberButton: () => JSX.Element = () => {
-  const [resetFlag, setResetFlag] = useState(false);
+  const [resetFlag, setResetFlag] = useState<boolean>(false);
 
   const resetAllCounterNumber: () => Promise<void> = async () => {
     setResetFlag(true);

@@ -6,7 +6,7 @@ import {
   getAnnuallyBalanceArray,
 } from "@/server/balance/balanceProcessors";
 import { useLoading } from "@/hooks/useLoading";
-import { formatNumberToYen } from "@/utils/balanceUtils";
+import { formatNumberToYen } from "@/utils/numberUtils";
 import { useBalanceMonth, useBalanceData } from "@/hooks/useBalance";
 import Loading from "@/app/loading";
 import UnarchiveRoundedIcon from "@mui/icons-material/UnarchiveRounded";
