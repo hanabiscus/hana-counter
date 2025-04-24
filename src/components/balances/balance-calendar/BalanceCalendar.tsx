@@ -32,7 +32,7 @@ import {
 const BalanceCalendar = (): JSX.Element => {
   const isLoading: boolean = useLoading()[0];
 
-  const monthlyBalanceData: balanceDTOType = useBalanceData()[0];
+  const balanceData: balanceDTOType = useBalanceData()[0];
 
   const balanceMonth: string = useBalanceMonth()[0];
 
@@ -54,7 +54,7 @@ const BalanceCalendar = (): JSX.Element => {
     return [...Array(getDayFromBalanceMonth(balanceMonth))].map(
       (_, i) => i + 32
     );
-  }, [balanceMonth, monthlyBalanceData]);
+  }, [balanceMonth, balanceData]);
 
   const emptyDate: JSX.Element[] = useMemo(() => {
     return emptyDateArray.map((data) => {
@@ -63,14 +63,14 @@ const BalanceCalendar = (): JSX.Element => {
   }, [emptyDateArray]);
 
   const balanceCalendarArray: balanceDTOType = useMemo(() => {
-    return createBalanceCalendarArray(balanceMonth, monthlyBalanceData);
-  }, [balanceMonth, monthlyBalanceData]);
+    return createBalanceCalendarArray(balanceMonth, balanceData);
+  }, [balanceMonth, balanceData]);
 
   const monthlyBalance: number = useMemo(() => {
-    return monthlyBalanceData.reduce((monthlyBalance, data) => {
+    return balanceData.reduce((monthlyBalance, data) => {
       return monthlyBalance + data.income - data.expenditure;
     }, 0);
-  }, [monthlyBalanceData]);
+  }, [balanceData]);
 
   const balanceCalendar: JSX.Element[] = useMemo(() => {
     return balanceCalendarArray.map((data, index) => {

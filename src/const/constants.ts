@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+import dayjs from "dayjs";
 
 export const HANA_IMAGE_PATH = "/hana.svg";
 
@@ -95,6 +96,8 @@ export const BALANCE_MODAL_DATE_PICKER_FLAG = "実践日";
 export const DATE_PICKER_YEAR_FORMAT = "YYYY";
 export const DATE_PICKER_HEADER_FORMAT = "YYYY-MM";
 export const DATE_PICKER_FORMAT = "YYYY-MM-DD";
+export const DATE_PICKER_MAX_DATE = dayjs("2030-03-31");
+export const DATE_PICKER_MIN_DATE = dayjs("2023-04-01");
 
 export const BALANCE_MONTH_SELECTOR_LABEL = "期間";
 export const BALANCE_SUM_LABEL = "全期間";

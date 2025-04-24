@@ -1,5 +1,5 @@
 import { OverridableComponent } from "@mui/material/OverridableComponent";
-import { SvgIconTypeMap } from "@mui/material/SvgIcon/SvgIcon";
+import { SvgIconTypeMap } from "@mui/material/SvgIcon";
 import dayjs from "dayjs";
 
 export type navigationItemProps = {
@@ -62,12 +62,12 @@ export type hooksBalanceMonthReturn = [
 
 export type hooksBalanceDataReturn = [
   balanceDTOType,
-  { setFetchedBalanceData: (balanceData: balanceDTOType) => void },
+  { setBalanceData: (balanceData: balanceDTOType) => void },
 ];
 
 export type hooksBalanceMonthDataReturn = [
   balanceMonthDTOType,
-  { setFetchedBalanceMonthData: (balanceData: balanceMonthDTOType) => void },
+  { setBalanceMonthData: (balanceData: balanceMonthDTOType) => void },
 ];
 
 export type hooksIsCreateBalanceReturn = [

@@ -14,7 +14,7 @@ import ArchiveRoundedIcon from "@mui/icons-material/ArchiveRounded";
 import { annuallyBalanceArrayType } from "@/const/types";
 
 const BalanceSummary: () => JSX.Element = () => {
-  const [allBalanceData, { setFetchedBalanceData }] = useBalanceData();
+  const [allBalanceData, { setBalanceData }] = useBalanceData();
 
   const [isLoading, { loadingMutator }] = useLoading();
 
@@ -26,7 +26,7 @@ const BalanceSummary: () => JSX.Element = () => {
   useEffect(() => {
     (async () => {
       loadingMutator(true);
-      setFetchedBalanceData(await getAllBalanceData());
+      setBalanceData(await getAllBalanceData());
       setAnnuallyBalanceArray(await getAnnuallyBalanceArray());
       loadingMutator(false);
     })();

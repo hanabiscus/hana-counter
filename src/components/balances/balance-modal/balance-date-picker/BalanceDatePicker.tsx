@@ -12,6 +12,8 @@ import {
   DATE_PICKER_FIELD_SIZE,
   DATE_PICKER_FORMAT,
   DATE_PICKER_HEADER_FORMAT,
+  DATE_PICKER_MAX_DATE,
+  DATE_PICKER_MIN_DATE,
   DATE_PICKER_YEAR_FORMAT,
 } from "@/const/constants";
 
@@ -43,6 +45,9 @@ const BalanceDatePicker: () => JSX.Element = () => {
                 calendarHeader: { format: DATE_PICKER_HEADER_FORMAT },
               }}
               defaultValue={dayjs(balanceDate)}
+              reduceAnimations={true}
+              maxDate={DATE_PICKER_MAX_DATE}
+              minDate={DATE_PICKER_MIN_DATE}
               onChange={(newDate) => handleChangeBalanceDate(newDate)}
               sx={{ maxWidth: DATE_PICKER_FIELD_SIZE }}
             />

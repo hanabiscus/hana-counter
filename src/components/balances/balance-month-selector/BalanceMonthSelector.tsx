@@ -26,7 +26,7 @@ import {
 const BalanceMonthSelector: (
   props: balanceMonthSelectorProps
 ) => JSX.Element = (props: balanceMonthSelectorProps) => {
-  const [balanceMonthData, { setFetchedBalanceMonthData }] =
+  const [balanceMonthData, { setBalanceMonthData }] =
     useBalanceMonthData();
 
   const [balanceMonth, { setBalanceMonth }] = useBalanceMonth();
@@ -34,21 +34,21 @@ const BalanceMonthSelector: (
   const loadingMutator: (isLoading: boolean) => void =
     useLoading()[1].loadingMutator;
 
-  const setFetchedBalanceData: (balanceData: balanceDTOType) => void =
-    useBalanceData()[1].setFetchedBalanceData;
+  const setBalanceData: (balanceData: balanceDTOType) => void =
+    useBalanceData()[1].setBalanceData;
 
   const handleChangeBalanceMonth: (
     event: SelectChangeEvent
   ) => Promise<void> = async (event: SelectChangeEvent) => {
     loadingMutator(true);
-    setFetchedBalanceData(
+    setBalanceData(
       await getMonthlyBalanceData(String(event.target.value))
     );
     setBalanceMonth(String(event.target.value));
     loadingMutator(false);
   };
 
-  setFetchedBalanceMonthData(props.balanceMonthDataDTO);
+  setBalanceMonthData(props.balanceMonthDataDTO);
 
   const balanceMonthList: JSX.Element[] = balanceMonthData.map((data) => {
     return (

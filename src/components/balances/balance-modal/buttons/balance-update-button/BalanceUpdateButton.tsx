@@ -23,8 +23,8 @@ const BalanceUpdateButton: () => JSX.Element = () => {
 
   const balanceModalMutator: () => void = useBalanceModal();
 
-  const setFetchedBalanceData: (balanceData: balanceDTOType) => void =
-    useBalanceData()[1].setFetchedBalanceData;
+  const setBalanceData: (balanceData: balanceDTOType) => void =
+    useBalanceData()[1].setBalanceData;
 
   const setBalanceMonth: (balanceMonth: string) => void =
     useBalanceMonth()[1].setBalanceMonth;
@@ -34,7 +34,7 @@ const BalanceUpdateButton: () => JSX.Element = () => {
     loadingMutator(true);
     await updateBalance(income, expenditure, balanceDate);
     setBalanceMonth(translateBalanceDateToBalanceMonth(balanceDate));
-    setFetchedBalanceData(
+    setBalanceData(
       await getMonthlyBalanceData(
         translateBalanceDateToBalanceMonth(balanceDate)
       )

@@ -20,14 +20,14 @@ const BalanceDeleteButton: () => JSX.Element = () => {
 
   const balanceModalMutator: () => void = useBalanceModal();
 
-  const setFetchedBalanceData: (balanceData: balanceDTOType) => void =
-    useBalanceData()[1].setFetchedBalanceData;
+  const setBalanceData: (balanceData: balanceDTOType) => void =
+    useBalanceData()[1].setBalanceData;
 
   const handleClickBalanceDelete: () => Promise<void> = async () => {
     balanceModalMutator();
     loadingMutator(true);
     await deleteBalance(balanceDate);
-    setFetchedBalanceData(await getMonthlyBalanceData(balanceMonth));
+    setBalanceData(await getMonthlyBalanceData(balanceMonth));
     loadingMutator(false);
   };
 

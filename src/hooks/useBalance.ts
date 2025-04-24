@@ -10,8 +10,6 @@ import {
 } from "@/atoms/balanceState";
 import dayjs from "dayjs";
 import {
-  balanceDTOType,
-  balanceMonthDTOType,
   hooksBalanceDateReturn,
   hooksBalanceMonthDataReturn,
   hooksBalanceMonthReturn,
@@ -66,13 +64,9 @@ export const useBalanceMonth: () => hooksBalanceMonthReturn = () => {
 };
 
 export const useBalanceData: () => hooksBalanceDataReturn = () => {
-  const [monthlyBalanceData, setMonthlyBalanceData] = useAtom(balanceDataState);
+  const [balanceData, setBalanceData] = useAtom(balanceDataState);
 
-  const setFetchedBalanceData = (balanceData: balanceDTOType) => {
-    setMonthlyBalanceData(balanceData);
-  };
-
-  return [monthlyBalanceData, { setFetchedBalanceData }];
+  return [balanceData, { setBalanceData }];
 };
 
 export const useBalanceMonthData: () => hooksBalanceMonthDataReturn = () => {
@@ -80,11 +74,5 @@ export const useBalanceMonthData: () => hooksBalanceMonthDataReturn = () => {
     balanceMonthDataState
   );
 
-  const setFetchedBalanceMonthData = (
-    balanceMonthData: balanceMonthDTOType
-  ) => {
-    setBalanceMonthData(balanceMonthData);
-  };
-
-  return [balanceMonthData, { setFetchedBalanceMonthData }];
+  return [balanceMonthData, { setBalanceMonthData }];
 };
