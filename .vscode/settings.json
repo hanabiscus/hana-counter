@@ -26,6 +26,7 @@
     "tsconfig.json": true,
     ".gitignore": true,
     ".eslintrc.json": true,
-    "next.config.ts": true
+    "next.config.ts": true,
+    "amplify.yml": true
   }
 }
