@@ -27,6 +27,7 @@
     ".gitignore": true,
     ".eslintrc.json": true,
     "next.config.ts": true,
-    "amplify.yml": true
+    "amplify.yml": true,
+    "certificates": true
   }
 }
