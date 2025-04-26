@@ -7,6 +7,10 @@ export const NOT_FOUND = "404";
 export const HOME_PAGE_PATH = "/";
 export const BALANCE_PAGE_PATH = "/balance";
 
+export const HANA_SVG_PATH = "/hana.svg";
+export const HANA_SIZE = 45;
+export const HANA_TITLE = "HANA";
+
 export const COOKIES_AGE = 60 * 60 * 24;
 
 export const USUALLY_COUNTER_FIELD_SIZE = 75;
