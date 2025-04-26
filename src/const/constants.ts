@@ -9,8 +9,6 @@ export const BALANCE_PAGE_PATH = "/balance";
 
 export const COOKIES_AGE = 60 * 60 * 24;
 
-export const HEADER_ICON = "🌺";
-
 export const USUALLY_COUNTER_FIELD_SIZE = 75;
 export const BONUS_COUNTER_FIELD_SIZE = 55;
 

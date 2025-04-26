@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSuperHeaderMenu } from "@/hooks/useSuperHeaderMenu";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
-import { HEADER_ICON, HOME_PAGE_PATH } from "@/const/constants";
+import { HOME_PAGE_PATH } from "@/const/constants";
 
 const Header: () => JSX.Element = () => {
   const [isSuperHeaderMenuOpen, { superHeaderMenuMutator }] =
@@ -21,9 +21,9 @@ const Header: () => JSX.Element = () => {
             <KeyboardArrowDownRoundedIcon fontSize="large" />
           )}
         </button>
-        <Link title={HEADER_ICON} href={HOME_PAGE_PATH}>
+        <Link title="&#x1f33a;&#xfe0f;" href={HOME_PAGE_PATH}>
           <div className="flex justify-center">
-            <div className="text-[35px]">{HEADER_ICON}</div>
+            <div className="text-[35px]">&#x1f33a;&#xfe0f;</div>
           </div>
         </Link>
       </div>
