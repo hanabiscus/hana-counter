@@ -2,7 +2,7 @@ import {
   getLastDay,
   getMonthOfBalanceMonth,
   getYearOfBalanceMonth,
-} from "./dateUtils";
+} from "../utils/dateUtils";
 import {
   balanceData,
   balanceDTOType,
@@ -14,10 +14,7 @@ import { BALANCE_MONTH_FORMAT } from "@/const/constants";
 export const createBalanceCalendarArray: (
   balanceMonth: string,
   balanceData: balanceDTOType
-) => balanceDTOType = (
-  balanceMonth: string,
-  balanceData: balanceDTOType
-) => {
+) => balanceDTOType = (balanceMonth: string, balanceData: balanceDTOType) => {
   if (BALANCE_MONTH_FORMAT.test(balanceMonth)) {
     const yearOfBalanceDate = getYearOfBalanceMonth(balanceMonth);
     const monthOfBalanceDate = getMonthOfBalanceMonth(balanceMonth);

@@ -28,6 +28,7 @@
     ".eslintrc.json": true,
     "next.config.ts": true,
     "amplify.yml": true,
-    "certificates": true
+    "certificates": true,
+    "amplify_outputs.json": true
   }
 }

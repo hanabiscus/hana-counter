@@ -1,7 +1,7 @@
 import { JSX } from "react";
 import { useBalanceDate, useBalanceValue } from "@/hooks/useBalance";
 import { useBalanceModal, useCreateBalance } from "@/hooks/useBalanceModal";
-import { getCurrentBalanceDate } from "@/utils/dateUtils";
+import { getCurrentBalanceDate } from "@/lib/utils/dateUtils";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 const BalanceCreateButton: () => JSX.Element = () => {

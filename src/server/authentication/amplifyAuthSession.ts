@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { Amplify } from "aws-amplify";
 import { getCurrentUser } from "aws-amplify/auth/server";
-import { runWithAmplifyServerContext } from "@/utils/amplifyServerUtils";
+import { runWithAmplifyServerContext } from "@/lib/utils/amplifyServerUtils";
 import { AmplifyServer } from "aws-amplify/adapter-core";
 
 import outputs from "@/../amplify_outputs.json";

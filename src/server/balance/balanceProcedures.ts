@@ -6,7 +6,7 @@ import { Amplify } from "aws-amplify";
 import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/../amplify/data/resource";
 import { getCurrentUser } from "aws-amplify/auth/server";
-import { runWithAmplifyServerContext } from "@/utils/amplifyServerUtils";
+import { runWithAmplifyServerContext } from "@/lib/utils/amplifyServerUtils";
 import { AmplifyServer } from "aws-amplify/adapter-core";
 import { checkAuthSession } from "../authentication/amplifyAuthSession";
 import { BALANCE_DATE_FORMAT, BALANCE_PAGE_PATH } from "@/const/constants";

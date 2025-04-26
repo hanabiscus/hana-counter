@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import { getCurrentBalanceDate } from "@/utils/dateUtils";
+import { getCurrentBalanceDate } from "@/lib/utils/dateUtils";
 import { balanceDTOType, balanceMonthDTOType } from "@/const/types";
 import { ALL_BALANCE_MONTH } from "@/const/constants";
 

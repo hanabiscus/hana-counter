@@ -9,7 +9,7 @@ import { useBalanceModal } from "@/hooks/useBalanceModal";
 import { useLoading } from "@/hooks/useLoading";
 import { updateBalance } from "@/server/balance/balanceProcedures";
 import { getMonthlyBalanceData } from "@/server/balance/balanceProcessors";
-import { translateBalanceDateToBalanceMonth } from "@/utils/dateUtils";
+import { translateBalanceDateToBalanceMonth } from "@/lib/utils/dateUtils";
 import { balanceDTOType } from "@/const/types";
 import { SUBMIT } from "@/const/constants";
 

@@ -5,13 +5,13 @@ import { Amplify } from "aws-amplify";
 import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/../amplify/data/resource";
 import { getCurrentUser } from "aws-amplify/auth/server";
-import { runWithAmplifyServerContext } from "@/utils/amplifyServerUtils";
+import { runWithAmplifyServerContext } from "@/lib/utils/amplifyServerUtils";
 import { AmplifyServer } from "aws-amplify/adapter-core";
 import {
   transformBalanceDataToBalanceDTO,
   transformBalanceDataToBalanceMonthDTO,
   transformBalanceDataToBalanceYearDTO,
-} from "@/utils/balanceDataUtils";
+} from "@/lib/balance/balanceDataMutators";
 import { checkAuthSession } from "../authentication/amplifyAuthSession";
 import {
   annuallyBalanceArrayType,

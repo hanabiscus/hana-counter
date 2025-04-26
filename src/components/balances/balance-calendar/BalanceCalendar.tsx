@@ -8,15 +8,15 @@ import {
   useBalanceData,
 } from "@/hooks/useBalance";
 import { useLoading } from "@/hooks/useLoading";
-import { createBalanceCalendarArray } from "@/utils/balanceDataUtils";
+import { createBalanceCalendarArray } from "@/lib/balance/balanceDataMutators";
 import Loading from "@/app/loading";
 import { useBalanceModal, useCreateBalance } from "@/hooks/useBalanceModal";
 import {
   formatNumberToCurrency,
   formatNumberToSmallDigit,
   formatNumberToYen,
-} from "@/utils/numberUtils";
-import { getDayFromBalanceMonth } from "@/utils/dateUtils";
+} from "@/lib/utils/numberUtils";
+import { getDayFromBalanceMonth } from "@/lib/utils/dateUtils";
 import { balanceDTOType } from "@/const/types";
 import {
   BALANCE_CALENDAR_NO_DATA_MESSAGE,
