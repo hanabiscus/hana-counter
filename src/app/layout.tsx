@@ -1,6 +1,6 @@
 import { JSX } from "react";
 import type { Metadata } from "next";
-import { fontNotoSansJp } from "@/utils/font";
+import { fontNotoColorEmoji, fontNotoSansJp } from "@/utils/font";
 import ConfigureAmplifyClientSide from "@/components/configure-amplify-client-side/ConfigureAmplifyClientSide";
 import SuperHeaderMenu from "@/components/headers/super-header-menu/SuperHeaderMenu";
 import Header from "@/components/headers/header/Header";
@@ -26,7 +26,9 @@ const RootLayout: ({
         <ConfigureAmplifyClientSide />
         <div className="z-50 opacity-100 sticky top-0">
           <SuperHeaderMenu />
-          <Header />
+          <div className={`${fontNotoColorEmoji.variable}`}>
+            <Header />
+          </div>
         </div>
         <main>{children}</main>
       </body>
