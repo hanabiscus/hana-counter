@@ -26,7 +26,7 @@ const Balance: (props: balanceProps) => JSX.Element = (props: balanceProps) => {
     <>
       {logoutState ? (
         <div className="h-svh grid justify-center content-center">
-          <CircularProgress color="error" />
+          <CircularProgress color="error" disableShrink={true} />
         </div>
       ) : (
         <Authenticator socialProviders={["google"]} hideSignUp>

@@ -15,9 +15,11 @@ const ResetCounterNumberButton: () => JSX.Element = () => {
   };
 
   return (
-    <div className="content-center">
+    <>
       {resetFlag ? (
-        <CircularProgress color="error" size={30} />
+        <div className="content-center">
+          <CircularProgress color="error" size={30} disableShrink={true} />
+        </div>
       ) : (
         <div className="content-center">
           <button onClick={resetAllCounterNumber}>
@@ -25,7 +27,7 @@ const ResetCounterNumberButton: () => JSX.Element = () => {
           </button>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

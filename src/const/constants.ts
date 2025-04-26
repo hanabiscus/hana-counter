@@ -1,8 +1,6 @@
 import { createTheme } from "@mui/material";
 import dayjs from "dayjs";
 
-export const HANA_IMAGE_PATH = "/hana.svg";
-
 export const INTERNAL_SERVER_ERROR = "500";
 export const NOT_FOUND = "404";
 
@@ -11,7 +9,7 @@ export const BALANCE_PAGE_PATH = "/balance";
 
 export const COOKIES_AGE = 60 * 60 * 24;
 
-export const HEADER_ICON_SIZE = 40;
+export const HEADER_ICON = "🌺";
 
 export const USUALLY_COUNTER_FIELD_SIZE = 75;
 export const BONUS_COUNTER_FIELD_SIZE = 55;

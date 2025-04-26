@@ -38,7 +38,7 @@ const AuthButton: () => JSX.Element = () => {
     <>
       {logoutState ? (
         <div className="h-[45px] m-[10px] flex justify-center">
-          <CircularProgress color="secondary" size={30} />
+          <CircularProgress color="secondary" size={30} disableShrink={true} />
         </div>
       ) : (
         <Authenticator socialProviders={["google"]} hideSignUp>
