@@ -77,6 +77,31 @@ export type hooksIsCreateBalanceReturn = [
   },
 ];
 
+export type hooksHanaKindReturn = [
+  string,
+  {
+    setHanaKind: (hanaKind: string) => void;
+  },
+];
+
+export type hooksProbabilityInputReturn = [
+  number,
+  number,
+  number,
+  {
+    setAbsoluteTotalGameCounterNumber: (counterNumber: number) => void;
+    setAbsoluteBigbonusCounterNumber: (counterNumber: number) => void;
+    setAbsoluteRegularBonusCounterNumber: (counterNumber: number) => void;
+  },
+];
+
+export type hooksProbabilityOutputReturn = [
+  number[],
+  {
+    setProbabilityOutput: (probabilityOutput: number[]) => void;
+  },
+];
+
 export type counterProps = {
   counterKind: string;
   counterNumber: number;
@@ -169,4 +194,22 @@ export type balanceMonthSelectorProps = {
 
 export type balanceProps = {
   balanceMonthDataDTO: balanceMonthDTOType;
+};
+
+export type conditionalProbabilityOfBonusInput = {
+  hanaKind: string;
+  totalGameCounterNumber: number;
+  bonusCounterNumber: number;
+};
+
+export type calculateProbabilitiesOfHanaInput = {
+  hanaKind: string;
+  totalGameCounterNumber: number;
+  bigbonusCounterNumber: number;
+  regularbonusCounterNumber: number;
+};
+
+export type hanaKindButtonProps = {
+  hanaKind: string;
+  svgPath: string;
 };

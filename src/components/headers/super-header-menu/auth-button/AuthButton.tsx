@@ -7,6 +7,7 @@ import { AuthEventData } from "@aws-amplify/ui";
 import { I18n } from "aws-amplify/utils";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useIsLogoutState, useSetLogout } from "@/hooks/useLogout";
+import { LOGOUT } from "@/const/constants";
 
 import outputs from "@/../amplify_outputs.json";
 
@@ -49,7 +50,7 @@ const AuthButton: () => JSX.Element = () => {
                 className="bg-[#cccccc] h-[45px] w-[140px] m-[10px] border-[2px] border-[#666666] rounded-[30px]"
               >
                 <div className="text-[16px] text-[#333333] p-[2px] flex justify-center">
-                  {"ログアウト"}
+                  {LOGOUT}
                 </div>
               </button>
             </div>

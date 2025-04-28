@@ -1,15 +1,23 @@
 import { createTheme } from "@mui/material";
 import dayjs from "dayjs";
+import BigNumber from "bignumber.js";
 
 export const INTERNAL_SERVER_ERROR = "500";
 export const NOT_FOUND = "404";
 
 export const HOME_PAGE_PATH = "/";
 export const BALANCE_PAGE_PATH = "/balance";
+export const PROBABILITY_PAGE_PATH = "/probability";
 
 export const HANA_SVG_PATH = "/hana.svg";
 export const HANA_SIZE = 45;
 export const HANA_TITLE = "HANA";
+
+export const KING_SVG_PATH = "/king.svg";
+
+export const DRAGON_SVG_PATH = "/dragon.svg";
+
+export const STAR_SVG_PATH = "/star.svg";
 
 export const COOKIES_AGE = 60 * 60 * 24;
 
@@ -81,8 +89,11 @@ export const expenditureTextFiledTheme = createTheme({
 export const BALANCE_MONTH_SELECTOR_MIN_WIDTH = 90;
 export const BALANCE_MONTH_SELECTOR_MARGIN = 2;
 
+export const LOGOUT = "ログアウト";
+
 export const SHM_NAVIGATION_NAME_COUNTER = "カウンタ";
-export const SHM_NAVIGATION_NAME_MONTHLY_BALANCE = "収支";
+export const SHM_NAVIGATION_NAME_BALANCE = "収支";
+export const SHM_NAVIGATION_NAME_SETTEI_HAMBETSU = "設定判別";
 
 export const EXPENDITURE_LABEL = "投資";
 export const INCOME_LABEL = "回収";
@@ -118,3 +129,87 @@ export const BALANCE_DATE_FORMAT =
 export const BALANCE_MONTH_FORMAT = /^[0-9]{4}-(0[1-9]|1[0-2])$/;
 
 export const BALANCE_YEAR_FORMAT = /^[0-9]{4}$/;
+
+export const KING_HANAHANA = "kingHanahana";
+export const DRAGON_HANAHANA = "dragonHanahana";
+export const STAR_HANAHANA = "starHanahana";
+export const HANA_KINDS = [KING_HANAHANA, DRAGON_HANAHANA, STAR_HANAHANA];
+
+export const TOTAL_GAME = "総ゲーム数";
+export const GAME = "G";
+export const BONUS = "ボーナス";
+export const BIGBONUS = "BB";
+export const REGULARBONUS = "RB";
+export const CALCULATE = "設定判別";
+
+export const PROBABILITY_OF_BB_KING_ONE = BigNumber(1.0).div(BigNumber(292.0));
+export const PROBABILITY_OF_BB_KING_TWO = BigNumber(1.0).div(BigNumber(280.0));
+export const PROBABILITY_OF_BB_KING_THREE = BigNumber(1.0).div(
+  BigNumber(268.0)
+);
+export const PROBABILITY_OF_BB_KING_FOUR = BigNumber(1.0).div(BigNumber(257.0));
+export const PROBABILITY_OF_BB_KING_FIVE = BigNumber(1.0).div(BigNumber(244.0));
+export const PROBABILITY_OF_BB_KING_SIX = BigNumber(1.0).div(BigNumber(232.0));
+export const PROBABILITIES_OF_BB_KING = [
+  PROBABILITY_OF_BB_KING_ONE,
+  PROBABILITY_OF_BB_KING_TWO,
+  PROBABILITY_OF_BB_KING_THREE,
+  PROBABILITY_OF_BB_KING_FOUR,
+  PROBABILITY_OF_BB_KING_FIVE,
+  PROBABILITY_OF_BB_KING_SIX,
+];
+
+export const PROBABILITY_OF_RB_KING_ONE = BigNumber(1.0).div(BigNumber(489.0));
+export const PROBABILITY_OF_RB_KING_TWO = BigNumber(1.0).div(BigNumber(452.0));
+export const PROBABILITY_OF_RB_KING_THREE = BigNumber(1.0).div(
+  BigNumber(420.0)
+);
+export const PROBABILITY_OF_RB_KING_FOUR = BigNumber(1.0).div(BigNumber(390.0));
+export const PROBABILITY_OF_RB_KING_FIVE = BigNumber(1.0).div(BigNumber(360.0));
+export const PROBABILITY_OF_RB_KING_SIX = BigNumber(1.0).div(BigNumber(332.0));
+export const PROBABILITIES_OF_RB_KING = [
+  PROBABILITY_OF_RB_KING_ONE,
+  PROBABILITY_OF_RB_KING_TWO,
+  PROBABILITY_OF_RB_KING_THREE,
+  PROBABILITY_OF_RB_KING_FOUR,
+  PROBABILITY_OF_RB_KING_FIVE,
+  PROBABILITY_OF_RB_KING_SIX,
+];
+
+export const PROBABILITY_WEIGHT_OF_BB = BigNumber(0.5);
+export const PROBABILITY_WEIGHT_OF_RB = BigNumber(0.5);
+
+// export const PROBABILITY_OF_WM_ONE = Number((1 / 48).toFixed(2));
+// export const PROBABILITY_OF_WM_TWO = Number((1 / 44).toFixed(2));
+// export const PROBABILITY_OF_WM_THREE = Number((1 / 42).toFixed(2));
+// export const PROBABILITY_OF_WM_FOUR = Number((1 / 40).toFixed(2));
+// export const PROBABILITY_OF_WM_FIVE = Number((1 / 35).toFixed(2));
+// export const PROBABILITY_OF_WM_SIX = Number((1 / 32).toFixed(2));
+
+// export const PROBABILITY_OF_RB_SR_ONE = Number((16 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SR_TWO = Number((25 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SR_THREE = Number((18 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SR_FOUR = Number((28 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SR_FIVE = Number((19 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SR_SIX = Number((25 / 100).toFixed(2));
+
+// export const PROBABILITY_OF_RB_SG_ONE = Number((24 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SG_TWO = Number((17 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SG_THREE = Number((27 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SG_FOUR = Number((18 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SG_FIVE = Number((29 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SG_SIX = Number((25 / 100).toFixed(2));
+
+// export const PROBABILITY_OF_RB_SY_ONE = Number((24 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SY_TWO = Number((35 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SY_THREE = Number((22 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SY_FOUR = Number((32 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SY_FIVE = Number((21 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SY_SIX = Number((25 / 100).toFixed(2));
+
+// export const PROBABILITY_OF_RB_SB_ONE = Number((36 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SB_TWO = Number((23 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SB_THREE = Number((33 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SB_FOUR = Number((22 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SB_FIVE = Number((31 / 100).toFixed(2));
+// export const PROBABILITY_OF_RB_SB_SIX = Number((25 / 100).toFixed(2));
