@@ -20,6 +20,7 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/node_modules": true,
+    "**/certificates": true,
     ".next": true,
     ".amplify": true,
     "next-env.d.ts": true,
@@ -31,7 +32,6 @@
     ".eslintrc.json": true,
     "next.config.ts": true,
     "amplify.yml": true,
-    "certificates": true,
     "amplify_outputs.json": true
   }
 }
