@@ -6,6 +6,7 @@ import {
   useProbabilityInput,
   useProbabilityOutput,
 } from "@/hooks/useProbability";
+import { useProbabilityModal } from "@/hooks/useProbabilityModal";
 import { calculateProbabilitiesOfHana } from "@/server/probability/probabilityProcessors";
 import { useHanaKind } from "@/hooks/useHanaKind";
 import { CALCULATE } from "@/const/constants";
@@ -18,11 +19,15 @@ const CalculateButton: () => JSX.Element = () => {
   const bigbonusGameCounterNumber: number = useProbabilityInput()[1];
   const regularbonusCounterNumber: number = useProbabilityInput()[2];
 
-  const setProbabilityOutput = useProbabilityOutput()[1].setProbabilityOutput;
+  const probabilityModalMutator: () => void = useProbabilityModal();
+
+  const setProbabilityOutput: (probabilityOutput: number[]) => void =
+    useProbabilityOutput()[1].setProbabilityOutput;
 
   const handleClickCalculate: () => Promise<void> = async () => {
+    probabilityModalMutator();
     loadingMutator(true);
-    await setProbabilityOutput(
+    setProbabilityOutput(
       await calculateProbabilitiesOfHana({
         hanaKind: hanaKind,
         totalGameCounterNumber: totalGameCounterNumber,

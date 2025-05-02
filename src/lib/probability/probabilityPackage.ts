@@ -28,59 +28,34 @@ const combinations: (n: number, k: number) => number = (
 
 export const calculateConditionalProbabilitiesOfBigbonus: (
   input: conditionalProbabilityOfBonusInput
-) => number[] = (input: conditionalProbabilityOfBonusInput) => {
+) => Promise<number[]> = async (input: conditionalProbabilityOfBonusInput) => {
   switch (input.hanaKind) {
     case KING_HANAHANA:
       let denominator = BigNumber(0.0);
+      let bigResults = new Array(PROBABILITIES_OF_BB_KING.length);
+      const combinationsValue = new BigNumber(
+        combinations(input.totalGameCounterNumber, input.bonusCounterNumber)
+      );
 
-      for (let index = 0; index < PROBABILITIES_OF_BB_KING.length; index++) {
-        denominator = denominator.plus(
-          BigNumber(
-            combinations(input.totalGameCounterNumber, input.bonusCounterNumber)
-          )
-            .times(
-              PROBABILITIES_OF_BB_KING[index].pow(input.bonusCounterNumber)
-            )
-            .times(
-              BigNumber(1.0)
-                .minus(PROBABILITIES_OF_BB_KING[index])
-                .pow(input.totalGameCounterNumber - input.bonusCounterNumber)
-            )
-        );
-      }
-
-      const bigResult = [
-        BigNumber(0.0),
-        BigNumber(0.0),
-        BigNumber(0.0),
-        BigNumber(0.0),
-        BigNumber(0.0),
-        BigNumber(0.0),
-      ];
-
-      for (let index = 0; index < bigResult.length; index++) {
-        bigResult[index] = BigNumber(
-          combinations(input.totalGameCounterNumber, input.bonusCounterNumber)
-        )
-          .times(PROBABILITIES_OF_BB_KING[index].pow(input.bonusCounterNumber))
+      bigResults = PROBABILITIES_OF_BB_KING.map((value) => {
+        return combinationsValue
+          .times(value.pow(input.bonusCounterNumber))
           .times(
             BigNumber(1.0)
-              .minus(PROBABILITIES_OF_BB_KING[index])
+              .minus(value)
               .pow(input.totalGameCounterNumber - input.bonusCounterNumber)
-          )
-          .div(denominator);
+          );
+      });
+
+      for (let index = 0; index < PROBABILITIES_OF_BB_KING.length; index++) {
+        denominator = denominator.plus(bigResults[index]);
       }
 
-      const result = [
-        bigResult[0].toNumber(),
-        bigResult[1].toNumber(),
-        bigResult[2].toNumber(),
-        bigResult[3].toNumber(),
-        bigResult[4].toNumber(),
-        bigResult[5].toNumber(),
-      ];
+      for (let index = 0; index < bigResults.length; index++) {
+        bigResults[index] = bigResults[index].div(denominator).toNumber();
+      }
 
-      return result;
+      return bigResults;
 
     default:
       return [0, 0, 0, 0, 0, 0];
@@ -89,59 +64,34 @@ export const calculateConditionalProbabilitiesOfBigbonus: (
 
 export const calculateConditionalProbabilitiesOfRegularbonus: (
   input: conditionalProbabilityOfBonusInput
-) => number[] = (input: conditionalProbabilityOfBonusInput) => {
+) => Promise<number[]> = async (input: conditionalProbabilityOfBonusInput) => {
   switch (input.hanaKind) {
     case KING_HANAHANA:
       let denominator = BigNumber(0.0);
+      let bigResults = new Array(PROBABILITIES_OF_RB_KING.length);
+      const combinationsValue = new BigNumber(
+        combinations(input.totalGameCounterNumber, input.bonusCounterNumber)
+      );
 
-      for (let index = 0; index < PROBABILITIES_OF_RB_KING.length; index++) {
-        denominator = denominator.plus(
-          BigNumber(
-            combinations(input.totalGameCounterNumber, input.bonusCounterNumber)
-          )
-            .times(
-              PROBABILITIES_OF_RB_KING[index].pow(input.bonusCounterNumber)
-            )
-            .times(
-              BigNumber(1.0)
-                .minus(PROBABILITIES_OF_RB_KING[index])
-                .pow(input.totalGameCounterNumber - input.bonusCounterNumber)
-            )
-        );
-      }
-
-      const bigResult = [
-        BigNumber(0.0),
-        BigNumber(0.0),
-        BigNumber(0.0),
-        BigNumber(0.0),
-        BigNumber(0.0),
-        BigNumber(0.0),
-      ];
-
-      for (let index = 0; index < bigResult.length; index++) {
-        bigResult[index] = BigNumber(
-          combinations(input.totalGameCounterNumber, input.bonusCounterNumber)
-        )
-          .times(PROBABILITIES_OF_RB_KING[index].pow(input.bonusCounterNumber))
+      bigResults = PROBABILITIES_OF_RB_KING.map((value) => {
+        return combinationsValue
+          .times(value.pow(input.bonusCounterNumber))
           .times(
             BigNumber(1.0)
-              .minus(PROBABILITIES_OF_RB_KING[index])
+              .minus(value)
               .pow(input.totalGameCounterNumber - input.bonusCounterNumber)
-          )
-          .div(denominator);
+          );
+      });
+
+      for (let index = 0; index < PROBABILITIES_OF_RB_KING.length; index++) {
+        denominator = denominator.plus(bigResults[index]);
       }
 
-      const result = [
-        bigResult[0].toNumber(),
-        bigResult[1].toNumber(),
-        bigResult[2].toNumber(),
-        bigResult[3].toNumber(),
-        bigResult[4].toNumber(),
-        bigResult[5].toNumber(),
-      ];
+      for (let index = 0; index < bigResults.length; index++) {
+        bigResults[index] = bigResults[index].div(denominator).toNumber();
+      }
 
-      return result;
+      return bigResults;
 
     default:
       return [0, 0, 0, 0, 0, 0];

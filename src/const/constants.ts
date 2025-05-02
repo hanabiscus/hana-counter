@@ -141,6 +141,17 @@ export const BONUS = "ボーナス";
 export const BIGBONUS = "BB";
 export const REGULARBONUS = "RB";
 export const CALCULATE = "設定判別";
+export const PERCENT = "%";
+
+export const SETTEI_ONE = "設定 1";
+export const SETTEI_TWO = "設定 2";
+export const SETTEI_THREE = "設定 3";
+export const SETTEI_FOUR = "設定 4";
+export const SETTEI_FIVE = "設定 5";
+export const SETTEI_SIX = "設定 6";
+
+export const PROBABILITY_GRAPH_HIGHT = 280;
+export const PROBABILITY_GRAPH_LABEL_WIDTH = 30;
 
 export const PROBABILITY_OF_BB_KING_ONE = BigNumber(1.0).div(BigNumber(292.0));
 export const PROBABILITY_OF_BB_KING_TWO = BigNumber(1.0).div(BigNumber(280.0));

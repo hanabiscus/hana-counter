@@ -27,14 +27,14 @@ export const calculateProbabilitiesOfHana: (
       input.bigbonusCounterNumber + input.regularbonusCounterNumber
   ) {
     const conditionalProbabilitiesOfBigbonus =
-      calculateConditionalProbabilitiesOfBigbonus({
+      await calculateConditionalProbabilitiesOfBigbonus({
         hanaKind: input.hanaKind,
         totalGameCounterNumber: input.totalGameCounterNumber,
         bonusCounterNumber: input.bigbonusCounterNumber,
       });
 
     const conditionalProbabilitiesOfRegularbonus =
-      calculateConditionalProbabilitiesOfRegularbonus({
+      await calculateConditionalProbabilitiesOfRegularbonus({
         hanaKind: input.hanaKind,
         totalGameCounterNumber: input.totalGameCounterNumber,
         bonusCounterNumber: input.regularbonusCounterNumber,

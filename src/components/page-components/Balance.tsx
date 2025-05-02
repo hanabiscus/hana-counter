@@ -10,11 +10,11 @@ import BalanceCreateButton from "../balances/balance-create-button/BalanceCreate
 import BalanceModal from "../balances/balance-modal/BalanceModal";
 import { useBalanceMonth } from "@/hooks/useBalance";
 import BalanceMonthSelector from "../balances/balance-month-selector/BalanceMonthSelector";
+import BalanceSummary from "../balances/balance-summary/BalanceSummary";
 import { balanceProps } from "@/const/types";
 import { ALL_BALANCE_MONTH } from "@/const/constants";
 
 import outputs from "@/../amplify_outputs.json";
-import BalanceSummary from "../balances/balance-summary/BalanceSummary";
 
 Amplify.configure(outputs, { ssr: true });
 

@@ -13,7 +13,8 @@ export const useBalanceModal: () => () => void = () => {
   const [isBalanceModalOpen, setIsBalanceModalOpen] =
     useAtom(balanceModalState);
 
-  const balanceModalMutator = () => setIsBalanceModalOpen(!isBalanceModalOpen);
+  const balanceModalMutator: () => void = () =>
+    setIsBalanceModalOpen(!isBalanceModalOpen);
 
   return balanceModalMutator;
 };
@@ -21,8 +22,9 @@ export const useBalanceModal: () => () => void = () => {
 export const useCreateBalance: () => hooksIsCreateBalanceReturn = () => {
   const [isCreateBalance, setIsCreateBalance] = useAtom(createBalanceState);
 
-  const createBalanceMutator = (isCreate: boolean) =>
-    setIsCreateBalance(isCreate);
+  const createBalanceMutator: (isCreate: boolean) => void = (
+    isCreate: boolean
+  ) => setIsCreateBalance(isCreate);
 
   return [isCreateBalance, { createBalanceMutator }];
 };
