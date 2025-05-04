@@ -2,111 +2,66 @@
 
 import BigNumber from "bignumber.js";
 import {
-  calculateConditionalProbabilitiesOfBigbonus,
-  calculateConditionalProbabilitiesOfRegularbonus,
+  calculateConditionalProbabilitiesOfBigbonusWatermelon,
+  calculateConditionalProbabilitiesOfRegularbonusSideLamp,
 } from "@/lib/probability/probabilityPackage";
 import { calculateProbabilitiesOfHanaInput } from "@/const/types";
 import {
-  HANA_KINDS,
-  PROBABILITY_WEIGHT_OF_BB,
-  PROBABILITY_WEIGHT_OF_RB,
+  NUM_OF_SETTEI,
+  PROBABILITY_WEIGHT_OF_BB_WATERMELON,
+  PROBABILITY_WEIGHT_OF_RB_SIDE,
 } from "@/const/constants";
 
 export const calculateProbabilitiesOfHana: (
   input: calculateProbabilitiesOfHanaInput
 ) => Promise<number[]> = async (input: calculateProbabilitiesOfHanaInput) => {
   if (
-    HANA_KINDS.includes(input.hanaKind) &&
-    Number.isInteger(input.totalGameCounterNumber) &&
     Number.isInteger(input.bigbonusCounterNumber) &&
     Number.isInteger(input.regularbonusCounterNumber) &&
-    input.totalGameCounterNumber >= 0 &&
-    input.bigbonusCounterNumber >= 0 &&
-    input.regularbonusCounterNumber >= 0 &&
-    input.totalGameCounterNumber >=
-      input.bigbonusCounterNumber + input.regularbonusCounterNumber
+    Number.isInteger(input.bigbonusWatermelonCounterNumber) &&
+    Number.isInteger(input.redSideLampCounterNumber) &&
+    Number.isInteger(input.greenSideLampCounterNumber) &&
+    Number.isInteger(input.yellowSideLampCounterNumber) &&
+    Number.isInteger(input.blueSideLampCounterNumber) &&
+    input.bigbonusCounterNumber > 0 &&
+    input.regularbonusCounterNumber > 0 &&
+    input.regularbonusCounterNumber >=
+      input.redSideLampCounterNumber +
+        input.greenSideLampCounterNumber +
+        input.yellowSideLampCounterNumber +
+        input.blueSideLampCounterNumber
   ) {
-    const conditionalProbabilitiesOfBigbonus =
-      await calculateConditionalProbabilitiesOfBigbonus({
-        hanaKind: input.hanaKind,
-        totalGameCounterNumber: input.totalGameCounterNumber,
-        bonusCounterNumber: input.bigbonusCounterNumber,
+    const bigResults = new Array(NUM_OF_SETTEI);
+
+    const conditionalProbabilitiesOfBigbonusWatermelon =
+      await calculateConditionalProbabilitiesOfBigbonusWatermelon({
+        bigbonusCounterNumber: input.bigbonusCounterNumber,
+        bigbonusWatermelonCounterNumber: input.bigbonusWatermelonCounterNumber,
       });
 
-    const conditionalProbabilitiesOfRegularbonus =
-      await calculateConditionalProbabilitiesOfRegularbonus({
-        hanaKind: input.hanaKind,
-        totalGameCounterNumber: input.totalGameCounterNumber,
-        bonusCounterNumber: input.regularbonusCounterNumber,
+    const conditionalProbabilitiesOfRegularbonusSideLamp =
+      await calculateConditionalProbabilitiesOfRegularbonusSideLamp({
+        regularbonusCounterNumber: input.regularbonusCounterNumber,
+        redSideLampCounterNumber: input.redSideLampCounterNumber,
+        greenSideLampCounterNumber: input.greenSideLampCounterNumber,
+        yellowSideLampCounterNumber: input.yellowSideLampCounterNumber,
+        blueSideLampCounterNumber: input.bigbonusCounterNumber,
       });
 
-    const bigResult = [
-      BigNumber(conditionalProbabilitiesOfBigbonus[0])
-        .times(PROBABILITY_WEIGHT_OF_BB)
-        .plus(
-          BigNumber(conditionalProbabilitiesOfRegularbonus[0]).times(
-            PROBABILITY_WEIGHT_OF_RB
+    for (let index = 0; index < NUM_OF_SETTEI; index++) {
+      bigResults[index] = Number(
+        BigNumber(conditionalProbabilitiesOfBigbonusWatermelon[index])
+          .times(PROBABILITY_WEIGHT_OF_BB_WATERMELON)
+          .plus(
+            BigNumber(
+              conditionalProbabilitiesOfRegularbonusSideLamp[index]
+            ).times(PROBABILITY_WEIGHT_OF_RB_SIDE)
           )
-        )
-        .toFixed(4),
-      BigNumber(conditionalProbabilitiesOfBigbonus[1])
-        .times(PROBABILITY_WEIGHT_OF_BB)
-        .plus(
-          BigNumber(conditionalProbabilitiesOfRegularbonus[1]).times(
-            PROBABILITY_WEIGHT_OF_RB
-          )
-        )
-        .toFixed(4),
-      BigNumber(conditionalProbabilitiesOfBigbonus[2])
-        .times(PROBABILITY_WEIGHT_OF_BB)
-        .plus(
-          BigNumber(conditionalProbabilitiesOfRegularbonus[2]).times(
-            PROBABILITY_WEIGHT_OF_RB
-          )
-        )
-        .toFixed(4),
-      BigNumber(conditionalProbabilitiesOfBigbonus[3])
-        .times(PROBABILITY_WEIGHT_OF_BB)
-        .plus(
-          BigNumber(conditionalProbabilitiesOfRegularbonus[3]).times(
-            PROBABILITY_WEIGHT_OF_RB
-          )
-        )
-        .toFixed(4),
-      BigNumber(conditionalProbabilitiesOfBigbonus[4])
-        .times(PROBABILITY_WEIGHT_OF_BB)
-        .plus(
-          BigNumber(conditionalProbabilitiesOfRegularbonus[4]).times(
-            PROBABILITY_WEIGHT_OF_RB
-          )
-        )
-        .toFixed(4),
-      BigNumber(conditionalProbabilitiesOfBigbonus[5])
-        .times(PROBABILITY_WEIGHT_OF_BB)
-        .plus(
-          BigNumber(conditionalProbabilitiesOfRegularbonus[5]).times(
-            PROBABILITY_WEIGHT_OF_RB
-          )
-        )
-        .toFixed(4),
-      BigNumber(conditionalProbabilitiesOfBigbonus[6])
-        .times(PROBABILITY_WEIGHT_OF_BB)
-        .plus(
-          BigNumber(conditionalProbabilitiesOfRegularbonus[6]).times(
-            PROBABILITY_WEIGHT_OF_RB
-          )
-        )
-        .toFixed(4),
-    ];
+          .toFixed(4)
+      );
+    }
 
-    return [
-      Number(bigResult[0]),
-      Number(bigResult[1]),
-      Number(bigResult[2]),
-      Number(bigResult[3]),
-      Number(bigResult[4]),
-      Number(bigResult[5]),
-    ];
+    return bigResults;
   } else {
     return [0, 0, 0, 0, 0, 0];
   }

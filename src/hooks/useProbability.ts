@@ -1,20 +1,22 @@
 import { useAtom } from "jotai";
 import {
   bigbonusCounterNumberState,
+  bigbonusWaterMelonCounterNumberState,
+  blueSideLampCounterNumberState,
+  greenSideLampCounterNumberState,
   probabilityOutputState,
+  redSideLampCounterNumberState,
   regularbonusCounterNumberState,
-  totalGameCounterNumberState,
+  yellowSideLampCounterNumberState,
 } from "@/atoms/probabilityState";
 import {
-  hooksProbabilityInputReturn,
+  hooksBigbonusWatermelonInputReturn,
+  hooksBonusInputReturn,
   hooksProbabilityOutputReturn,
+  hooksRegularbonusSideLampReturn,
 } from "@/const/types";
 
-export const useProbabilityInput: () => hooksProbabilityInputReturn = () => {
-  const [totalGameCounterNumber, setTotalGameCounterNumber] = useAtom(
-    totalGameCounterNumberState
-  );
-
+export const useBonusInput: () => hooksBonusInputReturn = () => {
   const [bigbonusCounterNumber, setBigbonusCounterNumber] = useAtom(
     bigbonusCounterNumberState
   );
@@ -22,16 +24,6 @@ export const useProbabilityInput: () => hooksProbabilityInputReturn = () => {
   const [regularbonusCounterNumber, setRegularBonusCounterNumber] = useAtom(
     regularbonusCounterNumberState
   );
-
-  const setAbsoluteTotalGameCounterNumber: (counterNumber: number) => void = (
-    counterNumber: number
-  ) => {
-    if (counterNumber < 0) {
-      setTotalGameCounterNumber(0);
-    } else {
-      setTotalGameCounterNumber(Math.floor(counterNumber));
-    }
-  };
 
   const setAbsoluteBigbonusCounterNumber: (counterNumber: number) => void = (
     counterNumber: number
@@ -43,7 +35,7 @@ export const useProbabilityInput: () => hooksProbabilityInputReturn = () => {
     }
   };
 
-  const setAbsoluteRegularBonusCounterNumber: (
+  const setAbsoluteRegularbonusCounterNumber: (
     counterNumber: number
   ) => void = (counterNumber: number) => {
     if (counterNumber < 0) {
@@ -54,16 +46,105 @@ export const useProbabilityInput: () => hooksProbabilityInputReturn = () => {
   };
 
   return [
-    totalGameCounterNumber,
     bigbonusCounterNumber,
     regularbonusCounterNumber,
-    {
-      setAbsoluteTotalGameCounterNumber,
-      setAbsoluteBigbonusCounterNumber,
-      setAbsoluteRegularBonusCounterNumber,
-    },
+    { setAbsoluteBigbonusCounterNumber, setAbsoluteRegularbonusCounterNumber },
   ];
 };
+
+export const useBigbonusWatermelonInput: () => hooksBigbonusWatermelonInputReturn =
+  () => {
+    const [
+      bigbonusWaterMelonCounterNumber,
+      setBigbonusWatermelonCounterNumber,
+    ] = useAtom(bigbonusWaterMelonCounterNumberState);
+
+    const setAbsoluteBigbonusWatermelonCounterNumber: (
+      counterNumber: number
+    ) => void = (counterNumber: number) => {
+      if (counterNumber < 0) {
+        setBigbonusWatermelonCounterNumber(0);
+      } else {
+        setBigbonusWatermelonCounterNumber(Math.floor(counterNumber));
+      }
+    };
+
+    return [
+      bigbonusWaterMelonCounterNumber,
+      { setAbsoluteBigbonusWatermelonCounterNumber },
+    ];
+  };
+
+export const useRegularbonusSideLampInput: () => hooksRegularbonusSideLampReturn =
+  () => {
+    const [redSideLampCounterNumber, setRedSideLampCounterNumber] = useAtom(
+      redSideLampCounterNumberState
+    );
+
+    const [greenSideLampCounterNumber, setGreenSideLampCounterNumber] = useAtom(
+      greenSideLampCounterNumberState
+    );
+
+    const [yellowSideLampCounterNumber, setYellowSideLampCounterNumber] =
+      useAtom(yellowSideLampCounterNumberState);
+
+    const [blueSideLampCounterNumber, setBlueSideLampCounterNumber] = useAtom(
+      blueSideLampCounterNumberState
+    );
+
+    const setAbsoluteRedSideLampCounterNumber: (
+      counterNumber: number
+    ) => void = (counterNumber: number) => {
+      if (counterNumber < 0) {
+        setRedSideLampCounterNumber(0);
+      } else {
+        setRedSideLampCounterNumber(Math.floor(counterNumber));
+      }
+    };
+
+    const setAbsoluteGreenSideLampCounterNumber: (
+      counterNumber: number
+    ) => void = (counterNumber: number) => {
+      if (counterNumber < 0) {
+        setGreenSideLampCounterNumber(0);
+      } else {
+        setGreenSideLampCounterNumber(Math.floor(counterNumber));
+      }
+    };
+
+    const setAbsoluteYellowSideLampCounterNumber: (
+      counterNumber: number
+    ) => void = (counterNumber: number) => {
+      if (counterNumber < 0) {
+        setYellowSideLampCounterNumber(0);
+      } else {
+        setYellowSideLampCounterNumber(Math.floor(counterNumber));
+      }
+    };
+
+    const setAbsoluteBlueSideLampCounterNumber: (
+      counterNumber: number
+    ) => void = (counterNumber: number) => {
+      if (counterNumber < 0) {
+        setBlueSideLampCounterNumber(0);
+      } else {
+        setBlueSideLampCounterNumber(Math.floor(counterNumber));
+      }
+    };
+
+    return [
+      redSideLampCounterNumber,
+      greenSideLampCounterNumber,
+      yellowSideLampCounterNumber,
+      blueSideLampCounterNumber,
+      {
+        setAbsoluteRedSideLampCounterNumber,
+        setAbsoluteGreenSideLampCounterNumber,
+        setAbsoluteYellowSideLampCounterNumber,
+        setAbsoluteBlueSideLampCounterNumber,
+      },
+    ];
+  };
 
 export const useProbabilityOutput: () => hooksProbabilityOutputReturn = () => {
   const [probabilityOutput, setProbabilityOutput] = useAtom(

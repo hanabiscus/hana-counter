@@ -84,14 +84,32 @@ export type hooksHanaKindReturn = [
   },
 ];
 
-export type hooksProbabilityInputReturn = [
+export type hooksBonusInputReturn = [
+  number,
+  number,
+  {
+    setAbsoluteBigbonusCounterNumber: (counterNumber: number) => void;
+    setAbsoluteRegularbonusCounterNumber: (counterNumber: number) => void;
+  },
+];
+
+export type hooksBigbonusWatermelonInputReturn = [
+  number,
+  {
+    setAbsoluteBigbonusWatermelonCounterNumber: (counterNumber: number) => void;
+  },
+];
+
+export type hooksRegularbonusSideLampReturn = [
+  number,
   number,
   number,
   number,
   {
-    setAbsoluteTotalGameCounterNumber: (counterNumber: number) => void;
-    setAbsoluteBigbonusCounterNumber: (counterNumber: number) => void;
-    setAbsoluteRegularBonusCounterNumber: (counterNumber: number) => void;
+    setAbsoluteRedSideLampCounterNumber: (counterNumber: number) => void;
+    setAbsoluteGreenSideLampCounterNumber: (counterNumber: number) => void;
+    setAbsoluteYellowSideLampCounterNumber: (counterNumber: number) => void;
+    setAbsoluteBlueSideLampCounterNumber: (counterNumber: number) => void;
   },
 ];
 
@@ -196,20 +214,25 @@ export type balanceProps = {
   balanceMonthDataDTO: balanceMonthDTOType;
 };
 
-export type conditionalProbabilityOfBonusInput = {
-  hanaKind: string;
-  totalGameCounterNumber: number;
-  bonusCounterNumber: number;
+export type conditionalProbabilityOfBigbonusWatermelonInput = {
+  bigbonusCounterNumber: number;
+  bigbonusWatermelonCounterNumber: number;
+};
+
+export type conditionalProbabilitiesOfRegularbonusSideLampInput = {
+  regularbonusCounterNumber: number;
+  redSideLampCounterNumber: number;
+  greenSideLampCounterNumber: number;
+  yellowSideLampCounterNumber: number;
+  blueSideLampCounterNumber: number;
 };
 
 export type calculateProbabilitiesOfHanaInput = {
-  hanaKind: string;
-  totalGameCounterNumber: number;
   bigbonusCounterNumber: number;
   regularbonusCounterNumber: number;
-};
-
-export type hanaKindButtonProps = {
-  hanaKind: string;
-  svgPath: string;
+  bigbonusWatermelonCounterNumber: number;
+  redSideLampCounterNumber: number;
+  greenSideLampCounterNumber: number;
+  yellowSideLampCounterNumber: number;
+  blueSideLampCounterNumber: number;
 };

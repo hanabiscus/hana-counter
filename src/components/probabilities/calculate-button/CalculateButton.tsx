@@ -3,21 +3,29 @@
 import { JSX } from "react";
 import { useLoading } from "@/hooks/useLoading";
 import {
-  useProbabilityInput,
+  useBonusInput,
+  useBigbonusWatermelonInput,
+  useRegularbonusSideLampInput,
   useProbabilityOutput,
 } from "@/hooks/useProbability";
 import { useProbabilityModal } from "@/hooks/useProbabilityModal";
 import { calculateProbabilitiesOfHana } from "@/server/probability/probabilityProcessors";
-import { useHanaKind } from "@/hooks/useHanaKind";
 import { CALCULATE } from "@/const/constants";
 
 const CalculateButton: () => JSX.Element = () => {
   const loadingMutator: (isLoading: boolean) => void =
     useLoading()[1].loadingMutator;
-  const hanaKind: string = useHanaKind()[0];
-  const totalGameCounterNumber: number = useProbabilityInput()[0];
-  const bigbonusGameCounterNumber: number = useProbabilityInput()[1];
-  const regularbonusCounterNumber: number = useProbabilityInput()[2];
+
+  const bigbonusGameCounterNumber: number = useBonusInput()[0];
+  const regularbonusCounterNumber: number = useBonusInput()[1];
+
+  const bigbonusWatermelonCounterNumber: number =
+    useBigbonusWatermelonInput()[0];
+
+  const redSideLampCounterNumber: number = useRegularbonusSideLampInput()[0];
+  const greenSideLampCounterNumber: number = useRegularbonusSideLampInput()[1];
+  const yellowSideLampCounterNumber: number = useRegularbonusSideLampInput()[2];
+  const blueSideLampCounterNumber: number = useRegularbonusSideLampInput()[3];
 
   const probabilityModalMutator: () => void = useProbabilityModal();
 
@@ -29,10 +37,13 @@ const CalculateButton: () => JSX.Element = () => {
     loadingMutator(true);
     setProbabilityOutput(
       await calculateProbabilitiesOfHana({
-        hanaKind: hanaKind,
-        totalGameCounterNumber: totalGameCounterNumber,
         bigbonusCounterNumber: bigbonusGameCounterNumber,
         regularbonusCounterNumber: regularbonusCounterNumber,
+        bigbonusWatermelonCounterNumber: bigbonusWatermelonCounterNumber,
+        redSideLampCounterNumber: redSideLampCounterNumber,
+        greenSideLampCounterNumber: greenSideLampCounterNumber,
+        yellowSideLampCounterNumber: yellowSideLampCounterNumber,
+        blueSideLampCounterNumber: blueSideLampCounterNumber,
       })
     );
     loadingMutator(false);

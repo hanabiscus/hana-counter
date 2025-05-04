@@ -3,7 +3,7 @@
 import { JSX } from "react";
 import { ThemeProvider } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import { useProbabilityInput } from "@/hooks/useProbability";
+import { useBonusInput } from "@/hooks/useProbability";
 import {
   BIGBONUS,
   BONUS,
@@ -13,13 +13,11 @@ import {
 } from "@/const/constants";
 
 const BonusInput: () => JSX.Element = () => {
-  const bigbonusCounterNumber: number = useProbabilityInput()[1];
-  const regularbonusCounterNumber: number = useProbabilityInput()[2];
-
-  const setAbsoluteBigbonusCounterNumber: (counterNumber: number) => void =
-    useProbabilityInput()[3].setAbsoluteBigbonusCounterNumber;
-  const setAbsoluteRegularBonusCounterNumber: (counterNumber: number) => void =
-    useProbabilityInput()[3].setAbsoluteRegularBonusCounterNumber;
+  const [
+    bigbonusCounterNumber,
+    regularbonusCounterNumber,
+    { setAbsoluteBigbonusCounterNumber, setAbsoluteRegularbonusCounterNumber },
+  ] = useBonusInput();
 
   return (
     <div className="m-1 mb-[20px]">
@@ -50,7 +48,7 @@ const BonusInput: () => JSX.Element = () => {
                   type="number"
                   value={String(regularbonusCounterNumber)}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    setAbsoluteRegularBonusCounterNumber(
+                    setAbsoluteRegularbonusCounterNumber(
                       Number(event.target.value)
                     )
                   }
@@ -65,4 +63,5 @@ const BonusInput: () => JSX.Element = () => {
     </div>
   );
 };
+
 export default BonusInput;
