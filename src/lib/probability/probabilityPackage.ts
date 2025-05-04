@@ -84,7 +84,7 @@ export const calculateConditionalProbabilitiesOfRegularbonusSideLamp: (
     BigNumber(0.0),
     BigNumber(0.0),
   ];
-  let bigResults: number[] = new Array(NUM_OF_SETTEI);
+  const bigResults: number[] = new Array(NUM_OF_SETTEI);
 
   const combinationsValues: BigNumber[] = [
     BigNumber(
