@@ -12,6 +12,7 @@ import {
   RED_SIDE_COUNTER,
   REGULARBONUS_SIDE_LAMP,
   textFiledTheme,
+  YELLOW_SIDE_COUNTER,
 } from "@/const/constants";
 
 const SideLampInput: () => JSX.Element = () => {
@@ -37,7 +38,7 @@ const SideLampInput: () => JSX.Element = () => {
         await getCookiesCounterNumber(GREEN_SIDE_COUNTER)
       );
       setAbsoluteYellowSideLampCounterNumber(
-        await getCookiesCounterNumber(GREEN_SIDE_COUNTER)
+        await getCookiesCounterNumber(YELLOW_SIDE_COUNTER)
       );
       setAbsoluteBlueSideLampCounterNumber(
         await getCookiesCounterNumber(BLUE_SIDE_COUNTER)
