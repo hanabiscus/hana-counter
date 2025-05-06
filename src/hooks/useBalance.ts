@@ -16,6 +16,7 @@ import {
   hooksBalanceValueReturn,
   hooksBalanceDataReturn,
 } from "@/const/types";
+import { BALANCE_MAX_VALUE } from "@/const/constants";
 
 export const useBalanceValue: () => hooksBalanceValueReturn = () => {
   const setBalance = useSetAtom(balanceState);
@@ -23,7 +24,9 @@ export const useBalanceValue: () => hooksBalanceValueReturn = () => {
   const [expenditure, setExpenditure] = useAtom(expenditureState);
 
   const setIntegerIncome = (income: number) => {
-    if (income >= 0) {
+    if (income > BALANCE_MAX_VALUE) {
+      setIncome(BALANCE_MAX_VALUE);
+    } else if (income >= 0) {
       setIncome(Math.floor(income));
     } else {
       setIncome(0);
@@ -33,7 +36,9 @@ export const useBalanceValue: () => hooksBalanceValueReturn = () => {
   };
 
   const setIntegerExpenditure = (expenditure: number) => {
-    if (expenditure >= 0) {
+    if (expenditure > BALANCE_MAX_VALUE) {
+      setExpenditure(BALANCE_MAX_VALUE);
+    } else if (expenditure >= 0) {
       setExpenditure(Math.floor(expenditure));
     } else {
       setExpenditure(0);

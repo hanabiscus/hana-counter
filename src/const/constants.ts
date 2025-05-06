@@ -41,6 +41,8 @@ export const GREEN_SIDE_COUNTER = "greenSideCounter";
 export const YELLOW_SIDE_COUNTER = "yellowSideCounter";
 export const BLUE_SIDE_COUNTER = "blueSideCounter";
 
+export const COUNTER_NUMBER_MAX_VALUE = 9999;
+
 export const ALL_COUNTER_KIND_SET = [
   BELL_COUNTER,
   WATERMELON_COUNTER,
@@ -129,6 +131,8 @@ export const BALANCE_DATE_FORMAT =
 export const BALANCE_MONTH_FORMAT = /^[0-9]{4}-(0[1-9]|1[0-2])$/;
 
 export const BALANCE_YEAR_FORMAT = /^[0-9]{4}$/;
+
+export const BALANCE_MAX_VALUE = 999999;
 
 export const BONUS = "ボーナス";
 export const BIGBONUS = "BB";

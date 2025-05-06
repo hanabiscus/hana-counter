@@ -15,6 +15,7 @@ import {
   hooksProbabilityOutputReturn,
   hooksRegularbonusSideLampReturn,
 } from "@/const/types";
+import { COUNTER_NUMBER_MAX_VALUE } from "@/const/constants";
 
 export const useBonusInput: () => hooksBonusInputReturn = () => {
   const [bigbonusCounterNumber, setBigbonusCounterNumber] = useAtom(
@@ -28,7 +29,9 @@ export const useBonusInput: () => hooksBonusInputReturn = () => {
   const setAbsoluteBigbonusCounterNumber: (counterNumber: number) => void = (
     counterNumber: number
   ) => {
-    if (counterNumber < 0) {
+    if (counterNumber >= COUNTER_NUMBER_MAX_VALUE) {
+      setBigbonusCounterNumber(COUNTER_NUMBER_MAX_VALUE);
+    } else if (counterNumber < 0) {
       setBigbonusCounterNumber(0);
     } else {
       setBigbonusCounterNumber(Math.floor(counterNumber));
@@ -38,7 +41,9 @@ export const useBonusInput: () => hooksBonusInputReturn = () => {
   const setAbsoluteRegularbonusCounterNumber: (
     counterNumber: number
   ) => void = (counterNumber: number) => {
-    if (counterNumber < 0) {
+    if (counterNumber >= COUNTER_NUMBER_MAX_VALUE) {
+      setRegularBonusCounterNumber(COUNTER_NUMBER_MAX_VALUE);
+    } else if (counterNumber < 0) {
       setRegularBonusCounterNumber(0);
     } else {
       setRegularBonusCounterNumber(Math.floor(counterNumber));
@@ -62,7 +67,9 @@ export const useBigbonusWatermelonInput: () => hooksBigbonusWatermelonInputRetur
     const setAbsoluteBigbonusWatermelonCounterNumber: (
       counterNumber: number
     ) => void = (counterNumber: number) => {
-      if (counterNumber < 0) {
+      if (counterNumber >= COUNTER_NUMBER_MAX_VALUE) {
+        setBigbonusWatermelonCounterNumber(COUNTER_NUMBER_MAX_VALUE);
+      } else if (counterNumber < 0) {
         setBigbonusWatermelonCounterNumber(0);
       } else {
         setBigbonusWatermelonCounterNumber(Math.floor(counterNumber));
@@ -95,7 +102,9 @@ export const useRegularbonusSideLampInput: () => hooksRegularbonusSideLampReturn
     const setAbsoluteRedSideLampCounterNumber: (
       counterNumber: number
     ) => void = (counterNumber: number) => {
-      if (counterNumber < 0) {
+      if (counterNumber >= COUNTER_NUMBER_MAX_VALUE) {
+        setRedSideLampCounterNumber(COUNTER_NUMBER_MAX_VALUE);
+      } else if (counterNumber < 0) {
         setRedSideLampCounterNumber(0);
       } else {
         setRedSideLampCounterNumber(Math.floor(counterNumber));
@@ -105,7 +114,9 @@ export const useRegularbonusSideLampInput: () => hooksRegularbonusSideLampReturn
     const setAbsoluteGreenSideLampCounterNumber: (
       counterNumber: number
     ) => void = (counterNumber: number) => {
-      if (counterNumber < 0) {
+      if (counterNumber >= COUNTER_NUMBER_MAX_VALUE) {
+        setGreenSideLampCounterNumber(COUNTER_NUMBER_MAX_VALUE);
+      } else if (counterNumber < 0) {
         setGreenSideLampCounterNumber(0);
       } else {
         setGreenSideLampCounterNumber(Math.floor(counterNumber));
@@ -115,7 +126,9 @@ export const useRegularbonusSideLampInput: () => hooksRegularbonusSideLampReturn
     const setAbsoluteYellowSideLampCounterNumber: (
       counterNumber: number
     ) => void = (counterNumber: number) => {
-      if (counterNumber < 0) {
+      if (counterNumber >= COUNTER_NUMBER_MAX_VALUE) {
+        setYellowSideLampCounterNumber(COUNTER_NUMBER_MAX_VALUE);
+      } else if (counterNumber < 0) {
         setYellowSideLampCounterNumber(0);
       } else {
         setYellowSideLampCounterNumber(Math.floor(counterNumber));
@@ -125,7 +138,9 @@ export const useRegularbonusSideLampInput: () => hooksRegularbonusSideLampReturn
     const setAbsoluteBlueSideLampCounterNumber: (
       counterNumber: number
     ) => void = (counterNumber: number) => {
-      if (counterNumber < 0) {
+      if (counterNumber >= COUNTER_NUMBER_MAX_VALUE) {
+        setBlueSideLampCounterNumber(COUNTER_NUMBER_MAX_VALUE);
+      } else if (counterNumber < 0) {
         setBlueSideLampCounterNumber(0);
       } else {
         setBlueSideLampCounterNumber(Math.floor(counterNumber));
