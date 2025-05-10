@@ -77,13 +77,6 @@ export type hooksIsCreateBalanceReturn = [
   },
 ];
 
-export type hooksHanaKindReturn = [
-  string,
-  {
-    setHanaKind: (hanaKind: string) => void;
-  },
-];
-
 export type hooksBonusInputReturn = [
   number,
   number,

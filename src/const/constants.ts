@@ -13,12 +13,6 @@ export const HANA_SVG_PATH = "/hana.svg";
 export const HANA_SIZE = 45;
 export const HANA_TITLE = "HANA";
 
-export const KING_SVG_PATH = "/king.svg";
-
-export const DRAGON_SVG_PATH = "/dragon.svg";
-
-export const STAR_SVG_PATH = "/star.svg";
-
 export const COOKIES_AGE = 60 * 60 * 24;
 
 export const USUALLY_COUNTER_FIELD_SIZE = 75;

@@ -14,17 +14,6 @@ export const getCurrentBalanceDate: () => string = () => {
     .replaceAll("/", "-");
 };
 
-export const getCurrentBalanceMonth: () => string = () => {
-  return new Date()
-    .toLocaleDateString("ja-JP", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    })
-    .slice(0, 7)
-    .replaceAll("/", "-");
-};
-
 export const getLastDay: (year: number, month: number) => number = (
   year: number,
   month: number

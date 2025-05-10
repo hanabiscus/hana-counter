@@ -19,16 +19,10 @@ const Header: () => JSX.Element = () => {
 
   return (
     <header className="bg-[#009844] p-2.5">
-      <div className="grid grid-cols-3 content-start">
-        <button className="w-10" onClick={superHeaderMenuMutator}>
-          {isSuperHeaderMenuOpen ? (
-            <KeyboardArrowUpRoundedIcon fontSize="large" />
-          ) : (
-            <KeyboardArrowDownRoundedIcon fontSize="large" />
-          )}
-        </button>
-        <Link title={HANA_TITLE} href={HOME_PAGE_PATH}>
-          <div className="flex justify-center">
+      <div className="grid grid-cols-3">
+        <div>{null}</div>
+        <div className="flex justify-center">
+          <Link title={HANA_TITLE} href={HOME_PAGE_PATH}>
             <Image
               src={HANA_SVG_PATH}
               width={HANA_SIZE}
@@ -36,8 +30,17 @@ const Header: () => JSX.Element = () => {
               priority={true}
               alt={HANA_TITLE}
             ></Image>
-          </div>
-        </Link>
+          </Link>
+        </div>
+        <div className="flex justify-end">
+          <button className="w-10" onClick={superHeaderMenuMutator}>
+            {isSuperHeaderMenuOpen ? (
+              <KeyboardArrowUpRoundedIcon fontSize="large" />
+            ) : (
+              <KeyboardArrowDownRoundedIcon fontSize="large" />
+            )}
+          </button>
+        </div>
       </div>
     </header>
   );

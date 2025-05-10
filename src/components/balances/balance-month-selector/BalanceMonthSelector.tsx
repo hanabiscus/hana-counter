@@ -26,8 +26,7 @@ import {
 const BalanceMonthSelector: (
   props: balanceMonthSelectorProps
 ) => JSX.Element = (props: balanceMonthSelectorProps) => {
-  const [balanceMonthData, { setBalanceMonthData }] =
-    useBalanceMonthData();
+  const [balanceMonthData, { setBalanceMonthData }] = useBalanceMonthData();
 
   const [balanceMonth, { setBalanceMonth }] = useBalanceMonth();
 
@@ -41,9 +40,7 @@ const BalanceMonthSelector: (
     event: SelectChangeEvent
   ) => Promise<void> = async (event: SelectChangeEvent) => {
     loadingMutator(true);
-    setBalanceData(
-      await getMonthlyBalanceData(String(event.target.value))
-    );
+    setBalanceData(await getMonthlyBalanceData(String(event.target.value)));
     setBalanceMonth(String(event.target.value));
     loadingMutator(false);
   };
