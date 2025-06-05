@@ -14,18 +14,22 @@ const combinations: (n: number, k: number) => number = (
   n: number,
   k: number
 ) => {
-  let molecule = BigNumber(1);
-  let denominator = BigNumber(1);
+  let numerator: BigNumber = BigNumber(1);
+  let denominator: BigNumber = BigNumber(1);
 
-  for (let index = n; index >= n - k + 1; index--) {
-    molecule = molecule.times(BigNumber(index));
+  for (let index = 1; index <= n; index++) {
+    numerator = numerator.times(BigNumber(index));
   }
 
-  for (let index = 2; index <= k; index++) {
+  for (let index = 1; index <= k; index++) {
     denominator = denominator.times(BigNumber(index));
   }
 
-  const result = molecule.div(denominator);
+  for (let index = 1; index <= n - k; index++) {
+    denominator = denominator.times(BigNumber(index));
+  }
+
+  const result = numerator.div(denominator);
 
   return result.toNumber();
 };
@@ -85,6 +89,12 @@ export const calculateConditionalProbabilitiesOfRegularbonusSideLamp: (
     BigNumber(0.0),
   ];
   const bigResults: number[] = new Array(NUM_OF_SETTEI);
+  const regularbonusCounterNumberArray = [
+    input.redSideLampCounterNumber,
+    input.greenSideLampCounterNumber,
+    input.yellowSideLampCounterNumber,
+    input.blueSideLampCounterNumber,
+  ];
 
   const combinationsValues: BigNumber[] = [
     BigNumber(
@@ -117,13 +127,15 @@ export const calculateConditionalProbabilitiesOfRegularbonusSideLamp: (
     for (let index = 0; index < array.length; index++) {
       preBigResults[indexOfSettei] = preBigResults[indexOfSettei].plus(
         combinationsValues[index]
-          .times(array[index].pow(BigNumber(input.redSideLampCounterNumber)))
+          .times(
+            array[index].pow(BigNumber(regularbonusCounterNumberArray[index]))
+          )
           .times(
             BigNumber(1.0)
-              .minus(input.redSideLampCounterNumber)
+              .minus(array[index])
               .pow(
                 BigNumber(input.regularbonusCounterNumber).minus(
-                  BigNumber(input.redSideLampCounterNumber)
+                  BigNumber(regularbonusCounterNumberArray[index])
                 )
               )
           )

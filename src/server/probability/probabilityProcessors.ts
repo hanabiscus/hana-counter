@@ -45,7 +45,7 @@ export const calculateProbabilitiesOfHana: (
         redSideLampCounterNumber: input.redSideLampCounterNumber,
         greenSideLampCounterNumber: input.greenSideLampCounterNumber,
         yellowSideLampCounterNumber: input.yellowSideLampCounterNumber,
-        blueSideLampCounterNumber: input.bigbonusCounterNumber,
+        blueSideLampCounterNumber: input.blueSideLampCounterNumber,
       });
 
     for (let index = 0; index < NUM_OF_SETTEI; index++) {
