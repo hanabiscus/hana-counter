@@ -8,7 +8,20 @@ import Header from "@/components/headers/header/Header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "はなカウンタ | hana-counter",
+  title: "はなカウンタ",
+  description: "パチスロ用データ統合管理アプリ",
+  keywords: [
+    "はなかうんた",
+    "ハナカウンタ",
+    "hana-counter",
+    "ハナカウンター",
+    "はなはな",
+    "ハナハナ",
+    "スロット",
+    "パチンコ",
+    "華",
+    "ハイビスカス",
+  ],
 };
 
 const RootLayout: ({
