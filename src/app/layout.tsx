@@ -9,7 +9,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "はなカウンタ",
-  description: "パチスロ用データ統合管理アプリ",
+  description:
+    "はなカウンタはパチスロ用データ統合管理Webアプリです。子役のカウント、収支の管理、設定推測ができます。",
+  icons: {
+    icon: "/assets/hana.ico",
+  },
   keywords: [
     "はなかうんた",
     "ハナカウンタ",
@@ -22,6 +26,32 @@ export const metadata: Metadata = {
     "華",
     "ハイビスカス",
   ],
+  openGraph: {
+    type: "website",
+    title: "はなカウンタ",
+    description:
+      "はなカウンタはパチスロ用データ統合管理Webアプリです。子役のカウント、収支の管理、設定推測ができます。",
+    url: "https://hana-counter.net",
+    siteName: "はなカウンタ",
+    images: {
+      url: "/assets/hana.png",
+      type: "image/png",
+      width: 1200,
+      height: 630,
+    },
+  },
+  twitter: {
+    title: "はなカウンタ",
+    description:
+      "はなカウンタはパチスロ用データ統合管理Webアプリです。子役のカウント、収支の管理、設定推測ができます。",
+    images: {
+      url: "/assets/hana.png",
+      type: "image/png",
+      width: 1200,
+      height: 630,
+    },
+    card: "summary",
+  },
 };
 
 const RootLayout: ({
