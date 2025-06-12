@@ -8,6 +8,9 @@ import Header from "@/components/headers/header/Header";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://hana-counter.net",
+  },
   title: "はなカウンタ",
   description:
     "はなカウンタはパチスロ用データ統合管理Webアプリです。子役のカウント、収支の管理、設定推測ができます。",
