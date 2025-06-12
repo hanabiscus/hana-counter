@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://hana-counter.net",
   },
+  metadataBase: new URL("https://hana-counter.net"),
   title: "はなカウンタ",
   description:
     "はなカウンタはパチスロ用データ統合管理Webアプリです。子役のカウント、収支の管理、設定推測ができます。",
