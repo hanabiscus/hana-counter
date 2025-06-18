@@ -98,7 +98,7 @@ export const LOGOUT = "ログアウト";
 
 export const SHM_NAVIGATION_NAME_COUNTER = "カウンタ";
 export const SHM_NAVIGATION_NAME_BALANCE = "収支";
-export const SHM_NAVIGATION_NAME_SETTEI_HAMBETSU = "設定判別";
+export const SHM_NAVIGATION_NAME_SETTEI_SUISOKU = "設定推測";
 
 export const EXPENDITURE_LABEL = "投資";
 export const INCOME_LABEL = "回収";
@@ -145,7 +145,7 @@ export const BIGBONUS_WATERMELON = "BBスイカ";
 
 export const REGULARBONUS_SIDE_LAMP = "RBサイド";
 
-export const CALCULATE = "設定判別";
+export const CALCULATE = "設定推測";
 
 export const PERCENT = "%";
 export const NUM_OF_SETTEI = 6;

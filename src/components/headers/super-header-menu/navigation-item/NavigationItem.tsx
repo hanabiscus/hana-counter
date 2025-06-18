@@ -12,7 +12,7 @@ const NavigationItem: (props: navigationItemProps) => JSX.Element = (
   return (
     <button
       onClick={superHeaderMenuMutator}
-      className="underline underline-offset-4"
+      className="underline underline-offset-2"
     >
       <Link href={props.href}>
         <div className="flex items-center justify-center">

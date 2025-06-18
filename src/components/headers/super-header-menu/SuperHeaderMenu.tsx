@@ -13,7 +13,7 @@ import {
   PROBABILITY_PAGE_PATH,
   SHM_NAVIGATION_NAME_COUNTER,
   SHM_NAVIGATION_NAME_BALANCE,
-  SHM_NAVIGATION_NAME_SETTEI_HAMBETSU,
+  SHM_NAVIGATION_NAME_SETTEI_SUISOKU,
 } from "@/const/constants";
 
 const SuperHeaderMenu: () => JSX.Element = () => {
@@ -39,7 +39,7 @@ const SuperHeaderMenu: () => JSX.Element = () => {
             <NavigationItem
               Icon={VisibilityRoundedIcon}
               href={PROBABILITY_PAGE_PATH}
-              name={SHM_NAVIGATION_NAME_SETTEI_HAMBETSU}
+              name={SHM_NAVIGATION_NAME_SETTEI_SUISOKU}
             />
           </div>
           <div className="p-1">
