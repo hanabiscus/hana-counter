@@ -37,8 +37,12 @@ const WaterMelonInput: () => JSX.Element = () => {
       <div>
         <div>{BIGBONUS_WATERMELON}</div>
         {isLoading ? (
-          <div className="h-[70px] flex justify-center items-center">
-            <CircularProgress color="secondary" disableShrink={true} />
+          <div className="h-[70px] m-1 flex justify-center items-center">
+            <CircularProgress
+              color="secondary"
+              size={30}
+              disableShrink={true}
+            />
           </div>
         ) : (
           <div className="h-[70px] m-1 bg-[#555555] rounded-md grid items-center">

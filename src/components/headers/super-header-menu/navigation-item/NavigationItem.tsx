@@ -10,7 +10,10 @@ const NavigationItem: (props: navigationItemProps) => JSX.Element = (
     useSuperHeaderMenu()[1].superHeaderMenuMutator;
 
   return (
-    <button onClick={superHeaderMenuMutator}>
+    <button
+      onClick={superHeaderMenuMutator}
+      className="underline underline-offset-4"
+    >
       <Link href={props.href}>
         <div className="flex items-center justify-center">
           <props.Icon />

@@ -58,8 +58,12 @@ const SideLampInput: () => JSX.Element = () => {
       <div>
         <div>{REGULARBONUS_SIDE_LAMP}</div>
         {isLoading ? (
-          <div className="h-[140px] flex justify-center items-center">
-            <CircularProgress color="secondary" disableShrink={true} />
+          <div className="h-[140px] m-1 flex justify-center items-center">
+            <CircularProgress
+              color="secondary"
+              size={30}
+              disableShrink={true}
+            />
           </div>
         ) : (
           <div className="h-[140px] m-1 bg-[#555555] rounded-md grid grid-cols-2 place-items-center">
