@@ -4,55 +4,49 @@ import { fontNotoSansJp } from "@/lib/utils/font";
 import ConfigureAmplifyClientSide from "@/components/configure-amplify-client-side/ConfigureAmplifyClientSide";
 import SuperHeaderMenu from "@/components/headers/super-header-menu/SuperHeaderMenu";
 import Header from "@/components/headers/header/Header";
+import {
+  OGP_IMAGE_HEIGHT,
+  OGP_IMAGE_PATH,
+  OGP_IMAGE_WIDTH,
+  WEB_SITE_DESCRIPTION,
+  WEB_SITE_ICON_PATH,
+  WEB_SITE_TITLE,
+  WEB_SITE_URL,
+} from "@/const/constants";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://hana-counter.net",
+    canonical: WEB_SITE_URL,
   },
-  metadataBase: new URL("https://hana-counter.net"),
-  title: "はなカウンタ",
-  description:
-    "はなカウンタはパチスロ用データ統合管理Webアプリです。子役のカウント、収支の管理、設定推測ができます。",
+  metadataBase: new URL(WEB_SITE_URL),
+  title: WEB_SITE_TITLE,
+  description: WEB_SITE_DESCRIPTION,
   icons: {
-    icon: "/assets/hana.ico",
+    icon: WEB_SITE_ICON_PATH,
   },
-  keywords: [
-    "はなかうんた",
-    "ハナカウンタ",
-    "hana-counter",
-    "ハナカウンター",
-    "はなはな",
-    "ハナハナ",
-    "スロット",
-    "パチンコ",
-    "華",
-    "ハイビスカス",
-  ],
   openGraph: {
     type: "website",
-    title: "はなカウンタ",
-    description:
-      "はなカウンタはパチスロ用データ統合管理Webアプリです。子役のカウント、収支の管理、設定推測ができます。",
-    url: "https://hana-counter.net",
-    siteName: "はなカウンタ",
+    title: WEB_SITE_TITLE,
+    description: WEB_SITE_DESCRIPTION,
+    url: WEB_SITE_URL,
+    siteName: WEB_SITE_TITLE,
     images: {
-      url: "/assets/hana.png",
+      url: OGP_IMAGE_PATH,
       type: "image/png",
-      width: 1200,
-      height: 630,
+      width: OGP_IMAGE_WIDTH,
+      height: OGP_IMAGE_HEIGHT,
     },
   },
   twitter: {
-    title: "はなカウンタ",
-    description:
-      "はなカウンタはパチスロ用データ統合管理Webアプリです。子役のカウント、収支の管理、設定推測ができます。",
+    title: WEB_SITE_TITLE,
+    description: WEB_SITE_DESCRIPTION,
     images: {
-      url: "/assets/hana.png",
+      url: OGP_IMAGE_PATH,
       type: "image/png",
-      width: 1200,
-      height: 630,
+      width: OGP_IMAGE_WIDTH,
+      height: OGP_IMAGE_HEIGHT,
     },
     card: "summary",
   },

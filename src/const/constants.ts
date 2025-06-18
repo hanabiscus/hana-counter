@@ -2,6 +2,15 @@ import { createTheme } from "@mui/material";
 import dayjs from "dayjs";
 import BigNumber from "bignumber.js";
 
+export const WEB_SITE_URL = "https://hana-counter.net";
+export const WEB_SITE_TITLE = "はなカウンタ";
+export const WEB_SITE_DESCRIPTION =
+  "はなカウンタはパチスロ用データ統合管理Webアプリです。子役のカウント、収支の管理、設定推測ができます。";
+export const WEB_SITE_ICON_PATH = "/assets/hana.ico";
+export const OGP_IMAGE_PATH = "/assets/hana.png";
+export const OGP_IMAGE_WIDTH = 1206;
+export const OGP_IMAGE_HEIGHT = 634;
+
 export const INTERNAL_SERVER_ERROR = "500";
 export const NOT_FOUND = "404";
 
